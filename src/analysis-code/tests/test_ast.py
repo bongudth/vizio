@@ -1,3 +1,4 @@
+import ast
 import os
 from unittest import TestCase
 
@@ -9,5 +10,6 @@ class TestFileHandler(TestCase):
         current_dir = os.path.dirname(os.path.realpath(__file__))
         file_path = os.path.join(current_dir, "data/input/quick_sort.py")
         lines = read_file(file_path)
-        des_path = os.path.join(current_dir, "data/output/quick_sort.py")
-        write_file(des_path, lines)
+        tree = ast.parse(lines)
+        des_path = os.path.join(current_dir, "data/output/quick_sort.ast.txt")
+        write_file(des_path, ast.dump(tree, indent=4))
