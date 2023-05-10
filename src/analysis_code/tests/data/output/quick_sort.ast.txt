@@ -1,0 +1,230 @@
+Module(
+    body=[
+        FunctionDef(
+            name='partition',
+            args=arguments(
+                posonlyargs=[],
+                args=[
+                    arg(arg='array'),
+                    arg(arg='low'),
+                    arg(arg='high')],
+                kwonlyargs=[],
+                kw_defaults=[],
+                defaults=[]),
+            body=[
+                Assign(
+                    targets=[
+                        Name(id='pivot', ctx=Store())],
+                    value=Subscript(
+                        value=Name(id='array', ctx=Load()),
+                        slice=Name(id='high', ctx=Load()),
+                        ctx=Load())),
+                Assign(
+                    targets=[
+                        Name(id='i', ctx=Store())],
+                    value=BinOp(
+                        left=Name(id='low', ctx=Load()),
+                        op=Sub(),
+                        right=Constant(value=1))),
+                For(
+                    target=Name(id='j', ctx=Store()),
+                    iter=Call(
+                        func=Name(id='range', ctx=Load()),
+                        args=[
+                            Name(id='low', ctx=Load()),
+                            Name(id='high', ctx=Load())],
+                        keywords=[]),
+                    body=[
+                        If(
+                            test=Compare(
+                                left=Subscript(
+                                    value=Name(id='array', ctx=Load()),
+                                    slice=Name(id='j', ctx=Load()),
+                                    ctx=Load()),
+                                ops=[
+                                    LtE()],
+                                comparators=[
+                                    Name(id='pivot', ctx=Load())]),
+                            body=[
+                                Assign(
+                                    targets=[
+                                        Name(id='i', ctx=Store())],
+                                    value=BinOp(
+                                        left=Name(id='i', ctx=Load()),
+                                        op=Add(),
+                                        right=Constant(value=1))),
+                                Assign(
+                                    targets=[
+                                        Tuple(
+                                            elts=[
+                                                Subscript(
+                                                    value=Name(id='array', ctx=Load()),
+                                                    slice=Name(id='i', ctx=Load()),
+                                                    ctx=Store()),
+                                                Subscript(
+                                                    value=Name(id='array', ctx=Load()),
+                                                    slice=Name(id='j', ctx=Load()),
+                                                    ctx=Store())],
+                                            ctx=Store())],
+                                    value=Tuple(
+                                        elts=[
+                                            Subscript(
+                                                value=Name(id='array', ctx=Load()),
+                                                slice=Name(id='j', ctx=Load()),
+                                                ctx=Load()),
+                                            Subscript(
+                                                value=Name(id='array', ctx=Load()),
+                                                slice=Name(id='i', ctx=Load()),
+                                                ctx=Load())],
+                                        ctx=Load()))],
+                            orelse=[])],
+                    orelse=[]),
+                Assign(
+                    targets=[
+                        Tuple(
+                            elts=[
+                                Subscript(
+                                    value=Name(id='array', ctx=Load()),
+                                    slice=BinOp(
+                                        left=Name(id='i', ctx=Load()),
+                                        op=Add(),
+                                        right=Constant(value=1)),
+                                    ctx=Store()),
+                                Subscript(
+                                    value=Name(id='array', ctx=Load()),
+                                    slice=Name(id='high', ctx=Load()),
+                                    ctx=Store())],
+                            ctx=Store())],
+                    value=Tuple(
+                        elts=[
+                            Subscript(
+                                value=Name(id='array', ctx=Load()),
+                                slice=Name(id='high', ctx=Load()),
+                                ctx=Load()),
+                            Subscript(
+                                value=Name(id='array', ctx=Load()),
+                                slice=BinOp(
+                                    left=Name(id='i', ctx=Load()),
+                                    op=Add(),
+                                    right=Constant(value=1)),
+                                ctx=Load())],
+                        ctx=Load())),
+                Return(
+                    value=BinOp(
+                        left=Name(id='i', ctx=Load()),
+                        op=Add(),
+                        right=Constant(value=1)))],
+            decorator_list=[]),
+        FunctionDef(
+            name='quickSort',
+            args=arguments(
+                posonlyargs=[],
+                args=[
+                    arg(arg='array'),
+                    arg(arg='low'),
+                    arg(arg='high')],
+                kwonlyargs=[],
+                kw_defaults=[],
+                defaults=[]),
+            body=[
+                If(
+                    test=Compare(
+                        left=Name(id='low', ctx=Load()),
+                        ops=[
+                            Lt()],
+                        comparators=[
+                            Name(id='high', ctx=Load())]),
+                    body=[
+                        Assign(
+                            targets=[
+                                Name(id='pi', ctx=Store())],
+                            value=Call(
+                                func=Name(id='partition', ctx=Load()),
+                                args=[
+                                    Name(id='array', ctx=Load()),
+                                    Name(id='low', ctx=Load()),
+                                    Name(id='high', ctx=Load())],
+                                keywords=[])),
+                        Expr(
+                            value=Call(
+                                func=Name(id='quickSort', ctx=Load()),
+                                args=[
+                                    Name(id='array', ctx=Load()),
+                                    Name(id='low', ctx=Load()),
+                                    BinOp(
+                                        left=Name(id='pi', ctx=Load()),
+                                        op=Sub(),
+                                        right=Constant(value=1))],
+                                keywords=[])),
+                        Expr(
+                            value=Call(
+                                func=Name(id='quickSort', ctx=Load()),
+                                args=[
+                                    Name(id='array', ctx=Load()),
+                                    BinOp(
+                                        left=Name(id='pi', ctx=Load()),
+                                        op=Add(),
+                                        right=Constant(value=1)),
+                                    Name(id='high', ctx=Load())],
+                                keywords=[]))],
+                    orelse=[])],
+            decorator_list=[]),
+        Assign(
+            targets=[
+                Name(id='data', ctx=Store())],
+            value=List(
+                elts=[
+                    Constant(value=1),
+                    Constant(value=7),
+                    Constant(value=4),
+                    Constant(value=1),
+                    Constant(value=10),
+                    Constant(value=9),
+                    UnaryOp(
+                        op=USub(),
+                        operand=Constant(value=2))],
+                ctx=Load())),
+        Expr(
+            value=Call(
+                func=Name(id='print', ctx=Load()),
+                args=[
+                    Constant(value='Unsorted Array')],
+                keywords=[])),
+        Expr(
+            value=Call(
+                func=Name(id='print', ctx=Load()),
+                args=[
+                    Name(id='data', ctx=Load())],
+                keywords=[])),
+        Assign(
+            targets=[
+                Name(id='size', ctx=Store())],
+            value=Call(
+                func=Name(id='len', ctx=Load()),
+                args=[
+                    Name(id='data', ctx=Load())],
+                keywords=[])),
+        Expr(
+            value=Call(
+                func=Name(id='quickSort', ctx=Load()),
+                args=[
+                    Name(id='data', ctx=Load()),
+                    Constant(value=0),
+                    BinOp(
+                        left=Name(id='size', ctx=Load()),
+                        op=Sub(),
+                        right=Constant(value=1))],
+                keywords=[])),
+        Expr(
+            value=Call(
+                func=Name(id='print', ctx=Load()),
+                args=[
+                    Constant(value='Sorted Array in Ascending Order:')],
+                keywords=[])),
+        Expr(
+            value=Call(
+                func=Name(id='print', ctx=Load()),
+                args=[
+                    Name(id='data', ctx=Load())],
+                keywords=[]))],
+    type_ignores=[])
