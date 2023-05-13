@@ -5,9 +5,8 @@ from src.draw_graph.services.node_transform_handler import NodeTransformerHandle
 
 
 class DotfileBodyCreator:
-    node_transformers_handler = NodeTransformerHandler()
-
     def __init__(self, lines: List[str], background_color="white"):
+        self.node_transformers_handler = NodeTransformerHandler()
         self.lines = lines
         self.background_color = background_color
         self.dg_graph = DGGraph(lines)
@@ -18,7 +17,7 @@ class DotfileBodyCreator:
     def _build_nodes(self) -> str:
         return "".join(
             transformed_node.get("content", "")
-            for node in self.dg_graph.get_dg_nodes()
+            for node in self.dg_graph.dg_nodes
             if (transformed_node := self.node_transformers_handler.transform(node))
         )
 
@@ -27,4 +26,4 @@ class DotfileBodyCreator:
         return result.get("text")
 
     def get_report(self):
-        return self.dg_graph.get_report()
+        return self.dg_graph.report

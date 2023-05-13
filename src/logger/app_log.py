@@ -4,7 +4,13 @@ from logging.handlers import RotatingFileHandler
 
 root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 log_path = os.path.join(root, "logs", "my_log.log")
-file_handler = RotatingFileHandler(log_path, maxBytes=2000, backupCount=10)
+try:
+    file_handler = RotatingFileHandler(log_path, maxBytes=2000, backupCount=10)
+except FileNotFoundError:
+    os.makedirs(os.path.dirname(log_path))
+    file_handler = RotatingFileHandler(log_path, maxBytes=2000, backupCount=10)
+
+file_handler.setLevel(logging.DEBUG)
 console_handler = logging.StreamHandler()
 logger = logging.getLogger(__name__)
 logger.addHandler(file_handler)

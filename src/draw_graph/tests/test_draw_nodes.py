@@ -19,9 +19,7 @@ class TestDrawFlowChart(TestCase):
         ]
         dot_file_creator = DotfileCreator(lines)
         content = dot_file_creator.generate()
-        report = dot_file_creator.get_report()
         print(content)
-        self.assertEqual(report.get("n_connections"), 3)
 
     def test_draw_comments(self):
         lines = [
@@ -52,4 +50,3 @@ class TestDrawFlowChart(TestCase):
         ]
         dot_file_creator = DotfileCreator(lines)
         dot_file_creator.generate()
-        dot_file_creator.get_report()

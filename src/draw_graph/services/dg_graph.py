@@ -45,11 +45,14 @@ class DGGraph:
         self._node_connections = result.get("node_connections")
         return result
 
-    def get_dg_nodes(self) -> List[DGNode]:
+    @property
+    def dg_nodes(self) -> List[DGNode]:
         return self._dg_nodes
 
-    def get_node_connections(self) -> NodeConnections:
+    @property
+    def node_connections(self) -> NodeConnections:
         return self._node_connections
 
-    def get_report(self):
+    @property
+    def report(self):
         return self._graph_reporter.get_report(self)

@@ -6,9 +6,7 @@
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.constants.node_types import NodeType'}, 'indent': 0}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.models.dg_node import DGNode'}, 'indent': 0}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, 'indent': 0}
-{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.condition_connection import ('}, 'indent': 0}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 4}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.condition_connection import ConditionConnector'}, 'indent': 0}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, 'indent': 0}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, 'indent': 0}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, 'indent': 0}

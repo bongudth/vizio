@@ -1,291 +1,288 @@
 digraph my_graph {
 bgcolor="white"
-4375842448 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
-4375842384 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375841744 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375840848 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375842000 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375842640 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375842960 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375843280 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375843344 [shape=rect] [label="nodes: List[DGNode] = []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375843408 [shape=rect] [label="connections: List[NodeConnection] = []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375843472 [shape=rect] [label="tree = None"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375843536 [label=""]
-4375843600 [shape=rect] [label="filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375843664 [shape=rect] [label="self.__class__.nodes = filtered_nodes"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375843728 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375843792 [label=""]
-4375843856 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375843920 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375843984 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375844048 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375844112 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4375844176 [shape=diamond] [label="i > 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375844240 [shape=rect] [label="cls.nodes[i].prev_node = cls.nodes[i - 1]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375844304 [shape=diamond] [label="i + 1 < len(cls.nodes)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375844368 [shape=rect] [label="cls.nodes[i].next_node = cls.nodes[i + 1]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375844432 [shape=rect] [label="Loop node in cls.nodes"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4375844496 [shape=rect] [label="parent_node = cls._get_parent_node(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375844560 [shape=parallelogram] [label="node.set_parent(parent_node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375844624 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4375844688 [shape=rect] [label="cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375844752 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4375844816 [shape=rect] [label="cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375844880 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375844944 [label=""]
-4375845008 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845072 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845136 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845200 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845264 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845328 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845392 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845456 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845520 [shape=rect] [label="parent_node = node.prev_node"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375845584 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375845648 [shape=ellipse] [label="None"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4375845712 [shape=rect] [label="Loop node.indent in parent_node.indent"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4375845776 [shape=rect] [label="parent_node = parent_node.prev_node"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375845840 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375845904 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375845968 [shape=ellipse] [label="parent_node"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4375846032 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375846096 [label=""]
-4375846160 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375846224 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375846288 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375846352 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375846416 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375846480 [shape=rect] [label="result = ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846544 [shape=rect] [label="node_connections = []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846608 [shape=rect] [label="def_indent = -1"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846672 [shape=rect] [label="Loop i, in in enumerate(cls.nodes)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4375846736 [shape=rect] [label="text = ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846800 [shape=rect] [label="connections = None"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846864 [shape=rect] [label="response = None"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846928 [shape=rect] [label="out_def_method = node.indent <= def_indent"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375846992 [shape=diamond] [label="out_def_method"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375847056 [shape=rect] [label="def_indent = -1"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847120 [shape=rect] [label="text += '}'"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847184 [shape=diamond] [label="NodeType.is_definition(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375847248 [shape=rect] [label="def_indent = node.indent"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847312 [shape=rect] [label="handler = DefConnector(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847376 [shape=rect] [label="_, text = handler.handle()"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847440 [shape=diamond] [label="NodeType.is_loop(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375847504 [shape=rect] [label="handler = LoopConnection(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847568 [shape=rect] [label="connections, _ = handler.handle()"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847632 [shape=diamond] [label="NodeType.is_end(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375847696 [shape=rect] [label="connections = ["] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847760 [shape=rect] [label="NodeConnection(node.prev_node, node, source='@prev_to_end')"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375847824 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375847888 [shape=diamond] [label="NodeType.is_condition(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375847952 [shape=rect] [label="handler = ConditionConnector(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848016 [shape=rect] [label="connections, _ = handler.handle()"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848080 [shape=diamond] [label="node.prev_node and node.prev_node.indent == node.indent"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375848144 [shape=rect] [label="connections = ["] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848208 [shape=parallelogram] [label="NodeConnection("] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848272 [shape=rect] [label="node.prev_node, node, source='@prev_to_current_same_indent'"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848336 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375848400 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375848464 [shape=diamond] [label="NodeType.is_return(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375848528 [shape=rect] [label="response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848592 [shape=rect] [label="connections = response.get('connections', [])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848656 [shape=diamond] [label="node.parent and cls.nodes[i - 1] == node.parent"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375848720 [shape=rect] [label="connections = ["] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848784 [shape=parallelogram] [label="NodeConnection("] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375848848 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375848912 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375848976 [shape=rect] [label="label='True',"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849040 [shape=rect] [label="source='@parent_to_child',"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849104 [shape=rect] [label="color='green',"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849168 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375849232 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375849296 [shape=rect] [label="result += text or ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849360 [shape=rect] [label="result += cls.extract_text_from_connections(connections, response)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849424 [shape=diamond] [label="connections"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375849488 [shape=parallelogram] [label="node_connections.extend(connections)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849552 [shape=diamond] [label="def_indent != -1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375849616 [shape=rect] [label="result += '}'"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849680 [shape=ellipse] [label="dict(text=result, node_connections=node_connections)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4375849744 [shape=rect] [label="{}"] [type="UNKNOWN"]
-4375849808 [label=""]
-4375849872 [shape=rect] [label="text = response['text'] + '\n' if response else ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375849936 [shape=diamond] [label="not connections"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4375850000 [shape=ellipse] [label="''"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4375850064 [shape=rect] [label="text += '\n'.join([connection.to_dot() for connection in connections])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4375850128 [shape=ellipse] [label="text"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4375850192 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4375842448 -> 4375842384  [source = "@prev_to_current_same_indent : {} ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
-4375842384 -> 4375841744  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
-4375841744 -> 4375840848  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
-4375840848 -> 4375842000  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
-4375842000 -> 4375842512  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={'value': 'from typing import Any, Dict, List, Union'}, type=IGNORE, indent=0)"] ;
-4375842512 -> 4375842704  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from typing import Any, Dict, List, Union'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.constants.node_types import NodeType'}, type=IGNORE, indent=0)"] ;
-4375842704 -> 4375842768  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.constants.node_types import NodeType'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.models.dg_node import DGNode'}, type=IGNORE, indent=0)"] ;
-4375842768 -> 4375842832  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.models.dg_node import DGNode'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, type=IGNORE, indent=0)"] ;
-4375842832 -> 4375842896  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.condition_connection import ('}, type=IGNORE, indent=0)"] ;
-4375842896 -> 4375842640 [label = True] [source = "@parent_to_child : ACNode(info={'value': 'from src.draw_graph.services.connections.condition_connection import ('}, type=IGNORE, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=4)"] [color=green];
-4375842960 -> 4375843024  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, type=IGNORE, indent=0)"] ;
-4375843024 -> 4375843088  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, type=IGNORE, indent=0)"] ;
-4375843088 -> 4375843152  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, type=IGNORE, indent=0)"] ;
-4375843152 -> 4375843280  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, type=IGNORE, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
-4375843280 -> 4375843344 [label = True] [source = "@parent_to_child : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'nodes: List[DGNode] = []'}, type=STATEMENT, indent=4)"] [color=green];
-4375843344 -> 4375843408  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'nodes: List[DGNode] = []'}, type=STATEMENT, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections: List[NodeConnection] = []'}, type=STATEMENT, indent=4)"] ;
-4375843408 -> 4375843472  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections: List[NodeConnection] = []'}, type=STATEMENT, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'tree = None'}, type=STATEMENT, indent=4)"] ;
+4348923664 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+4348923600 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348922960 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348922064 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348923216 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348924368 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348924432 [shape=rect] [label="nodes: List[DGNode] = []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348924496 [shape=rect] [label="connections: List[NodeConnection] = []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348924560 [shape=rect] [label="tree = None"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348924624 [label=""]
+4348924688 [shape=rect] [label="filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348924752 [shape=rect] [label="self.__class__.nodes = filtered_nodes"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348924816 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348924880 [label=""]
+4348924944 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348925008 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348925072 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348925136 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348925200 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4348925264 [shape=diamond] [label="i > 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348925328 [shape=rect] [label="cls.nodes[i].prev_node = cls.nodes[i - 1]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348925392 [shape=diamond] [label="i + 1 < len(cls.nodes)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348925456 [shape=rect] [label="cls.nodes[i].next_node = cls.nodes[i + 1]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348925520 [shape=rect] [label="Loop node in cls.nodes"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4348925584 [shape=rect] [label="parent_node = cls._get_parent_node(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348925648 [shape=parallelogram] [label="node.set_parent(parent_node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348925712 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4348925776 [shape=rect] [label="cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348925840 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4348925904 [shape=rect] [label="cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348925968 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926032 [label=""]
+4348926096 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926160 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926224 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926288 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926352 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926416 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926480 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926544 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348926608 [shape=rect] [label="parent_node = node.prev_node"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348926672 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348926736 [shape=ellipse] [label="None"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4348926800 [shape=rect] [label="Loop node.indent in parent_node.indent"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4348926864 [shape=rect] [label="parent_node = parent_node.prev_node"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348926928 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348926992 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927056 [shape=ellipse] [label="parent_node"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4348927120 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927184 [label=""]
+4348927248 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927312 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927376 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927440 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927504 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348927568 [shape=rect] [label="result = ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348927632 [shape=rect] [label="node_connections = []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348927696 [shape=rect] [label="def_indent = -1"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348927760 [shape=rect] [label="Loop i, in in enumerate(cls.nodes)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4348927824 [shape=rect] [label="text = ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348927888 [shape=rect] [label="connections = None"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348927952 [shape=rect] [label="response = None"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928016 [shape=rect] [label="out_def_method = node.indent <= def_indent"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928080 [shape=diamond] [label="out_def_method"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348928144 [shape=rect] [label="def_indent = -1"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928208 [shape=rect] [label="text += '}'"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928272 [shape=diamond] [label="NodeType.is_definition(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348928336 [shape=rect] [label="def_indent = node.indent"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928400 [shape=rect] [label="handler = DefConnector(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928464 [shape=rect] [label="_, text = handler.handle()"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928528 [shape=diamond] [label="NodeType.is_loop(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348928592 [shape=rect] [label="handler = LoopConnection(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928656 [shape=rect] [label="connections, _ = handler.handle()"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928720 [shape=diamond] [label="NodeType.is_end(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348928784 [shape=rect] [label="connections = ["] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928848 [shape=rect] [label="NodeConnection(node.prev_node, node, source='@prev_to_end')"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348928912 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348928976 [shape=diamond] [label="NodeType.is_condition(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348929040 [shape=rect] [label="handler = ConditionConnector(node)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929104 [shape=rect] [label="connections, _ = handler.handle()"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929168 [shape=diamond] [label="node.prev_node and node.prev_node.indent == node.indent"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348929232 [shape=rect] [label="connections = ["] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929296 [shape=parallelogram] [label="NodeConnection("] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929360 [shape=rect] [label="node.prev_node, node, source='@prev_to_current_same_indent'"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929424 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348929488 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348929552 [shape=diamond] [label="NodeType.is_return(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348929616 [shape=rect] [label="response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929680 [shape=rect] [label="connections = response.get('connections', [])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929744 [shape=diamond] [label="node.parent and cls.nodes[i - 1] == node.parent"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348929808 [shape=rect] [label="connections = ["] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929872 [shape=parallelogram] [label="NodeConnection("] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348929936 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348930000 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348930064 [shape=rect] [label="label='True',"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930128 [shape=rect] [label="source='@parent_to_child',"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930192 [shape=rect] [label="color='green',"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930256 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348930320 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348930384 [shape=rect] [label="result += text or ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930448 [shape=rect] [label="result += cls.extract_text_from_connections(connections, response)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930512 [shape=diamond] [label="connections"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348930576 [shape=parallelogram] [label="node_connections.extend(connections)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930640 [shape=diamond] [label="def_indent != -1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348930704 [shape=rect] [label="result += '}'"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348930768 [shape=ellipse] [label="dict(text=result, node_connections=node_connections)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4348930832 [shape=rect] [label="{}"] [type="UNKNOWN"]
+4348930896 [label=""]
+4348930960 [shape=rect] [label="text = response['text'] + '\n' if response else ''"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348931024 [shape=diamond] [label="not connections"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4348931088 [shape=ellipse] [label="''"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4348931152 [shape=rect] [label="text += '\n'.join([connection.to_dot() for connection in connections])"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4348931216 [shape=ellipse] [label="text"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4348931280 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+4348923664 -> 4348923600  [source = "@prev_to_current_same_indent : {} ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
+4348923600 -> 4348922960  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
+4348922960 -> 4348922064  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
+4348922064 -> 4348923216  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
+4348923216 -> 4348923728  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={'value': 'from typing import Any, Dict, List, Union'}, type=IGNORE, indent=0)"] ;
+4348923728 -> 4348923920  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from typing import Any, Dict, List, Union'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.constants.node_types import NodeType'}, type=IGNORE, indent=0)"] ;
+4348923920 -> 4348923984  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.constants.node_types import NodeType'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.models.dg_node import DGNode'}, type=IGNORE, indent=0)"] ;
+4348923984 -> 4348924048  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.models.dg_node import DGNode'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, type=IGNORE, indent=0)"] ;
+4348924048 -> 4348924112  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.condition_connection import ConditionConnector'}, type=IGNORE, indent=0)"] ;
+4348924112 -> 4348923856  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.condition_connection import ConditionConnector'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, type=IGNORE, indent=0)"] ;
+4348923856 -> 4348924176  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, type=IGNORE, indent=0)"] ;
+4348924176 -> 4348924240  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, type=IGNORE, indent=0) ===> ACNode(info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, type=IGNORE, indent=0)"] ;
+4348924240 -> 4348924368  [source = "@prev_to_current_same_indent : ACNode(info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, type=IGNORE, indent=0) ===> ACNode(info={}, type=UNKNOWN, indent=0)"] ;
+4348924368 -> 4348924432 [label = True] [source = "@parent_to_child : ACNode(info={}, type=UNKNOWN, indent=0) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'nodes: List[DGNode] = []'}, type=STATEMENT, indent=4)"] [color=green];
+4348924432 -> 4348924496  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'nodes: List[DGNode] = []'}, type=STATEMENT, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections: List[NodeConnection] = []'}, type=STATEMENT, indent=4)"] ;
+4348924496 -> 4348924560  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections: List[NodeConnection] = []'}, type=STATEMENT, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'tree = None'}, type=STATEMENT, indent=4)"] ;
 subgraph cluster___init__ {
 label = "__init__";
-4375843536 -> 4375843600 [label = True] [source = "@parent_to_child : ACNode(info={'name': '__init__', 'args': ['self']}, type=DEF, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))'}, type=STATEMENT, indent=8)"] [color=green];
-4375843600 -> 4375843664  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))'}, type=STATEMENT, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'self.__class__.nodes = filtered_nodes'}, type=STATEMENT, indent=8)"] ;
+4348924624 -> 4348924688 [label = True] [source = "@parent_to_child : ACNode(info={'name': '__init__', 'args': ['self']}, type=DEF, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))'}, type=STATEMENT, indent=8)"] [color=green];
+4348924688 -> 4348924752  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))'}, type=STATEMENT, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'self.__class__.nodes = filtered_nodes'}, type=STATEMENT, indent=8)"] ;
 }subgraph cluster_parse_relationship_tree {
 label = "parse_relationship_tree";
-4375843792 -> 4375843856 [label = True] [source = "@parent_to_child : ACNode(info={'name': 'parse_relationship_tree', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] [color=green];
-4375843856 -> 4375843920  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375843920 -> 4375843984  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375843984 -> 4375844048  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375844048 -> 4375844112  [source = "@prev_to_loop : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
+4348924880 -> 4348924944 [label = True] [source = "@parent_to_child : ACNode(info={'name': 'parse_relationship_tree', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] [color=green];
+4348924944 -> 4348925008  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348925008 -> 4348925072  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348925072 -> 4348925136  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348925136 -> 4348925200  [source = "@prev_to_loop : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
 
-4375844112 -> 4375844432 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8)"] [color=red];
-4375844112 -> 4375844176  [source = "@if_to_prev_node : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'conditions': ['i > 0'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
+4348925200 -> 4348925520 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8)"] [color=red];
+4348925200 -> 4348925264  [source = "@if_to_prev_node : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'conditions': ['i > 0'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
 
-4375844240 -> 4375844112  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
-4375844176 -> 4375844240 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['i > 0'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, type=STATEMENT, indent=16)"] [color=green];
-4375844240 -> 4375844304  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'conditions': ['i + 1 < len(cls.nodes)'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
+4348925328 -> 4348925200  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
+4348925264 -> 4348925328 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['i > 0'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, type=STATEMENT, indent=16)"] [color=green];
+4348925328 -> 4348925392  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'conditions': ['i + 1 < len(cls.nodes)'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
 
-4375844368 -> 4375844112  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
-4375844304 -> 4375844368 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['i + 1 < len(cls.nodes)'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, type=STATEMENT, indent=16)"] [color=green];
-4375844368 -> 4375844432  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8)"] ;
+4348925456 -> 4348925200  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
+4348925392 -> 4348925456 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['i + 1 < len(cls.nodes)'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, type=STATEMENT, indent=16)"] [color=green];
+4348925456 -> 4348925520  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8)"] ;
 
-4375844432 -> 4375844624 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] [color=red];
-4375844432 -> 4375844496 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = cls._get_parent_node(node)'}, type=STATEMENT, indent=12)"] [color=green];
-4375844496 -> 4375844560  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = cls._get_parent_node(node)'}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node.set_parent(parent_node)'}, type=STATEMENT, indent=12)"] ;
-4375844560 -> 4375844624  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node.set_parent(parent_node)'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
+4348925520 -> 4348925712 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] [color=red];
+4348925520 -> 4348925584 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'node', 'list': 'cls.nodes'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = cls._get_parent_node(node)'}, type=STATEMENT, indent=12)"] [color=green];
+4348925584 -> 4348925648  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = cls._get_parent_node(node)'}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node.set_parent(parent_node)'}, type=STATEMENT, indent=12)"] ;
+4348925648 -> 4348925712  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node.set_parent(parent_node)'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
 
-4375844624 -> 4375844752 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] [color=red];
-4375844624 -> 4375844688 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])'}, type=STATEMENT, indent=12)"] [color=green];
-4375844688 -> 4375844752  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
+4348925712 -> 4348925840 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] [color=red];
+4348925712 -> 4348925776 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])'}, type=STATEMENT, indent=12)"] [color=green];
+4348925776 -> 4348925840  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8)"] ;
 
-4375844752 -> 4375844880 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=4)"] [color=red];
-4375844752 -> 4375844816 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])'}, type=STATEMENT, indent=12)"] [color=green];
+4348925840 -> 4348925968 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=4)"] [color=red];
+4348925840 -> 4348925904 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'i', 'list': 'range(len(cls.nodes))'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])'}, type=STATEMENT, indent=12)"] [color=green];
 }subgraph cluster__get_parent_node {
 label = "_get_parent_node";
-4375844944 -> 4375845008 [label = True] [source = "@parent_to_child : ACNode(info={'name': '_get_parent_node', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] [color=green];
-4375845008 -> 4375845072  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845072 -> 4375845136  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845136 -> 4375845200  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845200 -> 4375845264  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845264 -> 4375845328  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845328 -> 4375845392  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845392 -> 4375845456  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375845456 -> 4375845520  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = node.prev_node'}, type=STATEMENT, indent=8)"] ;
-4375845520 -> 4375845584  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = node.prev_node'}, type=STATEMENT, indent=8) ===> ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
+4348926032 -> 4348926096 [label = True] [source = "@parent_to_child : ACNode(info={'name': '_get_parent_node', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] [color=green];
+4348926096 -> 4348926160  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926160 -> 4348926224  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926224 -> 4348926288  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926288 -> 4348926352  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926352 -> 4348926416  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926416 -> 4348926480  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926480 -> 4348926544  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348926544 -> 4348926608  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = node.prev_node'}, type=STATEMENT, indent=8)"] ;
+4348926608 -> 4348926672  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = node.prev_node'}, type=STATEMENT, indent=8) ===> ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
 
-4375845584 -> 4375845712  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8)"] [color=red];
-{rank = same; 4375845584; 4375845648;}
+4348926672 -> 4348926800  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8)"] [color=red];
+{rank = same; 4348926672; 4348926736;}
 
-4375845648 -> 4375850192  [source = "@return_to_end : ACNode(info={'name': 'None'}, type=RETURN, indent=12) ===> {}"] ;
+4348926736 -> 4348931280  [source = "@return_to_end : ACNode(info={'name': 'None'}, type=RETURN, indent=12) ===> {}"] ;
 
-4375845584 -> 4375845648 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'name': 'None'}, type=RETURN, indent=12)"] ;
-4375845648 -> 4375845712  [source = "@prev_to_loop : ACNode(info={'name': 'None'}, type=RETURN, indent=12) ===> ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8)"] ;
+4348926672 -> 4348926736 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'name': 'None'}, type=RETURN, indent=12)"] ;
+4348926736 -> 4348926800  [source = "@prev_to_loop : ACNode(info={'name': 'None'}, type=RETURN, indent=12) ===> ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8)"] ;
 
-4375845712 -> 4375845968 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8) ===> ACNode(info={'name': 'parent_node'}, type=RETURN, indent=8)"] [color=red];
-4375845712 -> 4375845776 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = parent_node.prev_node'}, type=STATEMENT, indent=12)"] [color=green];
-4375845776 -> 4375845840  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = parent_node.prev_node'}, type=STATEMENT, indent=12) ===> ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
+4348926800 -> 4348927056 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8) ===> ACNode(info={'name': 'parent_node'}, type=RETURN, indent=8)"] [color=red];
+4348926800 -> 4348926864 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = parent_node.prev_node'}, type=STATEMENT, indent=12)"] [color=green];
+4348926864 -> 4348926928  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = parent_node.prev_node'}, type=STATEMENT, indent=12) ===> ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
 
-4375845904 -> 4375845712  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8)"] ;
-4375845840 -> 4375845904 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={}, type=UNKNOWN, indent=16)"] [color=green];
-{rank = same; 4375845904; 4375845968;}
+4348926992 -> 4348926800  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'item': 'node.indent', 'list': 'parent_node.indent'}, type=LOOP, indent=8)"] ;
+4348926928 -> 4348926992 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['not parent_node'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={}, type=UNKNOWN, indent=16)"] [color=green];
+{rank = same; 4348926992; 4348927056;}
 
-4375845968 -> 4375850192  [source = "@return_to_end : ACNode(info={'name': 'parent_node'}, type=RETURN, indent=8) ===> {}"] ;
+4348927056 -> 4348931280  [source = "@return_to_end : ACNode(info={'name': 'parent_node'}, type=RETURN, indent=8) ===> {}"] ;
 }subgraph cluster_render {
 label = "render";
-4375846096 -> 4375846160 [label = True] [source = "@parent_to_child : ACNode(info={'name': 'render', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] [color=green];
-4375846160 -> 4375846224  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375846224 -> 4375846288  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375846288 -> 4375846352  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375846352 -> 4375846416  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
-4375846416 -> 4375846480  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result = '''}, type=STATEMENT, indent=8)"] ;
-4375846480 -> 4375846544  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result = '''}, type=STATEMENT, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node_connections = []'}, type=STATEMENT, indent=8)"] ;
-4375846544 -> 4375846608  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node_connections = []'}, type=STATEMENT, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=8)"] ;
-4375846608 -> 4375846672  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=8) ===> ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8)"] ;
+4348927184 -> 4348927248 [label = True] [source = "@parent_to_child : ACNode(info={'name': 'render', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] [color=green];
+4348927248 -> 4348927312  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348927312 -> 4348927376  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348927376 -> 4348927440  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348927440 -> 4348927504  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={}, type=UNKNOWN, indent=8)"] ;
+4348927504 -> 4348927568  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result = '''}, type=STATEMENT, indent=8)"] ;
+4348927568 -> 4348927632  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result = '''}, type=STATEMENT, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node_connections = []'}, type=STATEMENT, indent=8)"] ;
+4348927632 -> 4348927696  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node_connections = []'}, type=STATEMENT, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=8)"] ;
+4348927696 -> 4348927760  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=8) ===> ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8)"] ;
 
-4375846672 -> 4375849552 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8) ===> ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] [color=red];
-4375846672 -> 4375846736 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = '''}, type=STATEMENT, indent=12)"] [color=green];
-4375846736 -> 4375846800  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = '''}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = None'}, type=STATEMENT, indent=12)"] ;
-4375846800 -> 4375846864  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = None'}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = None'}, type=STATEMENT, indent=12)"] ;
-4375846864 -> 4375846928  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = None'}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'out_def_method = node.indent <= def_indent'}, type=STATEMENT, indent=12)"] ;
-4375846928 -> 4375846992  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'out_def_method = node.indent <= def_indent'}, type=STATEMENT, indent=12) ===> ACNode(info={'conditions': ['out_def_method'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
+4348927760 -> 4348930640 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8) ===> ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] [color=red];
+4348927760 -> 4348927824 [label = True] [source = "@parent_to_child : ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = '''}, type=STATEMENT, indent=12)"] [color=green];
+4348927824 -> 4348927888  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = '''}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = None'}, type=STATEMENT, indent=12)"] ;
+4348927888 -> 4348927952  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = None'}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = None'}, type=STATEMENT, indent=12)"] ;
+4348927952 -> 4348928016  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = None'}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'out_def_method = node.indent <= def_indent'}, type=STATEMENT, indent=12)"] ;
+4348928016 -> 4348928080  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'out_def_method = node.indent <= def_indent'}, type=STATEMENT, indent=12) ===> ACNode(info={'conditions': ['out_def_method'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
 
-4375846992 -> 4375847184 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['out_def_method'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348928080 -> 4348928272 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['out_def_method'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375847184 -> 4375847440 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348928272 -> 4348928528 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375847440 -> 4375847632 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348928528 -> 4348928720 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375847632 -> 4375847888 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348928720 -> 4348928976 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375847888 -> 4375848080 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348928976 -> 4348929168 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375848080 -> 4375848464 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348929168 -> 4348929552 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375848464 -> 4375848656 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['node.parent and cls.nodes[i - 1] == node.parent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
+4348929552 -> 4348929744 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'conditions': ['node.parent and cls.nodes[i - 1] == node.parent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12)"] [color=red];
 
-4375847120 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '}''}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375846992 -> 4375847056 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['out_def_method'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=16)"] [color=green];
-4375847056 -> 4375847120  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '}''}, type=STATEMENT, indent=16)"] ;
-4375847376 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': '_, text = handler.handle()'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375847184 -> 4375847248 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = node.indent'}, type=STATEMENT, indent=16)"] [color=green];
-4375847248 -> 4375847312  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = node.indent'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = DefConnector(node)'}, type=STATEMENT, indent=16)"] ;
-4375847312 -> 4375847376  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = DefConnector(node)'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': '_, text = handler.handle()'}, type=STATEMENT, indent=16)"] ;
-4375847568 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375847440 -> 4375847504 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = LoopConnection(node)'}, type=STATEMENT, indent=16)"] [color=green];
-4375847504 -> 4375847568  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = LoopConnection(node)'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16)"] ;
-4375847824 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375847632 -> 4375847696 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16)"] [color=green];
-4375847696 -> 4375847760 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'NodeConnection(node.prev_node, node, source='@prev_to_end')'}, type=STATEMENT, indent=20)"] [color=green];
-4375848016 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375847888 -> 4375847952 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = ConditionConnector(node)'}, type=STATEMENT, indent=16)"] [color=green];
-4375847952 -> 4375848016  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = ConditionConnector(node)'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16)"] ;
-4375848400 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375848080 -> 4375848144 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16)"] [color=green];
-4375848144 -> 4375848208 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20)"] [color=green];
-4375848208 -> 4375848272 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node.prev_node, node, source='@prev_to_current_same_indent''}, type=STATEMENT, indent=24)"] [color=green];
-4375848592 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = response.get('connections', [])'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375848464 -> 4375848528 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])'}, type=STATEMENT, indent=16)"] [color=green];
-4375848528 -> 4375848592  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = response.get('connections', [])'}, type=STATEMENT, indent=16)"] ;
-4375849232 -> 4375849296  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
-4375848656 -> 4375848720 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['node.parent and cls.nodes[i - 1] == node.parent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16)"] [color=green];
-4375848720 -> 4375848784 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20)"] [color=green];
-4375848784 -> 4375848848 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20) ===> ACNode(info={}, type=UNKNOWN, indent=24)"] [color=green];
-4375848848 -> 4375848912  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=24) ===> ACNode(info={}, type=UNKNOWN, indent=24)"] ;
-4375848912 -> 4375848976  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=24) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'label='True','}, type=STATEMENT, indent=24)"] ;
-4375848976 -> 4375849040  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'label='True','}, type=STATEMENT, indent=24) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'source='@parent_to_child','}, type=STATEMENT, indent=24)"] ;
-4375849040 -> 4375849104  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'source='@parent_to_child','}, type=STATEMENT, indent=24) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'color='green','}, type=STATEMENT, indent=24)"] ;
-4375849296 -> 4375849360  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += cls.extract_text_from_connections(connections, response)'}, type=STATEMENT, indent=12)"] ;
-4375849360 -> 4375849424  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += cls.extract_text_from_connections(connections, response)'}, type=STATEMENT, indent=12) ===> ACNode(info={'conditions': ['connections'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
+4348928208 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '}''}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348928080 -> 4348928144 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['out_def_method'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=16)"] [color=green];
+4348928144 -> 4348928208  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '}''}, type=STATEMENT, indent=16)"] ;
+4348928464 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': '_, text = handler.handle()'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348928272 -> 4348928336 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = node.indent'}, type=STATEMENT, indent=16)"] [color=green];
+4348928336 -> 4348928400  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = node.indent'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = DefConnector(node)'}, type=STATEMENT, indent=16)"] ;
+4348928400 -> 4348928464  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = DefConnector(node)'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': '_, text = handler.handle()'}, type=STATEMENT, indent=16)"] ;
+4348928656 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348928528 -> 4348928592 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = LoopConnection(node)'}, type=STATEMENT, indent=16)"] [color=green];
+4348928592 -> 4348928656  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = LoopConnection(node)'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16)"] ;
+4348928912 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348928720 -> 4348928784 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16)"] [color=green];
+4348928784 -> 4348928848 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'NodeConnection(node.prev_node, node, source='@prev_to_end')'}, type=STATEMENT, indent=20)"] [color=green];
+4348929104 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348928976 -> 4348929040 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = ConditionConnector(node)'}, type=STATEMENT, indent=16)"] [color=green];
+4348929040 -> 4348929104  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = ConditionConnector(node)'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, type=STATEMENT, indent=16)"] ;
+4348929488 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348929168 -> 4348929232 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16)"] [color=green];
+4348929232 -> 4348929296 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20)"] [color=green];
+4348929296 -> 4348929360 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node.prev_node, node, source='@prev_to_current_same_indent''}, type=STATEMENT, indent=24)"] [color=green];
+4348929680 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = response.get('connections', [])'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348929552 -> 4348929616 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])'}, type=STATEMENT, indent=16)"] [color=green];
+4348929616 -> 4348929680  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])'}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = response.get('connections', [])'}, type=STATEMENT, indent=16)"] ;
+4348930320 -> 4348930384  [source = "@last_child_to_next_sibling : ACNode(info={}, type=UNKNOWN, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12)"] ;
+4348929744 -> 4348929808 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['node.parent and cls.nodes[i - 1] == node.parent'], 'type': 'ELIF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16)"] [color=green];
+4348929808 -> 4348929872 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, type=STATEMENT, indent=16) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20)"] [color=green];
+4348929872 -> 4348929936 [label = True] [source = "@parent_to_child : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, type=STATEMENT, indent=20) ===> ACNode(info={}, type=UNKNOWN, indent=24)"] [color=green];
+4348929936 -> 4348930000  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=24) ===> ACNode(info={}, type=UNKNOWN, indent=24)"] ;
+4348930000 -> 4348930064  [source = "@prev_to_current_same_indent : ACNode(info={}, type=UNKNOWN, indent=24) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'label='True','}, type=STATEMENT, indent=24)"] ;
+4348930064 -> 4348930128  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'label='True','}, type=STATEMENT, indent=24) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'source='@parent_to_child','}, type=STATEMENT, indent=24)"] ;
+4348930128 -> 4348930192  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'source='@parent_to_child','}, type=STATEMENT, indent=24) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'color='green','}, type=STATEMENT, indent=24)"] ;
+4348930384 -> 4348930448  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or '''}, type=STATEMENT, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += cls.extract_text_from_connections(connections, response)'}, type=STATEMENT, indent=12)"] ;
+4348930448 -> 4348930512  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += cls.extract_text_from_connections(connections, response)'}, type=STATEMENT, indent=12) ===> ACNode(info={'conditions': ['connections'], 'type': 'IF'}, type=CONDITIONS, indent=12)"] ;
 
-4375849488 -> 4375846672  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8)"] ;
-4375849424 -> 4375849488 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['connections'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, type=STATEMENT, indent=16)"] [color=green];
-4375849488 -> 4375849552  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, type=STATEMENT, indent=16) ===> ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
+4348930576 -> 4348927760  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, type=STATEMENT, indent=16) ===> ACNode(info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, type=LOOP, indent=8)"] ;
+4348930512 -> 4348930576 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['connections'], 'type': 'IF'}, type=CONDITIONS, indent=12) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, type=STATEMENT, indent=16)"] [color=green];
+4348930576 -> 4348930640  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, type=STATEMENT, indent=16) ===> ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
 
-4375849552 -> 4375849680  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'name': 'dict(text=result, node_connections=node_connections)'}, type=RETURN, indent=8)"] [color=red];
+4348930640 -> 4348930768  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'name': 'dict(text=result, node_connections=node_connections)'}, type=RETURN, indent=8)"] [color=red];
 
-4375849616 -> 4375849680  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += '}''}, type=STATEMENT, indent=12) ===> ACNode(info={'name': 'dict(text=result, node_connections=node_connections)'}, type=RETURN, indent=8)"] ;
-4375849552 -> 4375849616 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += '}''}, type=STATEMENT, indent=12)"] [color=green];
-{rank = same; 4375849616; 4375849680;}
+4348930704 -> 4348930768  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += '}''}, type=STATEMENT, indent=12) ===> ACNode(info={'name': 'dict(text=result, node_connections=node_connections)'}, type=RETURN, indent=8)"] ;
+4348930640 -> 4348930704 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['def_indent != -1'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += '}''}, type=STATEMENT, indent=12)"] [color=green];
+{rank = same; 4348930704; 4348930768;}
 
-4375849680 -> 4375850192  [source = "@return_to_end : ACNode(info={'name': 'dict(text=result, node_connections=node_connections)'}, type=RETURN, indent=8) ===> {}"] ;
+4348930768 -> 4348931280  [source = "@return_to_end : ACNode(info={'name': 'dict(text=result, node_connections=node_connections)'}, type=RETURN, indent=8) ===> {}"] ;
 }subgraph cluster_extract_text_from_connections {
 label = "extract_text_from_connections";
-4375849808 -> 4375849872 [label = True] [source = "@parent_to_child : ACNode(info={'name': 'extract_text_from_connections', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = response['text'] + '\\n' if response else '''}, type=STATEMENT, indent=8)"] [color=green];
-4375849872 -> 4375849936  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = response['text'] + '\\n' if response else '''}, type=STATEMENT, indent=8) ===> ACNode(info={'conditions': ['not connections'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
+4348930896 -> 4348930960 [label = True] [source = "@parent_to_child : ACNode(info={'name': 'extract_text_from_connections', 'args': ['cls']}, type=DEF, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = response['text'] + '\\n' if response else '''}, type=STATEMENT, indent=8)"] [color=green];
+4348930960 -> 4348931024  [source = "@if_to_prev_node : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = response['text'] + '\\n' if response else '''}, type=STATEMENT, indent=8) ===> ACNode(info={'conditions': ['not connections'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
 
-4375849936 -> 4375850064  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['not connections'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])'}, type=STATEMENT, indent=8)"] [color=red];
-{rank = same; 4375849936; 4375850000;}
+4348931024 -> 4348931152  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['not connections'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])'}, type=STATEMENT, indent=8)"] [color=red];
+{rank = same; 4348931024; 4348931088;}
 
-4375850000 -> 4375850192  [source = "@return_to_end : ACNode(info={'name': ''''}, type=RETURN, indent=12) ===> {}"] ;
+4348931088 -> 4348931280  [source = "@return_to_end : ACNode(info={'name': ''''}, type=RETURN, indent=12) ===> {}"] ;
 
-4375849936 -> 4375850000 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['not connections'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'name': ''''}, type=RETURN, indent=12)"] ;
-4375850064 -> 4375850128  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])'}, type=STATEMENT, indent=8) ===> ACNode(info={'name': 'text'}, type=RETURN, indent=8)"] ;
+4348931024 -> 4348931088 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['not connections'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'name': ''''}, type=RETURN, indent=12)"] ;
+4348931152 -> 4348931216  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])'}, type=STATEMENT, indent=8) ===> ACNode(info={'name': 'text'}, type=RETURN, indent=8)"] ;
 }
 }

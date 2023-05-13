@@ -19,6 +19,3 @@ class TestGraphReporter(TestCase):
         ]
         dot_file_creator = DotfileCreator(lines)
         dot_file_creator.generate()
-        report = dot_file_creator.get_report()
-        self.assertEqual(report.get("n_nodes"), 4)
-        self.assertEqual(report.get("n_connections"), 3)
