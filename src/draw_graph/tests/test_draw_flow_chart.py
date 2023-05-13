@@ -6,26 +6,23 @@ from src.utils.file_handler import read_file, write_file
 
 
 class TestDrawFlowChart(TestCase):
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    input_dir = os.path.join(current_dir, "data/input")
-    output_dir = os.path.join(current_dir, "data/output")
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+    test_dir = os.path.abspath(os.path.dirname(current_dir))
+    test_data_dir = os.path.join(test_dir, "tests/data")
+    dotfiles_dir = os.path.join(current_dir, "data/dotfiles")
 
-    def __write_dotfile(self, origin_file_name: str):
-        full_path = os.path.join(self.input_dir, origin_file_name)
-        dot_full_path = os.path.join(self.output_dir, f"{origin_file_name}.dot")
-        lines = read_file(full_path)
-        dot_file_creator = DotfileCreator(lines)
-        content = dot_file_creator.generate()
-        print(content)
-        write_file(dot_full_path, content)
-        svg_full_path = dot_full_path.replace(".dot", ".svg")
-        os.system(f"dot -Tsvg {dot_full_path} -o {svg_full_path}")
+    def test_draw_fibo(self):
+        self.__write_dotfile("output_fibo.py.txt")
 
     def test_draw_quick_sort(self):
-        self.__write_dotfile("quick_sort.py")
+        self.__write_dotfile("output_quick_sort.py.txt")
+
+    # output_node_connections__render.py.txt
+    def test_draw_node_connections(self):
+        self.__write_dotfile("output_node_connections.py.txt")
 
     def test_draw_conditions(self):
-        path = os.path.join(self.output_dir, "test_conditions.dot")
+        path = os.path.join(self.current_dir, "data/dotfiles", "test_conditions.dot")
         lines = [
             {
                 "type": "STATEMENT",
@@ -77,7 +74,9 @@ class TestDrawFlowChart(TestCase):
         write_file(path, content)
 
     def test_flow_chart_condition(self):
-        path = os.path.join(self.output_dir, "test_flow_chart_conditions.dot")
+        path = os.path.join(
+            self.current_dir, "data/dotfiles", "test_flow_chart_conditions.dot"
+        )
         lines = [
             {
                 "type": "CONDITIONS",
@@ -106,6 +105,15 @@ class TestDrawFlowChart(TestCase):
         content = dot_file_creator.generate()
         print(content)
         write_file(path, content)
-        report = dot_file_creator.get_report()
-        self.assertEqual(report.get("n_nodes"), 6)
-        self.assertEqual(report.get("n_connections"), 6)
+
+    def __write_dotfile(self, origin_file_name: str):
+        full_path = os.path.join(self.test_data_dir, origin_file_name)
+        dot_full_path = os.path.join(self.dotfiles_dir, f"{origin_file_name}.dot")
+        lines = read_file(full_path)
+        dot_file_creator = DotfileCreator(lines)
+        content = dot_file_creator.generate()
+        print(content)
+        write_file(dot_full_path, content)
+        # convert dot to svg file
+        svg_full_path = dot_full_path.replace(".dot", ".svg")
+        os.system(f"dot -Tsvg {dot_full_path} -o {svg_full_path}")

@@ -29,12 +29,12 @@ from src.logger.app_log import AppLog
 from src.utils.file_handler import read_file
 
 converters = [
-    CommentRulesConverter,
-    ConditionRulesConverter,
-    DefinitionRulesConverter,
     ImportRulesConverter,
+    DefinitionRulesConverter,
+    ConditionRulesConverter,
     LoopRulesConverter,
     ReturnRulesConverter,
+    CommentRulesConverter,
     StatementAssignRulesConverter,
     StatementMethodRulesConverter,
 ]

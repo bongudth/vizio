@@ -26,6 +26,7 @@ class NodeConnection:
     def to_dot(self) -> str:
         if not self.is_valid or self._start.is_hidden or self._end.is_hidden:
             return ""
+        # add color to connection
         return f"{id(self._start)} -> {id(self._end)} {self.build_label(self._label)} {self.build_source(self._source)} {self.build_color()};\n"
 
     def build_color(self) -> str:

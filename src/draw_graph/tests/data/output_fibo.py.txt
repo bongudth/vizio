@@ -1,0 +1,20 @@
+{'type': 'COMMENT', 'info': {'value': 'Function for nth Fibonacci number'}, 'indent': 0}
+{'type': 'DEF', 'info': {'name': 'Fibonacci', 'args': ['n']}, 'indent': 0}
+{'type': 'COMMENT', 'info': {'value': 'Check if input is 0 then it will'}, 'indent': 4}
+{'type': 'COMMENT', 'info': {'value': 'print incorrect input'}, 'indent': 4}
+{'type': 'CONDITIONS', 'info': {'conditions': ['n < 0'], 'type': 'IF'}, 'indent': 4}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'print("Incorrect input")'}, 'indent': 8}
+{'type': 'COMMENT', 'info': {'value': 'Check if n is 0'}, 'indent': 4}
+{'type': 'COMMENT', 'info': {'value': 'then it will return 0'}, 'indent': 4}
+{'type': 'CONDITIONS', 'info': {'conditions': ['n == 0'], 'type': 'ELIF'}, 'indent': 4}
+{'type': 'RETURN', 'info': {'name': '0'}, 'indent': 8}
+{'type': 'COMMENT', 'info': {'value': 'Check if n is 1,2'}, 'indent': 4}
+{'type': 'COMMENT', 'info': {'value': 'it will return 1'}, 'indent': 4}
+{'type': 'CONDITIONS', 'info': {'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, 'indent': 4}
+{'type': 'RETURN', 'info': {'name': '1'}, 'indent': 8}
+{'type': 'CONDITIONS', 'info': {'type': 'ELSE'}, 'indent': 4}
+{'type': 'RETURN', 'info': {'name': 'Fibonacci(n - 1) + Fibonacci(n - 2)'}, 'indent': 8}
+{'type': 'COMMENT', 'info': {'value': 'Driver Program'}, 'indent': 0}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'print(Fibonacci(9))'}, 'indent': 0}
+{'type': 'COMMENT', 'info': {'value': 'This code is contributed by Saket Modi'}, 'indent': 0}
+{'type': 'COMMENT', 'info': {'value': 'then corrected and improved by Himanshu Kanojiya'}, 'indent': 0}

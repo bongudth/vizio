@@ -1,0 +1,42 @@
+digraph my_graph {
+bgcolor="white"
+4380015440 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+4380013456 [label=""]
+4380015760 [shape=diamond] [label="n < 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380015888 [shape=parallelogram] [label="print('Incorrect input')"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380016080 [shape=diamond] [label="n == 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380015824 [shape=ellipse] [label="0"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4380016272 [shape=diamond] [label="n == 1 or n == 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380016336 [shape=ellipse] [label="1"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+
+4380016464 [shape=ellipse] [label="Fibonacci(n - 1) + Fibonacci(n - 2)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4380016592 [shape=parallelogram] [label="print(Fibonacci(9))"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380049616 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+subgraph cluster_Fibonacci {
+label = "Fibonacci";
+4380013456 -> 4380015760  [source = "@if_to_prev_node : ACNode(info={'name': 'Fibonacci', 'args': ['n']}, type=DEF, indent=0) ===> ACNode(info={'conditions': ['n < 0'], 'type': 'IF'}, type=CONDITIONS, indent=4)"] ;
+
+4380015760 -> 4380016080 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['n < 0'], 'type': 'IF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'conditions': ['n == 0'], 'type': 'ELIF'}, type=CONDITIONS, indent=4)"] [color=red];
+
+4380016080 -> 4380016272 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['n == 0'], 'type': 'ELIF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, type=CONDITIONS, indent=4)"] [color=red];
+
+4380015888 -> 4380013456  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'print('Incorrect input')'}, type=STATEMENT, indent=8) ===> ACNode(info={'name': 'Fibonacci', 'args': ['n']}, type=DEF, indent=0)"] ;
+4380015760 -> 4380015888 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['n < 0'], 'type': 'IF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'print('Incorrect input')'}, type=STATEMENT, indent=8)"] [color=green];
+{rank = same; 4380016080; 4380015824;}
+
+4380015824 -> 4380049616  [source = "@return_to_end : ACNode(info={'name': '0'}, type=RETURN, indent=8) ===> {}"] ;
+
+4380016080 -> 4380015824 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['n == 0'], 'type': 'ELIF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'name': '0'}, type=RETURN, indent=8)"] ;
+{rank = same; 4380016272; 4380016336;}
+
+4380016336 -> 4380049616  [source = "@return_to_end : ACNode(info={'name': '1'}, type=RETURN, indent=8) ===> {}"] ;
+
+4380016272 -> 4380016336 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'name': '1'}, type=RETURN, indent=8)"] ;
+4380016272 -> 4380016464 [label = else] [source = " : ACNode(info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'name': 'Fibonacci(n - 1) + Fibonacci(n - 2)'}, type=RETURN, indent=8)"] ;
+{rank = same; 4380016464;}
+
+4380016464 -> 4380049616  [source = "@return_to_end : ACNode(info={'name': 'Fibonacci(n - 1) + Fibonacci(n - 2)'}, type=RETURN, indent=8) ===> {}"] ;
+
+}4380016592 -> 4380049616  [source = "@prev_to_end : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'print(Fibonacci(9))'}, type=STATEMENT, indent=0) ===> {}"] ;
+
+}

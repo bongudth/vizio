@@ -7,12 +7,12 @@ from src.utils.file_handler import write_file
 
 class TestConvertFile(TestCase):
     current_dir = os.path.abspath(os.path.dirname(__file__))
-    filename = "quick_sort" + ".py"
+    filename = "fibo" + ".py"
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.file_path = os.path.abspath(
-            os.path.join(cls.current_dir, "data/input", cls.filename)
+            os.path.join(cls.current_dir, "data", cls.filename)
         )
 
     def setUp(self) -> None:
@@ -24,6 +24,6 @@ class TestConvertFile(TestCase):
     def test_write_file(self):
         results = self.code_reader.parse_file(self.file_path)
         output = os.path.abspath(
-            os.path.join(self.current_dir, "data/output", f"{self.filename}.txt")
+            os.path.join(self.current_dir, "data", f"output_{self.filename}.txt")
         )
         write_file(output, "\n".join([str(result) for result in results]))

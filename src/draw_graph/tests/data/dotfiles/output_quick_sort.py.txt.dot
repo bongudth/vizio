@@ -1,0 +1,46 @@
+digraph my_graph {
+bgcolor="white"
+4380203024 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+4380198544 [label=""]
+4380203472 [shape=diamond] [label="len(array) < 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380203408 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4380203344 [shape=rect] [label="low, same, high = [], [], []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380203856 [shape=rect] [label="pivot = array[randint(0, len(array) - 1)]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380203664 [shape=rect] [label="Loop item in array"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4380204240 [shape=diamond] [label="item < pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380203728 [shape=parallelogram] [label="low.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380203920 [shape=diamond] [label="item == pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380204368 [shape=parallelogram] [label="same.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380204560 [shape=diamond] [label="item > pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4380204304 [shape=parallelogram] [label="high.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4380204752 [shape=ellipse] [label="quicksort(low) + same + quicksort(high)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4380204816 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+4380203024 -> 4380203280  [source = "@prev_to_current_same_indent : {} ===> ACNode(info={'value': 'from random import randint'}, type=IGNORE, indent=0)"] ;
+subgraph cluster_quicksort {
+label = "quicksort";
+4380198544 -> 4380203472  [source = "@if_to_prev_node : ACNode(info={'name': 'quicksort', 'args': ['array']}, type=DEF, indent=0) ===> ACNode(info={'conditions': ['len(array) < 2'], 'type': 'IF'}, type=CONDITIONS, indent=4)"] ;
+
+4380203472 -> 4380203344  [source = "@if_to_next_sibling : ACNode(info={'conditions': ['len(array) < 2'], 'type': 'IF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'low, same, high = [], [], []'}, type=STATEMENT, indent=4)"] [color=red];
+{rank = same; 4380203472; 4380203408;}
+
+4380203408 -> 4380204816  [source = "@return_to_end : ACNode(info={'name': 'array'}, type=RETURN, indent=8) ===> {}"] ;
+
+4380203472 -> 4380203408 [label = True] [source = "@return_2 : ACNode(info={'conditions': ['len(array) < 2'], 'type': 'IF'}, type=CONDITIONS, indent=4) ===> ACNode(info={'name': 'array'}, type=RETURN, indent=8)"] ;
+4380203344 -> 4380203856  [source = "@prev_to_current_same_indent : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'low, same, high = [], [], []'}, type=STATEMENT, indent=4) ===> ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, type=STATEMENT, indent=4)"] ;
+4380203856 -> 4380203664  [source = "@prev_to_loop : ACNode(info={'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, type=STATEMENT, indent=4) ===> ACNode(info={'item': 'item', 'list': 'array'}, type=LOOP, indent=4)"] ;
+
+4380203664 -> 4380204752 [label = out] [source = "@loop_to_next : ACNode(info={'item': 'item', 'list': 'array'}, type=LOOP, indent=4) ===> ACNode(info={'name': 'quicksort(low) + same + quicksort(high)'}, type=RETURN, indent=4)"] [color=red];
+4380203664 -> 4380204240  [source = "@if_to_prev_node : ACNode(info={'item': 'item', 'list': 'array'}, type=LOOP, indent=4) ===> ACNode(info={'conditions': ['item < pivot'], 'type': 'IF'}, type=CONDITIONS, indent=8)"] ;
+
+4380204240 -> 4380203920 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['item < pivot'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'conditions': ['item == pivot'], 'type': 'ELIF'}, type=CONDITIONS, indent=8)"] [color=red];
+
+4380203920 -> 4380204560 [label = elif] [source = "@if_or_if_to_elif : ACNode(info={'conditions': ['item == pivot'], 'type': 'ELIF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'conditions': ['item > pivot'], 'type': 'ELIF'}, type=CONDITIONS, indent=8)"] [color=red];
+
+4380203728 -> 4380203664  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'low.append(item)'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'item', 'list': 'array'}, type=LOOP, indent=4)"] ;
+4380204240 -> 4380203728 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['item < pivot'], 'type': 'IF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'low.append(item)'}, type=STATEMENT, indent=12)"] [color=green];
+4380204368 -> 4380203664  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'same.append(item)'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'item', 'list': 'array'}, type=LOOP, indent=4)"] ;
+4380203920 -> 4380204368 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['item == pivot'], 'type': 'ELIF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'same.append(item)'}, type=STATEMENT, indent=12)"] [color=green];
+4380204304 -> 4380203664  [source = "@last_child_to_next_sibling : ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'high.append(item)'}, type=STATEMENT, indent=12) ===> ACNode(info={'item': 'item', 'list': 'array'}, type=LOOP, indent=4)"] ;
+4380204560 -> 4380204304 [label = True] [source = "@parent_to_child : ACNode(info={'conditions': ['item > pivot'], 'type': 'ELIF'}, type=CONDITIONS, indent=8) ===> ACNode(info={'type': 'StatementType.STATEMENT_METHOD', 'value': 'high.append(item)'}, type=STATEMENT, indent=12)"] [color=green];
+}
+}

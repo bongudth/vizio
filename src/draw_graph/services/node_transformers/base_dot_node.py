@@ -24,19 +24,19 @@ class NodeTransformerBase:
 
     @property
     def params(self) -> Dict[str, Any]:
-        returned_value = {
-            "is_hidden": self.is_hidden,
-            "render": {
-                "id": id(self.node),
-                "shape": f"[shape={self.shape}]" if self.shape else None,
-                "color": f"[color={self.color}]" if self.color else None,
-                "label": f'[label="{self._format_label(self.label)}"]',
-                "type": f'[type="{self.node.type.name}"]' if self.label else None,
-                "fill_color": f'[style=filled fillcolor="{self.fill_color}" fontcolor={self.font_color}]'
+        returned_value = dict(
+            is_hidden=self.is_hidden,
+            render=dict(
+                id=id(self.node),
+                shape=f"[shape={self.shape}]" if self.shape else None,
+                color=f"[color={self.color}]" if self.color else None,
+                label=f'[label="{self._format_label(self.label)}"]',
+                type=f'[type="{self.node.type.name}"]' if self.label else None,
+                fill_color=f'[style=filled fillcolor="{self.fill_color}" fontcolor={self.font_color}]'
                 if self.fill_color
                 else None,
-            },
-        }
+            ),
+        )
         return {k: v for k, v in returned_value.items() if v is not None}
 
     @property

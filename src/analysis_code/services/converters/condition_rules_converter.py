@@ -22,7 +22,7 @@ class ConditionRulesConverter(BaseRulesConverter):
             return cls.handle_conditions_elif(sentence)
         if strip_sentence.startswith("else"):
             return cls.handle_conditions_else(sentence)
-        return {"is_returned": False, "info": {}}
+        return dict(is_returned=False, info={})
 
     @classmethod
     def handle_conditions_if(cls, sentence):

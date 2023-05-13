@@ -6,4 +6,4 @@ class GraphReporter:
     def get_report(self, node_structure):
         self.nodes = node_structure.get_dg_nodes()
         self.connections = node_structure.get_node_connections()
-        return {"n_nodes": len(self.nodes), "n_connections": len(self.connections)}
+        return dict(n_nodes=len(self.nodes), n_connections=len(self.connections))

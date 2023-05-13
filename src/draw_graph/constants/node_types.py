@@ -1,6 +1,7 @@
 from enum import Enum
 
 
+# reference to the rule type src.analysis_code.constants.rule_type
 class NodeType(Enum):
     UNKNOWN = 0
     IGNORE = 1

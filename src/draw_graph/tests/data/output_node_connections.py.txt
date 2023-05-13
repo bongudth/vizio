@@ -1,0 +1,123 @@
+{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from typing import Any, Dict, List, Union'}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.constants.node_types import NodeType'}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.models.dg_node import DGNode'}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.condition_connection import ('}, 'indent': 0}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 4}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, 'indent': 0}
+{'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, 'indent': 0}
+{'type': 'COMMENT', 'info': {'value': 'It takes a list of nodes, and returns a string of dot code'}, 'indent': 0}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 0}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'nodes: List[DGNode] = []'}, 'indent': 4}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections: List[NodeConnection] = []'}, 'indent': 4}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'tree = None'}, 'indent': 4}
+{'type': 'DEF', 'info': {'name': '__init__', 'args': ['self']}, 'indent': 4}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'self.__class__.nodes = filtered_nodes'}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 4}
+{'type': 'DEF', 'info': {'name': 'parse_relationship_tree', 'args': ['cls']}, 'indent': 4}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'LOOP', 'info': {'item': 'i', 'list': 'range(len(cls.nodes))'}, 'indent': 8}
+{'type': 'CONDITIONS', 'info': {'conditions': ['i > 0'], 'type': 'IF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['i + 1 < len(cls.nodes)'], 'type': 'IF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_node = cls.nodes[i + 1]'}, 'indent': 16}
+{'type': 'LOOP', 'info': {'item': 'node', 'list': 'cls.nodes'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = cls._get_parent_node(node)'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'node.set_parent(parent_node)'}, 'indent': 12}
+{'type': 'LOOP', 'info': {'item': 'i', 'list': 'range(len(cls.nodes))'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])'}, 'indent': 12}
+{'type': 'LOOP', 'info': {'item': 'i', 'list': 'range(len(cls.nodes))'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])'}, 'indent': 12}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 4}
+{'type': 'DEF', 'info': {'name': '_get_parent_node', 'args': ['cls']}, 'indent': 4}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = node.prev_node'}, 'indent': 8}
+{'type': 'CONDITIONS', 'info': {'conditions': ['not parent_node'], 'type': 'IF'}, 'indent': 8}
+{'type': 'RETURN', 'info': {'name': 'None'}, 'indent': 12}
+{'type': 'LOOP', 'info': {'item': 'node.indent', 'list': 'parent_node.indent'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'parent_node = parent_node.prev_node'}, 'indent': 12}
+{'type': 'CONDITIONS', 'info': {'conditions': ['not parent_node'], 'type': 'IF'}, 'indent': 12}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 16}
+{'type': 'RETURN', 'info': {'name': 'parent_node'}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 4}
+{'type': 'DEF', 'info': {'name': 'render', 'args': ['cls']}, 'indent': 4}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result = ""'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node_connections = []'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, 'indent': 8}
+{'type': 'LOOP', 'info': {'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = ""'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = None'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = None'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'out_def_method = node.indent <= def_indent'}, 'indent': 12}
+{'type': 'CONDITIONS', 'info': {'conditions': ['out_def_method'], 'type': 'IF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = -1'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += "}"'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'def_indent = node.indent'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = DefConnector(node)'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': '_, text = handler.handle()'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['NodeType.is_loop(node)'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = LoopConnection(node)'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['NodeType.is_end(node)'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'NodeConnection(node.prev_node, node, source="@prev_to_end")'}, 'indent': 20}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['NodeType.is_condition(node)'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'handler = ConditionConnector(node)'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections, _ = handler.handle()'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['node.prev_node and node.prev_node.indent == node.indent'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, 'indent': 20}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'node.prev_node, node, source="@prev_to_current_same_indent"'}, 'indent': 24}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 20}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['NodeType.is_return(node)'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = response.get("connections", [])'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['node.parent and cls.nodes[i - 1] == node.parent'], 'type': 'ELIF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'connections = ['}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'NodeConnection('}, 'indent': 20}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 24}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 24}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'label="True",'}, 'indent': 24}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'source="@parent_to_child",'}, 'indent': 24}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'color="green",'}, 'indent': 24}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 20}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += text or ""'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += cls.extract_text_from_connections(connections, response)'}, 'indent': 12}
+{'type': 'CONDITIONS', 'info': {'conditions': ['connections'], 'type': 'IF'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'node_connections.extend(connections)'}, 'indent': 16}
+{'type': 'CONDITIONS', 'info': {'conditions': ['def_indent != -1'], 'type': 'IF'}, 'indent': 8}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'result += "}"'}, 'indent': 12}
+{'type': 'RETURN', 'info': {'name': 'dict(text=result, node_connections=node_connections)'}, 'indent': 8}
+{'type': 'UNKNOWN', 'info': {}, 'indent': 4}
+{'type': 'DEF', 'info': {'name': 'extract_text_from_connections', 'args': ['cls']}, 'indent': 4}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text = response["text"] + "\\n" if response else ""'}, 'indent': 8}
+{'type': 'CONDITIONS', 'info': {'conditions': ['not connections'], 'type': 'IF'}, 'indent': 8}
+{'type': 'RETURN', 'info': {'name': '""'}, 'indent': 12}
+{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'text += "\\n".join([connection.to_dot() for connection in connections])'}, 'indent': 8}
+{'type': 'RETURN', 'info': {'name': 'text'}, 'indent': 8}

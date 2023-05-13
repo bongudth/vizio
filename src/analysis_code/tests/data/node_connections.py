@@ -48,6 +48,15 @@ class NodeConnections:
 
     @classmethod
     def _get_parent_node(cls, node: DGNode) -> Union[DGNode, None]:
+        """
+        > Get the parent node of a node by going back to the previous node and checking if the
+        indentation is less than the current node's indentation
+
+        :param cls: The class that the method is being called on
+        :param node: The node to get the parent of
+        :type node: Node
+        :return: The parent node of the node passed in.
+        """
         parent_node = node.prev_node
         if not parent_node:
             return None
@@ -59,6 +68,12 @@ class NodeConnections:
 
     @classmethod
     def render(cls) -> Dict[str, Any]:
+        """
+        It takes a list of nodes and returns a string of dot code
+
+        :param cls: The class that the method is being called on
+        :return: The result of the render method.
+        """
         result = ""
         node_connections = []
         def_indent = -1

@@ -2,14 +2,17 @@ import ast
 import os
 from unittest import TestCase
 
-from src.utils.file_handler import read_file, write_file
-
 
 class TestPythonAst(TestCase):
+    input = "fibo.py"
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+    test_analysis_code_dir = os.path.abspath(os.path.dirname(current_dir))
+    test_data_dir = os.path.join(test_analysis_code_dir, "tests/data")
+
     def test_ast(self):
-        current_dir = os.path.dirname(os.path.realpath(__file__))
-        file_path = os.path.join(current_dir, "data/input/quick_sort.py")
-        code = read_file(file_path)
-        des_path = os.path.join(current_dir, "data/output/quick_sort.ast.txt")
-        tree = ast.parse(code)
-        write_file(des_path, ast.dump(tree, indent=4))
+        full_path = os.path.join(self.test_data_dir, self.input)
+        print(full_path)
+        with open(full_path, "r") as f:
+            content = f.read()
+        tree = ast.parse(content)
+        print(ast.dump(tree, indent=4))

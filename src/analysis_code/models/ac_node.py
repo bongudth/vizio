@@ -45,7 +45,7 @@ class ACNode:
         return self
 
     def to_dict(self):
-        return {"type": self._type, "info": self._info, "indent": self._indent}
+        return dict(type=self._type, info=self._info, indent=self._indent)
 
     def __repr__(self):
         return f"ACNode(info={self.info}, type={self.type}, indent={self.indent})"
