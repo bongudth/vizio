@@ -1,12 +1,7 @@
-import json
 from ast import literal_eval
 from typing import Any, Dict, Optional
 
 from src.analysis_code.constants.types import ASTNodeType
-
-
-def parse_line(line):
-    return json.loads(line)
 
 
 class ACNode:

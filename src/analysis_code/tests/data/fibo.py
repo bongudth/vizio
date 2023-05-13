@@ -1,5 +1,5 @@
 # Function for nth Fibonacci number
-def Fibonacci(n):
+def fibonacci(n):
     # Check if input is 0 then it will
     # print incorrect input
     if n < 0:
@@ -16,11 +16,11 @@ def Fibonacci(n):
         return 1
 
     else:
-        return Fibonacci(n - 1) + Fibonacci(n - 2)
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
 
 # Driver Program
-print(Fibonacci(9))
+print(fibonacci(9))
 
 # This code is contributed by Saket Modi
 # then corrected and improved by Himanshu Kanojiya

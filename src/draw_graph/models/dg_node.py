@@ -1,15 +1,9 @@
-import json
 from ast import literal_eval
 from typing import Any, Dict, Optional, Union
 
 from src.analysis_code.constants.types import ConditionType
 from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
-
-
-def parse_line(line):
-    return json.loads(line)
-
 
 ignore_info_types = [str(ConditionType.ELSE)]
 

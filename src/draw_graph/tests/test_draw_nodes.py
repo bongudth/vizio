@@ -4,9 +4,6 @@ from src.draw_graph.services.dotfile_creator import DotfileCreator
 
 
 class TestDrawFlowChart(TestCase):
-    def setUp(self):
-        pass
-
     def test_draw_conditions(self):
         lines = [
             {

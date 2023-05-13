@@ -41,7 +41,7 @@ class NodeTransformerBase:
 
     @property
     def label(self) -> str:
-        pass
+        return ""
 
     @property
     def shape(self) -> str:

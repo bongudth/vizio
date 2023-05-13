@@ -9,7 +9,8 @@ class TestDrawFlowChart(TestCase):
     current_dir = os.path.abspath(os.path.dirname(__file__))
     test_dir = os.path.abspath(os.path.dirname(current_dir))
     test_data_dir = os.path.join(test_dir, "tests/data")
-    dotfiles_dir = os.path.join(current_dir, "data/dotfiles")
+    dotfiles_path = "data/dotfiles"
+    dotfiles_dir = os.path.join(current_dir, dotfiles_path)
 
     def test_draw_fibo(self):
         self.__write_dotfile("output_fibo.py.txt")
@@ -22,7 +23,7 @@ class TestDrawFlowChart(TestCase):
         self.__write_dotfile("output_node_connections.py.txt")
 
     def test_draw_conditions(self):
-        path = os.path.join(self.current_dir, "data/dotfiles", "test_conditions.dot")
+        path = os.path.join(self.current_dir, self.dotfiles_path, "test_conditions.dot")
         lines = [
             {
                 "type": "STATEMENT",
@@ -75,7 +76,7 @@ class TestDrawFlowChart(TestCase):
 
     def test_flow_chart_condition(self):
         path = os.path.join(
-            self.current_dir, "data/dotfiles", "test_flow_chart_conditions.dot"
+            self.current_dir, self.dotfiles_path, "test_flow_chart_conditions.dot"
         )
         lines = [
             {
