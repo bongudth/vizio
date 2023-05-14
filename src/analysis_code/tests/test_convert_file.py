@@ -24,6 +24,6 @@ class TestConvertFile(TestCase):
     def test_write_file(self):
         results = self.code_reader.parse_file(self.file_path)
         output = os.path.abspath(
-            os.path.join(self.current_dir, "data", f"output_{self.filename}.txt")
+            os.path.join(self.current_dir, "data/output", f"output_{self.filename}.txt")
         )
         write_file(output, "\n".join([str(result) for result in results]))

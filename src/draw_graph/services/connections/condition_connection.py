@@ -34,9 +34,9 @@ class ConditionConnector(BaseConnectionHandler):
         """
         connections = []
         info_type: str = node.info_type
-        if info_type == str(ConditionType.IF):
+        if info_type == ConditionType.IF.name:
             connections = cls._connect_if_nodes(node)
-        elif info_type == str(ConditionType.ELSE):
+        elif info_type == ConditionType.ELSE.name:
             connections = cls._connect_else_nodes(node)
         return connections
 
@@ -51,7 +51,7 @@ class ConditionConnector(BaseConnectionHandler):
     def _connect_if_elif_nodes(cls, node: "DGNode") -> List[NodeConnection]:
         connections = []
         p_node = node
-        while p_node.next_sibling.info_type == str(ConditionType.ELIF):
+        while p_node.next_sibling.info_type == ConditionType.ELIF.name:
             connections.append(
                 NodeConnection(
                     p_node,
@@ -92,8 +92,8 @@ class ConditionConnector(BaseConnectionHandler):
         p_node = node
         out_scope_node = cls._get_out_condition_scope_node(node)
         if p_node.info_type in [
-            str(ConditionType.IF),
-            str(ConditionType.ELIF),
+            ConditionType.IF.name,
+            ConditionType.ELIF.name,
         ] and not DGNode.is_empty(p_node.next_sibling):
             last_child = p_node.last_child
             if last_child.type != NodeType.RETURN:
@@ -111,8 +111,8 @@ class ConditionConnector(BaseConnectionHandler):
         return (
             cls.get_rank_same_nodes(node)
             if (
-                node.info.get("type") == str(ConditionType.IF)
-                and node.next_sibling.type == str(NodeType.CONDITIONS)
+                node.info.get("type") == ConditionType.IF.name
+                and node.next_sibling.type == NodeType.CONDITIONS.name
             )
             else ""
         )
@@ -132,12 +132,14 @@ class ConditionConnector(BaseConnectionHandler):
     def _get_else_node(cls, node: DGNode):
         else_node = None
         p_node = node.next_sibling
-        while p_node.type == NodeType.COMMENT or p_node.info_type == str(
-            ConditionType.ELIF
+        while (
+            p_node.type == NodeType.COMMENT
+            or p_node.info_type == ConditionType.ELIF.name
         ):
             p_node = p_node.next_sibling
-        if p_node.type == NodeType.CONDITIONS and p_node.info_type == str(
-            ConditionType.ELSE
+        if (
+            p_node.type == NodeType.CONDITIONS
+            and p_node.info_type == ConditionType.ELSE.name
         ):
             else_node: DGNode = p_node
         return else_node

@@ -1,46 +1,43 @@
 from ast import literal_eval
-from typing import Any, Dict, Optional
+from dataclasses import dataclass, field
+from typing import Any, Dict
 
 from src.analysis_code.constants.types import ASTNodeType
 
 
+@dataclass(repr=True)
 class ACNode:
-    def __init__(
-        self, info: Optional[Dict] = None, type: Optional[ASTNodeType] = None, indent=0
-    ):
-        self._info = info or {}
-        self._type = ASTNodeType(type) if type else None
-        self._indent = indent
-
-    @property
-    def type(self) -> ASTNodeType:
-        return self._type
-
-    @property
-    def info_type(self):
-        return self.info.get("type")
+    _info: Dict[str, Any] = field(default_factory=dict)
+    _type: ASTNodeType = ASTNodeType.UNKNOWN
+    _indent: int = 0
 
     @property
     def info(self) -> Dict[str, Any]:
         return self._info
 
     @property
+    def info_type(self) -> str:
+        return self.info.get("type")
+
+    @property
+    def type(self) -> ASTNodeType:
+        return self._type
+
+    @property
     def indent(self) -> int:
         return self._indent
 
-    def from_string(self, string: str):
-        data = literal_eval(string)
-        self.from_dict(data)
-        return self
+    @classmethod
+    def from_string(cls, string: str) -> "ACNode":
+        data: Dict[str, Any] = literal_eval(string)
+        return cls.from_dict(data)
 
-    def from_dict(self, data=None):
-        self._type = data.get("type")
-        self._info = data.get("info")
-        self._indent = data.get("indent", 0)
-        return self
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any] = field(default_factory=dict)) -> "ACNode":
+        _info = data.get("info", {})
+        _type = data.get("type", ASTNodeType.UNKNOWN)
+        _indent = data.get("indent", 0)
+        return cls(_info=_info, _type=_type, _indent=_indent)
 
-    def to_dict(self):
-        return dict(type=self._type, info=self._info, indent=self._indent)
-
-    def __repr__(self):
-        return f"ACNode(info={self.info}, type={self.type}, indent={self.indent})"
+    def to_dict(self) -> Dict[str, Any]:
+        return dict(info=self._info, type=self._type, indent=self._indent)

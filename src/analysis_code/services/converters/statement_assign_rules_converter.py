@@ -17,6 +17,6 @@ class StatementAssignRulesConverter(BaseRulesConverter):
     @classmethod
     def handle(cls, sentence: str) -> Dict[str, Any]:
         return {
-            "type": str(StatementType.STATEMENT_ASSIGN),
+            "type": StatementType.STATEMENT_ASSIGN.name,
             "value": sentence.strip(),
         }

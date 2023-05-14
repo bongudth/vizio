@@ -1,7 +1,7 @@
 from unittest.mock import ANY
 
 from src.analysis_code.constants.types import ASTNodeType, StatementType
-from src.test.analysis_code.convert.base_convert import TestConverterBase, test_base
+from src.analysis_code.tests.convert.base_convert import TestConverterBase, test_base
 
 
 class TestConvert(TestConverterBase):
@@ -55,7 +55,7 @@ class TestConvert(TestConverterBase):
         self.sentence = "a = b"
         self.expected = {
             "type": str(ASTNodeType.STATEMENT),
-            "info": dict(value="a = b", type=str(StatementType.STATEMENT_ASSIGN)),
+            "info": dict(value="a = b", type=StatementType.STATEMENT_ASSIGN.name),
         }
 
     @test_base
@@ -63,5 +63,5 @@ class TestConvert(TestConverterBase):
         self.sentence = "a.append(b)"
         self.expected = {
             "type": str(ASTNodeType.STATEMENT),
-            "info": dict(value="a.append(b)", type=str(StatementType.STATEMENT_METHOD)),
+            "info": dict(value="a.append(b)", type=StatementType.STATEMENT_METHOD.name),
         }

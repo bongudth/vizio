@@ -1,29 +1,35 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class ASTNodeType(Enum):
-    UNKNOWN = 0
-    IGNORE = 1
-    DEF = 2
-    CONDITIONS = 3
-    RETURN = 4
-    LOOP = 5
-    COMMENT = 6
-    STATEMENT = 7
+    """
+    Enumeration representing the different types of nodes in an abstract syntax tree.
+    """
 
-    def __str__(self):
-        return self.name
+    UNKNOWN = auto()  # Unknown node type
+    IGNORE = auto()  # Node to be ignored
+    STATEMENT = auto()  # Statement node
+    DEF = auto()  # Function definition node
+    CONDITIONS = auto()  # Conditional statement node
+    LOOP = auto()  # Loop statement node
+    RETURN = auto()  # Return statement node
+    COMMENT = auto()  # Comment node
 
 
 class ConditionType(Enum):
-    IF = 1
-    ELIF = 2
-    ELSE = 3
+    """
+    Enumeration representing the different types of conditions in an abstract syntax tree.
+    """
 
-    def __str__(self):
-        return self.name
+    IF = auto()
+    ELIF = auto()
+    ELSE = auto()
 
 
 class StatementType(Enum):
-    STATEMENT_ASSIGN = 1
-    STATEMENT_METHOD = 2
+    """
+    Enumeration representing the different types of statements in an abstract syntax tree.
+    """
+
+    STATEMENT_ASSIGN = auto()
+    STATEMENT_METHOD = auto()

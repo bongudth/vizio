@@ -60,7 +60,7 @@ class CoderReader:
     @classmethod
     def parse_line(cls, line: str):
         response = {
-            "type": str(ASTNodeType.UNKNOWN),
+            "type": ASTNodeType.UNKNOWN.name,
             "info": {},
             "indent": len(line) - len(line.lstrip(" ")),
         }
@@ -73,7 +73,7 @@ class CoderReader:
                 if result:
                     response.update(
                         {
-                            "type": str(converter.AST_NODE_TYPE),
+                            "type": converter.AST_NODE_TYPE.name,
                             "info": result,
                         }
                     )

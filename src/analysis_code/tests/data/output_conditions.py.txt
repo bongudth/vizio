@@ -1,3 +1,0 @@
-{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_ASSIGN', 'value': 'a = 1'}, 'indent': 0}
-{'type': 'CONDITIONS', 'info': {'conditions': ['a == 1'], 'type': 'IF'}, 'indent': 0}
-{'type': 'STATEMENT', 'info': {'type': 'StatementType.STATEMENT_METHOD', 'value': 'print("a is 1")'}, 'indent': 4}

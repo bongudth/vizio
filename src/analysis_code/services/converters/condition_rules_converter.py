@@ -29,7 +29,7 @@ class ConditionRulesConverter(BaseRulesConverter):
         if sentence[-1] == ":":
             striped_sentence = sentence.strip()
             conditions = [striped_sentence[:-1].replace("if", "").strip()]
-            return {"conditions": conditions, "type": str(ConditionType.IF)}
+            return {"conditions": conditions, "type": ConditionType.IF.name}
         return None
 
     @classmethod
@@ -37,11 +37,11 @@ class ConditionRulesConverter(BaseRulesConverter):
         if sentence[-1] == ":":
             striped_sentence = sentence.strip()
             conditions = [striped_sentence.replace("elif", "")[:-1].strip()]
-            return {"conditions": conditions, "type": str(ConditionType.ELIF)}
+            return {"conditions": conditions, "type": ConditionType.ELIF.name}
         return None
 
     @classmethod
     def handle_conditions_else(cls, sentence):
         if sentence[-1] == ":":
-            return {"type": str(ConditionType.ELSE)}
+            return {"type": ConditionType.ELSE.name}
         return None

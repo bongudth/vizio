@@ -14,7 +14,7 @@ class StatementNode(NodeTransformerBase):
 
     @property
     def shape(self):
-        if self.node.info.get("type") == str(StatementType.STATEMENT_METHOD):
+        if self.node.info.get("type") == StatementType.STATEMENT_METHOD.name:
             return ShapeType.PARALLELOGRAM.value
         return ShapeType.RECTANGLE.value
 
