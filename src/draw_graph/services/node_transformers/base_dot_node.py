@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, Union
 from src.analysis_code.models.ac_node import ACNode
 
 if TYPE_CHECKING:
-    from src.draw_graph.models.dg_node import DgNode
+    from src.draw_graph.models.dg_node import DGNode
 
 
 class NodeTransformerBase:
@@ -15,29 +15,34 @@ class NodeTransformerBase:
         self.node: Union[ACNode, None] = None
         self.content = ""
 
-    def transform(self, node: "DgNode") -> str:
+    def transform(self, node: "DGNode") -> str:
         self.node = node
-        if self.params.get("is_hidden"):
+        params = self.get_params()
+        if params.get("is_hidden"):
             return ""
-        rendered_params: dict = self.params.get("render")
-        return " ".join([str(s) for s in list(rendered_params.values()) if s])
+        rendered_params: dict = params.get("render")
+        return " ".join(str(s) for s in rendered_params.values() if s)
 
-    @property
-    def params(self) -> Dict[str, Any]:
-        returned_value = dict(
-            is_hidden=self.is_hidden,
-            render=dict(
-                id=id(self.node),
-                shape=f"[shape={self.shape}]" if self.shape else None,
-                color=f"[color={self.color}]" if self.color else None,
-                label=f'[label="{self._format_label(self.label)}"]',
-                type=f'[type="{self.node.type.name}"]' if self.label else None,
-                fill_color=f'[style=filled fillcolor="{self.fill_color}" fontcolor={self.font_color}]'
-                if self.fill_color
-                else None,
-            ),
-        )
-        return {k: v for k, v in returned_value.items() if v is not None}
+    def get_params(self) -> Dict[str, Any]:
+        params = {"is_hidden": self.is_hidden}
+        render_params = self._get_render_params()
+        params["render"] = render_params
+        return params
+
+    def _get_render_params(self) -> Dict[str, Any]:
+        render_params = {"id": id(self.node)}
+        if self.shape:
+            render_params["shape"] = f"[shape={self.shape}]"
+        if self.color:
+            render_params["color"] = f"[color={self.color}]"
+        if self.label:
+            render_params["label"] = f'[label="{self._format_label(self.label)}"]'
+            render_params["type"] = f'[type="{self.node.type.name}"]'
+        if self.fill_color:
+            render_params[
+                "fill_color"
+            ] = f'[style=filled fillcolor="{self.fill_color}" fontcolor={self.font_color}]'
+        return render_params
 
     @property
     def label(self) -> str:

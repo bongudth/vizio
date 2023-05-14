@@ -4,24 +4,17 @@ from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.services.graph_reporter import GraphReporter
-from src.draw_graph.services.node_connections import NodeConnections
+from src.draw_graph.services.node_connections import NodeConnectionsHandler
 
 
 class DGGraph:
     def __init__(self, lines):
         self._lines = lines
         self._graph_reporter = GraphReporter()
-        self._nodes = None
-        self._dg_nodes = None
-        self._node_connections = None
-        self.__create_tree()
-
-    def __create_tree(self):
         self._nodes = self.__parse_nodes()
         self._dg_nodes = self.__create_dg_nodes(self._nodes)
-        node_connections = NodeConnections(self._dg_nodes)
-        node_connections.parse_relationship_tree()
-        self._node_connections = node_connections
+        self._node_connections = NodeConnectionsHandler(self._dg_nodes)
+        self._node_connections.parse_relationship_tree()
 
     def __create_dg_nodes(self, nodes: List[ACNode]) -> List[DGNode]:
         full_nodes = [DGNode().to_diagram_type(NodeType.START)]
@@ -41,7 +34,7 @@ class DGGraph:
         return nodes
 
     def build_node_connections(self) -> Dict[str, Any]:
-        result = NodeConnections.render()
+        result = self.node_connections.render()
         self._node_connections = result.get("node_connections")
         return result
 
@@ -50,7 +43,7 @@ class DGGraph:
         return self._dg_nodes
 
     @property
-    def node_connections(self) -> NodeConnections:
+    def node_connections(self) -> NodeConnectionsHandler:
         return self._node_connections
 
     @property

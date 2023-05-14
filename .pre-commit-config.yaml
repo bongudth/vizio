@@ -23,7 +23,7 @@ repos:
         # supported by your project here, or alternatively use
         # pre-commit's default_language_version, see
         # https://pre-commit.com/#top_level-default_language_version
-        language_version: python3.9
+        language_version: python3
   - repo: https://github.com/pycqa/flake8
     rev: "6.0.0" # pick a git hash / tag to point to
     hooks:
@@ -39,15 +39,15 @@ repos:
         entry: wily diff
         verbose: true
         language: python
-        additional_dependencies: [wily]
+        additional_dependencies: [ wily ]
   - repo: local
     hooks:
       - id: pylint
         name: pylint
         entry: pylint
         language: system
-        types: [python]
+        types: [ python ]
         args: [
-            "-rn", # Only display messages
-            "-sn", # Don't display the score
-          ]
+          "-rn", # Only display messages
+          "-sn", # Don't display the score
+        ]
