@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional, Tuple
 
-from analysis_code.constants.types import StatementType
+from src.analysis_code.constants.types import StatementType
 from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
@@ -29,6 +29,10 @@ class DGGraph:
                 append_node, node_index = self.__merge_consecutive_statement_nodes(
                     nodes, node, node_index
                 )
+
+            if node.type in {NodeType.COMMENT.name, NodeType.UNKNOWN.name}:
+                node_index += 1
+                continue
 
             full_nodes.append(append_node)
             node_index += 1

@@ -27,6 +27,7 @@ _TRANSFORMER_MAP = {
 _IGNORE_TRANSFORMS = {
     NodeType.COMMENT,
     NodeType.IGNORE,
+    NodeType.UNKNOWN,
 }
 
 

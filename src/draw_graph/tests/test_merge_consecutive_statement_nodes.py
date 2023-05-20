@@ -1,8 +1,8 @@
 from unittest import TestCase
 
-from analysis_code.models.ac_node import ACNode
-from draw_graph.constants.node_types import NodeType
-from draw_graph.services.dg_graph import DGGraph
+from src.analysis_code.models.ac_node import ACNode
+from src.draw_graph.constants.node_types import NodeType
+from src.draw_graph.services.dg_graph import DGGraph
 
 
 class TestDGGraph(TestCase):

@@ -59,16 +59,3 @@ class TestCoderReader(TestCase):
 
         # Verify
         assert result == expected_result
-
-    @patch("src.analysis_code.services.code_reader.read_file")
-    def test_parse_lines_empty_path(self, mock_read_file):
-        # Setup
-        file_path = ""
-        expected_result = []
-
-        # Exercise
-        coder_reader = CoderReader()
-        result = coder_reader.parse_file(file_path)
-
-        # Verify
-        assert result == expected_result

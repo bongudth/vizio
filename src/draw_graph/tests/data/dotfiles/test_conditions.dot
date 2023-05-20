@@ -15,7 +15,7 @@ L0 [shape=rect] [label="high.append(item)
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L0 [shape=ellipse] [label="quicksort(low) + same + quicksort(high)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 L0 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4367011408 -> L0 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=0)"]
+4354296080 -> L0 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=0)"]
 L0 -> L0   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=0) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4, _line_no=0)"]
 L0 -> L0 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4, _line_no=0) -> ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4, _line_no=0)"]
 L0 -> L0   [source="@if_to_prev_node : ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4, _line_no=0) -> ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=0)"]
@@ -27,6 +27,6 @@ L0 -> L0   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN'
 L0 -> L0 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8, _line_no=0) -> ACNode(_info={'type': 'ASSIGN', 'value': 'same.append(item)\n'}, _type='STATEMENT', _indent=12, _line_no=0)"]
 L0 -> L0   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'high.append(item)\n'}, _type='STATEMENT', _indent=12, _line_no=0) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4, _line_no=0)"]
 L0 -> L0 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': ['item > pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8, _line_no=0) -> ACNode(_info={'type': 'ASSIGN', 'value': 'high.append(item)\n'}, _type='STATEMENT', _indent=12, _line_no=0)"]
-L0 -> 4378140176   [source="@prev_to_end : ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4, _line_no=0) -> {}"]
+L0 -> 4354298960   [source="@prev_to_end : ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4, _line_no=0) -> {}"]
 
 }

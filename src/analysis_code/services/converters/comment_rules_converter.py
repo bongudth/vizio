@@ -7,11 +7,16 @@ from src.analysis_code.services.converters.base_rules_converter import (
 
 
 class CommentRulesConverter(BaseRulesConverter):
-    KEYWORDS = ["#"]
+    KEYWORDS = ["#", '"""', "'''"]
     AST_NODE_TYPE = ASTNodeType.COMMENT
 
     @classmethod
     def handle(cls, sentence: str) -> Dict[str, Any]:
+        sentence = sentence.strip()
+        if sentence.startswith("'''") or sentence.startswith('"""'):
+            return {
+                "type": "multiline",
+            }
         sentence = sentence.strip()
         return {
             "value": sentence[1:].strip(),

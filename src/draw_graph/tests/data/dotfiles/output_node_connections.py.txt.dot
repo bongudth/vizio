@@ -1,11 +1,6 @@
 digraph my_graph {
 bgcolor="white"
 L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
-L1 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L2 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L3 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L4 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L17 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L18 [shape=rect] [label="nodes: List[DGNode] = []
 connections: List[NodeConnection] = []
 tree = None
@@ -14,12 +9,7 @@ tree = None
 L23 [shape=rect] [label="filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))
 self.__class__.nodes = filtered_nodes
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-L26 [shape=rect] [label="{}"] [type="UNKNOWN"]
 
-L28 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L29 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L31 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L32 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L33 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
 L34 [shape=diamond] [label="i > 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L35 [shape=rect] [label="cls.nodes[i].prev_node = cls.nodes[i - 1]
@@ -37,16 +27,7 @@ L44 [shape=rect] [label="cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls
 L46 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
 L47 [shape=rect] [label="cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-L49 [shape=rect] [label="{}"] [type="UNKNOWN"]
 
-L51 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L52 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L53 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L55 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L56 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L57 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L58 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L59 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L60 [shape=rect] [label="parent_node = node.prev_node
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L61 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
@@ -55,15 +36,8 @@ L63 [shape=rect] [label="Loop node.indent in parent_node.indent"] [type="LOOP"] 
 L64 [shape=rect] [label="parent_node = parent_node.prev_node
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L65 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-L66 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L67 [shape=ellipse] [label="parent_node"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-L69 [shape=rect] [label="{}"] [type="UNKNOWN"]
 
-L71 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L72 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L74 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L75 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L76 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L77 [shape=rect] [label="result = ''
 node_connections = []
 def_indent = -1
@@ -92,7 +66,6 @@ L99 [shape=rect] [label="connections = [
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L100 [shape=rect] [label="NodeConnection(node.prev_node, node, source='@prev_to_end')
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-L101 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L103 [shape=diamond] [label="NodeType.is_condition(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L104 [shape=rect] [label="handler = ConditionConnector(node)
 connections, _ = handler.handle()
@@ -104,8 +77,6 @@ L109 [shape=rect] [label="NodeConnection(
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L110 [shape=rect] [label="node.prev_node, node, source='@prev_to_current_same_indent'
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-L111 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L112 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L114 [shape=diamond] [label="NodeType.is_return(node)"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L115 [shape=rect] [label="response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])
 connections = response.get('connections', [])
@@ -115,14 +86,10 @@ L119 [shape=rect] [label="connections = [
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L120 [shape=rect] [label="NodeConnection(
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-L121 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L122 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L123 [shape=rect] [label="label='True',
 source='@parent_to_child',
 color='green',
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-L126 [shape=rect] [label="{}"] [type="UNKNOWN"]
-L127 [shape=rect] [label="{}"] [type="UNKNOWN"]
 L129 [shape=rect] [label="result += text or ''
 result += cls.extract_text_from_connections(connections, response)
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
@@ -133,7 +100,6 @@ L133 [shape=diamond] [label="def_indent != -1"] [type="CONDITIONS"] [style=fille
 L134 [shape=rect] [label="result += '}'
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L135 [shape=ellipse] [label="dict(text=result, node_connections=node_connections)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-L137 [shape=rect] [label="{}"] [type="UNKNOWN"]
 
 L139 [shape=rect] [label="text = response['text'] + '\n' if response else ''
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
@@ -143,11 +109,7 @@ L142 [shape=rect] [label="text += '\n'.join([connection.to_dot() for connection 
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L143 [shape=ellipse] [label="text"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 L0 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4378312144 -> L1   [source="@prev_to_current_same_indent : {} -> ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=1)"]
-L1 -> L2   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=1) -> ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=2)"]
-L2 -> L3   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=2) -> ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=3)"]
-L3 -> L4   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=3) -> ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=4)"]
-L4 -> L5   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=4) -> ACNode(_info={'value': 'from typing import Any, Dict, List, Union'}, _type='IGNORE', _indent=0, _line_no=5)"]
+4354424400 -> L5   [source="@prev_to_current_same_indent : {} -> ACNode(_info={'value': 'from typing import Any, Dict, List, Union'}, _type='IGNORE', _indent=0, _line_no=5)"]
 L5 -> L7   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from typing import Any, Dict, List, Union'}, _type='IGNORE', _indent=0, _line_no=5) -> ACNode(_info={'value': 'from src.draw_graph.constants.node_types import NodeType'}, _type='IGNORE', _indent=0, _line_no=7)"]
 L7 -> L8   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from src.draw_graph.constants.node_types import NodeType'}, _type='IGNORE', _indent=0, _line_no=7) -> ACNode(_info={'value': 'from src.draw_graph.models.dg_node import DGNode'}, _type='IGNORE', _indent=0, _line_no=8)"]
 L8 -> L9   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from src.draw_graph.models.dg_node import DGNode'}, _type='IGNORE', _indent=0, _line_no=8) -> ACNode(_info={'value': 'from src.draw_graph.models.node_connection import NodeConnection'}, _type='IGNORE', _indent=0, _line_no=9)"]
@@ -155,18 +117,11 @@ L9 -> L10   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from
 L10 -> L11   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from src.draw_graph.services.connections.condition_connection import ConditionConnector'}, _type='IGNORE', _indent=0, _line_no=10) -> ACNode(_info={'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, _type='IGNORE', _indent=0, _line_no=11)"]
 L11 -> L12   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from src.draw_graph.services.connections.def_connection import DefConnector'}, _type='IGNORE', _indent=0, _line_no=11) -> ACNode(_info={'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, _type='IGNORE', _indent=0, _line_no=12)"]
 L12 -> L13   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from src.draw_graph.services.connections.loop_connection import LoopConnection'}, _type='IGNORE', _indent=0, _line_no=12) -> ACNode(_info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, _type='IGNORE', _indent=0, _line_no=13)"]
-L13 -> L17   [source="@prev_to_current_same_indent : ACNode(_info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, _type='IGNORE', _indent=0, _line_no=13) -> ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=17)"]
-L17 -> L18 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={}, _type='UNKNOWN', _indent=0, _line_no=17) -> ACNode(_info={'type': 'ASSIGN', 'value': 'nodes: List[DGNode] = []\nconnections: List[NodeConnection] = []\ntree = None\n'}, _type='STATEMENT', _indent=4, _line_no=18)"]
+L13 -> L18 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'value': 'from src.draw_graph.services.connections.return_connection import ReturnConnection'}, _type='IGNORE', _indent=0, _line_no=13) -> ACNode(_info={'type': 'ASSIGN', 'value': 'nodes: List[DGNode] = []\nconnections: List[NodeConnection] = []\ntree = None\n'}, _type='STATEMENT', _indent=4, _line_no=18)"]
 subgraph cluster___init__ {
 label = "__init__";
 
-}subgraph cluster_parse_relationship_tree {
-label = "parse_relationship_tree";
-
-L28 -> L29   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=28) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=29)"]
-L29 -> L31   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=29) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=31)"]
-L31 -> L32   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=31) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=32)"]
-L32 -> L33   [source="@prev_to_loop : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=32) -> ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33)"]
+}
 L33 -> L39 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33) -> ACNode(_info={'item': 'node', 'list': 'cls.nodes'}, _type='LOOP', _indent=8, _line_no=39)"]
 L33 -> L34   [source="@if_to_prev_node : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33) -> ACNode(_info={'conditions': 'i > 0', 'value': 'i > 0', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=34)"]
 L35 -> L33   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]\n'}, _type='STATEMENT', _indent=16, _line_no=35) -> ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33)"]
@@ -181,40 +136,24 @@ L40 -> L43   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': '
 L43 -> L46 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=43) -> ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=46)"]
 L43 -> L44 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=43) -> ACNode(_info={'type': 'ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])\n'}, _type='STATEMENT', _indent=12, _line_no=44)"]
 L44 -> L46   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': 'cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])\n'}, _type='STATEMENT', _indent=12, _line_no=44) -> ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=46)"]
-L46 -> L49 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=46) -> ACNode(_info={}, _type='UNKNOWN', _indent=4, _line_no=49)"]
+
 L46 -> L47 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=46) -> ACNode(_info={'type': 'ASSIGN', 'value': 'cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])\n'}, _type='STATEMENT', _indent=12, _line_no=47)"]
-}subgraph cluster__get_parent_node {
+subgraph cluster__get_parent_node {
 label = "_get_parent_node";
 
-L51 -> L52   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=51) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=52)"]
-L52 -> L53   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=52) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=53)"]
-L53 -> L55   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=53) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=55)"]
-L55 -> L56   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=55) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=56)"]
-L56 -> L57   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=56) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=57)"]
-L57 -> L58   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=57) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=58)"]
-L58 -> L59   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=58) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=59)"]
-L59 -> L60   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=59) -> ACNode(_info={'type': 'ASSIGN', 'value': 'parent_node = node.prev_node\n'}, _type='STATEMENT', _indent=8, _line_no=60)"]
 L60 -> L61   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value': 'parent_node = node.prev_node\n'}, _type='STATEMENT', _indent=8, _line_no=60) -> ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=61)"]
 L61 -> L63 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=61) -> ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63)"]
 {rank=same; L61; L62;}
-L62 -> 4378364496   [source="@return_to_end : ACNode(_info={'name': 'None'}, _type='RETURN', _indent=12, _line_no=62) -> {}"]
+L62 -> 4354453904   [source="@return_to_end : ACNode(_info={'name': 'None'}, _type='RETURN', _indent=12, _line_no=62) -> {}"]
 L61 -> L62  [label=True] [source="@return_2 : ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=61) -> ACNode(_info={'name': 'None'}, _type='RETURN', _indent=12, _line_no=62)"]
 L62 -> L63   [source="@prev_to_loop : ACNode(_info={'name': 'None'}, _type='RETURN', _indent=12, _line_no=62) -> ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63)"]
 L63 -> L67 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63) -> ACNode(_info={'name': 'parent_node'}, _type='RETURN', _indent=8, _line_no=67)"]
 L63 -> L64 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63) -> ACNode(_info={'type': 'ASSIGN', 'value': 'parent_node = parent_node.prev_node\n'}, _type='STATEMENT', _indent=12, _line_no=64)"]
 L64 -> L65   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value': 'parent_node = parent_node.prev_node\n'}, _type='STATEMENT', _indent=12, _line_no=64) -> ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=65)"]
-L66 -> L63   [source="@last_child_to_next_sibling : ACNode(_info={}, _type='UNKNOWN', _indent=16, _line_no=66) -> ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63)"]
-L65 -> L66 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=65) -> ACNode(_info={}, _type='UNKNOWN', _indent=16, _line_no=66)"]
-{rank=same; L66; L67;}
-L67 -> 4378364496   [source="@return_to_end : ACNode(_info={'name': 'parent_node'}, _type='RETURN', _indent=8, _line_no=67) -> {}"]
-}subgraph cluster_render {
-label = "render";
-
-L71 -> L72   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=71) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=72)"]
-L72 -> L74   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=72) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=74)"]
-L74 -> L75   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=74) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=75)"]
-L75 -> L76   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=75) -> ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=76)"]
-L76 -> L77   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=8, _line_no=76) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result = ''\nnode_connections = []\ndef_indent = -1\n'}, _type='STATEMENT', _indent=8, _line_no=77)"]
+L65 -> L63   [source="@last_child_to_next_sibling : ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=65) -> ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63)"]
+{rank=same; L65; L67;}
+L67 -> 4354453904   [source="@return_to_end : ACNode(_info={'name': 'parent_node'}, _type='RETURN', _indent=8, _line_no=67) -> {}"]
+}
 L77 -> L80   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': 'result = ''\nnode_connections = []\ndef_indent = -1\n'}, _type='STATEMENT', _indent=8, _line_no=77) -> ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80)"]
 L80 -> L133 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80) -> ACNode(_info={'conditions': 'def_indent != -1', 'value': 'def_indent != -1', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=133)"]
 L80 -> L81 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80) -> ACNode(_info={'type': 'ASSIGN', 'value': 'text = ''\nconnections = None\nresponse = None\nout_def_method = node.indent <= def_indent\n'}, _type='STATEMENT', _indent=12, _line_no=81)"]
@@ -232,23 +171,21 @@ L90 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSI
 L89 -> L90 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'NodeType.is_definition(node)', 'value': 'NodeType.is_definition(node)', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=89) -> ACNode(_info={'type': 'ASSIGN', 'value': 'def_indent = node.indent\nhandler = DefConnector(node)\n_, text = handler.handle()\n'}, _type='STATEMENT', _indent=16, _line_no=90)"]
 L95 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'handler = LoopConnection(node)\nconnections, _ = handler.handle()\n'}, _type='STATEMENT', _indent=16, _line_no=95) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
 L94 -> L95 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'NodeType.is_loop(node)', 'value': 'NodeType.is_loop(node)', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=94) -> ACNode(_info={'type': 'ASSIGN', 'value': 'handler = LoopConnection(node)\nconnections, _ = handler.handle()\n'}, _type='STATEMENT', _indent=16, _line_no=95)"]
-L101 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={}, _type='UNKNOWN', _indent=16, _line_no=101) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
+L100 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(node.prev_node, node, source='@prev_to_end')\n'}, _type='STATEMENT', _indent=20, _line_no=100) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
 L98 -> L99 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'NodeType.is_end(node)', 'value': 'NodeType.is_end(node)', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=98) -> ACNode(_info={'type': 'ASSIGN', 'value': 'connections = [\n'}, _type='STATEMENT', _indent=16, _line_no=99)"]
 L99 -> L100 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'type': 'ASSIGN', 'value': 'connections = [\n'}, _type='STATEMENT', _indent=16, _line_no=99) -> ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(node.prev_node, node, source='@prev_to_end')\n'}, _type='STATEMENT', _indent=20, _line_no=100)"]
 L104 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'handler = ConditionConnector(node)\nconnections, _ = handler.handle()\n'}, _type='STATEMENT', _indent=16, _line_no=104) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
 L103 -> L104 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'NodeType.is_condition(node)', 'value': 'NodeType.is_condition(node)', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=103) -> ACNode(_info={'type': 'ASSIGN', 'value': 'handler = ConditionConnector(node)\nconnections, _ = handler.handle()\n'}, _type='STATEMENT', _indent=16, _line_no=104)"]
-L112 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={}, _type='UNKNOWN', _indent=16, _line_no=112) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
+L110 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'node.prev_node, node, source='@prev_to_current_same_indent'\n'}, _type='STATEMENT', _indent=24, _line_no=110) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
 L107 -> L108 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'node.prev_node and node.prev_node.indent == node.indent', 'value': 'node.prev_node and node.prev_node.indent == node.indent', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=107) -> ACNode(_info={'type': 'ASSIGN', 'value': 'connections = [\n'}, _type='STATEMENT', _indent=16, _line_no=108)"]
 L108 -> L109 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'type': 'ASSIGN', 'value': 'connections = [\n'}, _type='STATEMENT', _indent=16, _line_no=108) -> ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(\n'}, _type='STATEMENT', _indent=20, _line_no=109)"]
 L109 -> L110 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(\n'}, _type='STATEMENT', _indent=20, _line_no=109) -> ACNode(_info={'type': 'ASSIGN', 'value': 'node.prev_node, node, source='@prev_to_current_same_indent'\n'}, _type='STATEMENT', _indent=24, _line_no=110)"]
 L115 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])\nconnections = response.get('connections', [])\n'}, _type='STATEMENT', _indent=16, _line_no=115) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
 L114 -> L115 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'NodeType.is_return(node)', 'value': 'NodeType.is_return(node)', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=114) -> ACNode(_info={'type': 'ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])\nconnections = response.get('connections', [])\n'}, _type='STATEMENT', _indent=16, _line_no=115)"]
-L127 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={}, _type='UNKNOWN', _indent=16, _line_no=127) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
+L123 -> L129   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'label='True',\nsource='@parent_to_child',\ncolor='green',\n'}, _type='STATEMENT', _indent=24, _line_no=123) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129)"]
 L118 -> L119 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'node.parent and cls.nodes[i - 1] == node.parent', 'value': 'node.parent and cls.nodes[i - 1] == node.parent', 'type': 'ELIF'}, _type='CONDITIONS', _indent=12, _line_no=118) -> ACNode(_info={'type': 'ASSIGN', 'value': 'connections = [\n'}, _type='STATEMENT', _indent=16, _line_no=119)"]
 L119 -> L120 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'type': 'ASSIGN', 'value': 'connections = [\n'}, _type='STATEMENT', _indent=16, _line_no=119) -> ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(\n'}, _type='STATEMENT', _indent=20, _line_no=120)"]
-L120 -> L121 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(\n'}, _type='STATEMENT', _indent=20, _line_no=120) -> ACNode(_info={}, _type='UNKNOWN', _indent=24, _line_no=121)"]
-L121 -> L122   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=24, _line_no=121) -> ACNode(_info={}, _type='UNKNOWN', _indent=24, _line_no=122)"]
-L122 -> L123   [source="@prev_to_current_same_indent : ACNode(_info={}, _type='UNKNOWN', _indent=24, _line_no=122) -> ACNode(_info={'type': 'ASSIGN', 'value': 'label='True',\nsource='@parent_to_child',\ncolor='green',\n'}, _type='STATEMENT', _indent=24, _line_no=123)"]
+L120 -> L123 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'type': 'ASSIGN', 'value': 'NodeConnection(\n'}, _type='STATEMENT', _indent=20, _line_no=120) -> ACNode(_info={'type': 'ASSIGN', 'value': 'label='True',\nsource='@parent_to_child',\ncolor='green',\n'}, _type='STATEMENT', _indent=24, _line_no=123)"]
 L129 -> L131   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value': 'result += text or ''\nresult += cls.extract_text_from_connections(connections, response)\n'}, _type='STATEMENT', _indent=12, _line_no=129) -> ACNode(_info={'conditions': 'connections', 'value': 'connections', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=131)"]
 L132 -> L80   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'node_connections.extend(connections)\n'}, _type='STATEMENT', _indent=16, _line_no=132) -> ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80)"]
 L131 -> L132 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'connections', 'value': 'connections', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=131) -> ACNode(_info={'type': 'ASSIGN', 'value': 'node_connections.extend(connections)\n'}, _type='STATEMENT', _indent=16, _line_no=132)"]
@@ -257,14 +194,14 @@ L133 -> L135 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditio
 L134 -> L135   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'result += '}'\n'}, _type='STATEMENT', _indent=12, _line_no=134) -> ACNode(_info={'name': 'dict(text=result, node_connections=node_connections)'}, _type='RETURN', _indent=8, _line_no=135)"]
 L133 -> L134 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'def_indent != -1', 'value': 'def_indent != -1', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=133) -> ACNode(_info={'type': 'ASSIGN', 'value': 'result += '}'\n'}, _type='STATEMENT', _indent=12, _line_no=134)"]
 {rank=same; L134; L135;}
-L135 -> 4378364496   [source="@return_to_end : ACNode(_info={'name': 'dict(text=result, node_connections=node_connections)'}, _type='RETURN', _indent=8, _line_no=135) -> {}"]
-}subgraph cluster_extract_text_from_connections {
+L135 -> 4354453904   [source="@return_to_end : ACNode(_info={'name': 'dict(text=result, node_connections=node_connections)'}, _type='RETURN', _indent=8, _line_no=135) -> {}"]
+subgraph cluster_extract_text_from_connections {
 label = "extract_text_from_connections";
 
 L139 -> L140   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value': 'text = response['text'] + '\\n' if response else ''\n'}, _type='STATEMENT', _indent=8, _line_no=139) -> ACNode(_info={'conditions': 'not connections', 'value': 'not connections', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=140)"]
 L140 -> L142 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': 'not connections', 'value': 'not connections', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=140) -> ACNode(_info={'type': 'ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])\n'}, _type='STATEMENT', _indent=8, _line_no=142)"]
 {rank=same; L140; L141;}
-L141 -> 4378364496   [source="@return_to_end : ACNode(_info={'name': ''''}, _type='RETURN', _indent=12, _line_no=141) -> {}"]
+L141 -> 4354453904   [source="@return_to_end : ACNode(_info={'name': ''''}, _type='RETURN', _indent=12, _line_no=141) -> {}"]
 L140 -> L141  [label=True] [source="@return_2 : ACNode(_info={'conditions': 'not connections', 'value': 'not connections', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=140) -> ACNode(_info={'name': ''''}, _type='RETURN', _indent=12, _line_no=141)"]
 L142 -> L143   [source="@prev_to_current_same_indent : ACNode(_info={'type': 'ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])\n'}, _type='STATEMENT', _indent=8, _line_no=142) -> ACNode(_info={'name': 'text'}, _type='RETURN', _indent=8, _line_no=143)"]
 }

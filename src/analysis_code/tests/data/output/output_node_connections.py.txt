@@ -1,7 +1,7 @@
-{'type': 'UNKNOWN', 'info': {}, 'indent': 0, 'line_no': 1}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 0, 'line_no': 1}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 0, 'line_no': 2}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 0, 'line_no': 3}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 0, 'line_no': 4}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 0, 'line_no': 4}
 {'type': 'IGNORE', 'info': {'value': 'from typing import Any, Dict, List, Union'}, 'indent': 0, 'line_no': 5}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.constants.node_types import NodeType'}, 'indent': 0, 'line_no': 7}
 {'type': 'IGNORE', 'info': {'value': 'from src.draw_graph.models.dg_node import DGNode'}, 'indent': 0, 'line_no': 8}
@@ -20,10 +20,10 @@
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'self.__class__.nodes = filtered_nodes'}, 'indent': 8, 'line_no': 24}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 4, 'line_no': 26}
 {'type': 'DEF', 'info': {'name': 'parse_relationship_tree', 'args': ['cls']}, 'indent': 4, 'line_no': 27}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 28}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 8, 'line_no': 28}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 29}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 31}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 32}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 8, 'line_no': 32}
 {'type': 'LOOP', 'info': {'item': 'i', 'list': 'range(len(cls.nodes))'}, 'indent': 8, 'line_no': 33}
 {'type': 'CONDITIONS', 'info': {'conditions': 'i > 0', 'value': 'i > 0', 'type': 'IF'}, 'indent': 12, 'line_no': 34}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]'}, 'indent': 16, 'line_no': 35}
@@ -38,14 +38,14 @@
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])'}, 'indent': 12, 'line_no': 47}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 4, 'line_no': 49}
 {'type': 'DEF', 'info': {'name': '_get_parent_node', 'args': ['cls']}, 'indent': 4, 'line_no': 50}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 51}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 8, 'line_no': 51}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 52}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 53}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 55}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 56}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 57}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 58}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 59}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 8, 'line_no': 59}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'parent_node = node.prev_node'}, 'indent': 8, 'line_no': 60}
 {'type': 'CONDITIONS', 'info': {'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, 'indent': 8, 'line_no': 61}
 {'type': 'RETURN', 'info': {'name': 'None'}, 'indent': 12, 'line_no': 62}
@@ -56,11 +56,11 @@
 {'type': 'RETURN', 'info': {'name': 'parent_node'}, 'indent': 8, 'line_no': 67}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 4, 'line_no': 69}
 {'type': 'DEF', 'info': {'name': 'render', 'args': ['cls']}, 'indent': 4, 'line_no': 70}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 71}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 8, 'line_no': 71}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 72}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 74}
 {'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 75}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 8, 'line_no': 76}
+{'type': 'COMMENT', 'info': {'type': 'multiline'}, 'indent': 8, 'line_no': 76}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'result = ""'}, 'indent': 8, 'line_no': 77}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'node_connections = []'}, 'indent': 8, 'line_no': 78}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'def_indent = -1'}, 'indent': 8, 'line_no': 79}
