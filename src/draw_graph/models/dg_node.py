@@ -5,7 +5,8 @@ from src.analysis_code.constants.types import ConditionType
 from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
 
-ignore_info_types = [str(ConditionType.ELSE)]
+IGNORE_TYPES = [NodeType.DEF, NodeType.COMMENT]
+IGNORE_INFO_TYPES = [ConditionType.ELSE.name]
 
 
 class DGNode:
@@ -45,7 +46,7 @@ class DGNode:
 
     @property
     def is_hidden(self) -> bool:
-        return self.info_type in ignore_info_types
+        return self.type in IGNORE_TYPES or self.info_type in IGNORE_INFO_TYPES
 
     def from_string(self, string: str):
         self.data = literal_eval(string)

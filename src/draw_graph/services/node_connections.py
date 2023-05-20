@@ -94,7 +94,7 @@ class NodeConnectionsHandler:
             if connections:
                 node_connections.extend(connections)
         if def_indent != -1:
-            result += "}"
+            result += "}\n"
         return dict(text=result, node_connections=node_connections)
 
     def _extract_text_from_connections(self, connections, response=None):
@@ -102,4 +102,4 @@ class NodeConnectionsHandler:
         if not connections:
             return ""
         text += "\n".join([connection.to_dot() for connection in connections])
-        return text
+        return text + "\n"

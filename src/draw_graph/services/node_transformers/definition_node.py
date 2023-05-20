@@ -7,6 +7,10 @@ class DefinitionNode(NodeTransformerBase):
     """
 
     @property
+    def is_hidden(self) -> bool:
+        return True
+
+    @property
     def label(self):
         return ""
 

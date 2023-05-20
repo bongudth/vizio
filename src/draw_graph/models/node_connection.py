@@ -24,22 +24,32 @@ class NodeConnection:
         return self._start and self._end
 
     def to_dot(self) -> str:
-        if not self.is_valid or self._start.is_hidden or self._end.is_hidden:
+        print(f"NodeConnection: {self._start} -> {self._end}")
+        print(self.__is_empty_dot())
+
+        if self.__is_empty_dot():
             return ""
-        # add color to connection
-        return f"{id(self._start)} -> {id(self._end)} {self.build_label(self._label)} {self.build_source(self._source)} {self.build_color()};\n"
+        fields = [
+            self.build_color(),
+            self.build_label(self._label),
+            self.build_source(self._source),
+        ]
+        return f"{id(self._start)} -> {id(self._end)} {' '.join(fields)}"
 
     def build_color(self) -> str:
         return f"[color={self._color}]" if self._color else ""
 
     def build_label(self, label: str) -> str:
-        return f"[label = {self._label}]" if label else ""
+        return f"[label={self._label}]" if label else ""
 
     def build_source(self, source: str) -> str:
-        debug_data = f"{source} : {self._start.data} ===> {self._end.data}".replace(
+        debug_data = f"{source} : {self._start.data} -> {self._end.data}".replace(
             '"', "'"
         )
-        return f'[source = "{debug_data}"]' if debug_data else ""
+        return f'[source="{debug_data}"]' if debug_data else ""
+
+    def __is_empty_dot(self) -> bool:
+        return any([not self.is_valid, self._start.is_hidden, self._end.is_hidden])
 
     def __repr__(self):
         return f"{self._start} -> {self._end} with label {self._source}"

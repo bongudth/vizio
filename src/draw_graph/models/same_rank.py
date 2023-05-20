@@ -11,4 +11,4 @@ class SameRank:
         # sourcery skip: remove-unnecessary-cast
         node_ids = [str(node.id) for node in self._nodes if not node.is_hidden]
         text = "; ".join(list(node_ids))
-        return f"{{rank = same; {text};}}"
+        return f"{{rank=same; {text};}}"

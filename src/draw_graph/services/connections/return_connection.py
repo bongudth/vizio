@@ -19,5 +19,5 @@ class ReturnConnection:
                 NodeConnection(node.prev_node, node, label=label, source="@return_2")
             ]
         if node.next_node.type != NodeType.END:
-            text = f"{SameRank([node.prev_node, node]).to_dot()}\n"
+            text = f"{SameRank([node.prev_node, node]).to_dot()}"
         return {"text": text, "connections": connections}

@@ -15,11 +15,15 @@ class DotfileBodyCreator:
         return f'bgcolor="{self.background_color}"\n{self._build_nodes()}{self._build_node_connections()}'
 
     def _build_nodes(self) -> str:
-        return "".join(
-            transformed_node.get("content", "")
-            for node in self.dg_graph.dg_nodes
-            if (transformed_node := self.node_transformers_handler.transform(node))
-        )
+        result = ""
+        for node in self.dg_graph.dg_nodes:
+            transformed_node = self.node_transformers_handler.transform(node)
+            if transformed_node:
+                content = transformed_node.get("content", "")
+                print(f"Transformed Node: {transformed_node}")
+                print(f"Content: {content}")
+                result += content
+        return result
 
     def _build_node_connections(self) -> str:
         result = self.dg_graph.build_node_connections()

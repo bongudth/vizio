@@ -84,7 +84,7 @@ class NodeConnections:
             out_def_method = node.indent <= def_indent
             if out_def_method:
                 def_indent = -1
-                text += "}"
+                text += "}\n"
 
             elif NodeType.is_definition(node):
                 def_indent = node.indent
