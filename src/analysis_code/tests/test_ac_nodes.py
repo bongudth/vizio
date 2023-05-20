@@ -8,7 +8,7 @@ class TestCaseACNodes(TestCase):
         data = {
             "type": "STATEMENT",
             "info": {
-                "type": "STATEMENT_ASSIGN",
+                "type": "ASSIGN",
                 "value": "pivot = array[randint(0, len(array) - 1)]",
             },
             "indent": 4,

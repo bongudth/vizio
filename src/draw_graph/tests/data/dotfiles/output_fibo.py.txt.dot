@@ -1,43 +1,43 @@
 digraph my_graph {
 bgcolor="white"
-4347882512 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
-4347880080
-4347882896 [shape=diamond] [label="n < 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4347883024 [shape=parallelogram] [label="print('Incorrect input')"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4347883216 [shape=diamond] [label="n == 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4347882960 [shape=ellipse] [label="0"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4347883408 [shape=diamond] [label="n == 1 or n == 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4347883472 [shape=ellipse] [label="1"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4387941968 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+4387939472
+4387942352 [shape=diamond] [label="n < 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4387942480 [shape=parallelogram] [label="print('Incorrect input')"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4387942672 [shape=diamond] [label="n == 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4387942416 [shape=ellipse] [label="0"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4387942864 [shape=diamond] [label="n == 1 or n == 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4387942928 [shape=ellipse] [label="1"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 
-4347883600 [shape=ellipse] [label="fibonacci(n - 1) + fibonacci(n - 2)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4347883728 [shape=parallelogram] [label="print(fibonacci(9))"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4347883920 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+4387943056 [shape=ellipse] [label="fibonacci(n - 1) + fibonacci(n - 2)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4387943184 [shape=parallelogram] [label="print(fibonacci(9))"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4387943376 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
 subgraph cluster_fibonacci {
 label = "fibonacci";
-4347880080 -> 4347882896  [source = "@if_to_prev_node : ACNode(_info={'name': 'fibonacci', 'args': ['n']}, _type='DEF', _indent=0) ===> ACNode(_info={'conditions': ['n < 0'], 'type': 'IF'}, _type='CONDITIONS', _indent=4)"] ;
+4387939472 -> 4387942352  [source = "@if_to_prev_node : ACNode(_info={'name': 'fibonacci', 'args': ['n']}, _type='DEF', _indent=0) ===> ACNode(_info={'conditions': ['n < 0'], 'type': 'IF'}, _type='CONDITIONS', _indent=4)"] ;
 
-4347882896 -> 4347883216 [label = elif] [source = "@if_or_if_to_elif : ACNode(_info={'conditions': ['n < 0'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'conditions': ['n == 0'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4)"] [color=red];
+4387942352 -> 4387942672 [label = elif] [source = "@if_or_if_to_elif : ACNode(_info={'conditions': ['n < 0'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'conditions': ['n == 0'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4)"] [color=red];
 
-4347883216 -> 4347883408 [label = elif] [source = "@if_or_if_to_elif : ACNode(_info={'conditions': ['n == 0'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4)"] [color=red];
+4387942672 -> 4387942864 [label = elif] [source = "@if_or_if_to_elif : ACNode(_info={'conditions': ['n == 0'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4)"] [color=red];
 
-4347883024 -> 4347880080  [source = "@last_child_to_next_sibling : ACNode(_info={'type': 'STATEMENT_METHOD', 'value': 'print('Incorrect input')'}, _type='STATEMENT', _indent=8) ===> ACNode(_info={'name': 'fibonacci', 'args': ['n']}, _type='DEF', _indent=0)"] ;
-4347882896 -> 4347883024 [label = True] [source = "@parent_to_child : ACNode(_info={'conditions': ['n < 0'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'type': 'STATEMENT_METHOD', 'value': 'print('Incorrect input')'}, _type='STATEMENT', _indent=8)"] [color=green];
-{rank = same; 4347883216; 4347882960;}
+4387942480 -> 4387939472  [source = "@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'print('Incorrect input')'}, _type='STATEMENT', _indent=8) ===> ACNode(_info={'name': 'fibonacci', 'args': ['n']}, _type='DEF', _indent=0)"] ;
+4387942352 -> 4387942480 [label = True] [source = "@parent_to_child : ACNode(_info={'conditions': ['n < 0'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'type': 'METHOD', 'value': 'print('Incorrect input')'}, _type='STATEMENT', _indent=8)"] [color=green];
+{rank = same; 4387942672; 4387942416;}
 
-4347882960 -> 4347883920  [source = "@return_to_end : ACNode(_info={'name': '0'}, _type='RETURN', _indent=8) ===> {}"] ;
+4387942416 -> 4387943376  [source = "@return_to_end : ACNode(_info={'name': '0'}, _type='RETURN', _indent=8) ===> {}"] ;
 
-4347883216 -> 4347882960 [label = True] [source = "@return_2 : ACNode(_info={'conditions': ['n == 0'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': '0'}, _type='RETURN', _indent=8)"] ;
-{rank = same; 4347883408; 4347883472;}
+4387942672 -> 4387942416 [label = True] [source = "@return_2 : ACNode(_info={'conditions': ['n == 0'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': '0'}, _type='RETURN', _indent=8)"] ;
+{rank = same; 4387942864; 4387942928;}
 
-4347883472 -> 4347883920  [source = "@return_to_end : ACNode(_info={'name': '1'}, _type='RETURN', _indent=8) ===> {}"] ;
+4387942928 -> 4387943376  [source = "@return_to_end : ACNode(_info={'name': '1'}, _type='RETURN', _indent=8) ===> {}"] ;
 
-4347883408 -> 4347883472 [label = True] [source = "@return_2 : ACNode(_info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': '1'}, _type='RETURN', _indent=8)"] ;
-4347883408 -> 4347883600 [label = else] [source = " : ACNode(_info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': 'fibonacci(n - 1) + fibonacci(n - 2)'}, _type='RETURN', _indent=8)"] ;
-{rank = same; 4347883536; 4347883600;}
+4387942864 -> 4387942928 [label = True] [source = "@return_2 : ACNode(_info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': '1'}, _type='RETURN', _indent=8)"] ;
+4387942864 -> 4387943056 [label = else] [source = " : ACNode(_info={'conditions': ['n == 1 or n == 2'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': 'fibonacci(n - 1) + fibonacci(n - 2)'}, _type='RETURN', _indent=8)"] ;
+{rank = same; 4387942992; 4387943056;}
 
-4347883600 -> 4347883920  [source = "@return_to_end : ACNode(_info={'name': 'fibonacci(n - 1) + fibonacci(n - 2)'}, _type='RETURN', _indent=8) ===> {}"] ;
+4387943056 -> 4387943376  [source = "@return_to_end : ACNode(_info={'name': 'fibonacci(n - 1) + fibonacci(n - 2)'}, _type='RETURN', _indent=8) ===> {}"] ;
 
-4347883536 -> 4347883600 [label = True] [source = "@return_2 : ACNode(_info={'type': 'ELSE'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': 'fibonacci(n - 1) + fibonacci(n - 2)'}, _type='RETURN', _indent=8)"] ;
-}4347883728 -> 4347883920  [source = "@prev_to_end : ACNode(_info={'type': 'STATEMENT_METHOD', 'value': 'print(fibonacci(9))'}, _type='STATEMENT', _indent=0) ===> {}"] ;
+4387942992 -> 4387943056 [label = True] [source = "@return_2 : ACNode(_info={'type': 'ELSE'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': 'fibonacci(n - 1) + fibonacci(n - 2)'}, _type='RETURN', _indent=8)"] ;
+}4387943184 -> 4387943376  [source = "@prev_to_end : ACNode(_info={'type': 'METHOD', 'value': 'print(fibonacci(9))'}, _type='STATEMENT', _indent=0) ===> {}"] ;
 
 }

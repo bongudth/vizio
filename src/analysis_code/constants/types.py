@@ -31,5 +31,5 @@ class StatementType(Enum):
     Enumeration representing the different types of statements in an abstract syntax tree.
     """
 
-    STATEMENT_ASSIGN = auto()
-    STATEMENT_METHOD = auto()
+    ASSIGN = auto()
+    METHOD = auto()

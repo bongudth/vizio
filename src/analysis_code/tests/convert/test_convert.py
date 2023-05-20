@@ -55,7 +55,7 @@ class TestConvert(TestConverterBase):
         self.sentence = "a = b"
         self.expected = {
             "type": str(ASTNodeType.STATEMENT),
-            "info": dict(value="a = b", type=StatementType.STATEMENT_ASSIGN.name),
+            "info": dict(value="a = b", type=StatementType.ASSIGN.name),
         }
 
     @test_base
@@ -63,5 +63,5 @@ class TestConvert(TestConverterBase):
         self.sentence = "a.append(b)"
         self.expected = {
             "type": str(ASTNodeType.STATEMENT),
-            "info": dict(value="a.append(b)", type=StatementType.STATEMENT_METHOD.name),
+            "info": dict(value="a.append(b)", type=StatementType.METHOD.name),
         }

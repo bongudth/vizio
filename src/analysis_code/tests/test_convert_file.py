@@ -7,7 +7,10 @@ from src.utils.file_handler import write_file
 
 class TestConvertFile(TestCase):
     current_dir = os.path.abspath(os.path.dirname(__file__))
-    filename = "quick_sort" + ".py"
+    filename = "conditions" + ".py"
+    # filename = "fibo" + ".py"
+    # filename = "node_connections" + ".py"
+    # filename = "quick_sort" + ".py"
 
     @classmethod
     def setUpClass(cls) -> None:

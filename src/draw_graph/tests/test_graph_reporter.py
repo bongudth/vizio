@@ -13,7 +13,7 @@ class TestGraphReporter(TestCase):
             },
             {
                 "type": "STATEMENT",
-                "info": {"type": "STATEMENT_METHOD", "value": "same.append(item)"},
+                "info": {"type": "METHOD", "value": "same.append(item)"},
                 "indent": 12,
             },
         ]

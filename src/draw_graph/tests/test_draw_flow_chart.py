@@ -28,7 +28,7 @@ class TestDrawFlowChart(TestCase):
             {
                 "type": "STATEMENT",
                 "info": {
-                    "type": "STATEMENT_ASSIGN",
+                    "type": "ASSIGN",
                     "value": "pivot = array[randint(0, len(array) - 1)]",
                 },
                 "indent": 4,
@@ -41,7 +41,7 @@ class TestDrawFlowChart(TestCase):
             },
             {
                 "type": "STATEMENT",
-                "info": {"type": "STATEMENT_METHOD", "value": "low.append(item)"},
+                "info": {"type": "METHOD", "value": "low.append(item)"},
                 "indent": 12,
             },
             {
@@ -51,7 +51,7 @@ class TestDrawFlowChart(TestCase):
             },
             {
                 "type": "STATEMENT",
-                "info": {"type": "STATEMENT_METHOD", "value": "same.append(item)"},
+                "info": {"type": "METHOD", "value": "same.append(item)"},
                 "indent": 12,
             },
             {
@@ -61,7 +61,7 @@ class TestDrawFlowChart(TestCase):
             },
             {
                 "type": "STATEMENT",
-                "info": {"type": "STATEMENT_METHOD", "value": "high.append(item)"},
+                "info": {"type": "METHOD", "value": "high.append(item)"},
                 "indent": 12,
             },
             {
@@ -88,7 +88,7 @@ class TestDrawFlowChart(TestCase):
             {
                 "type": "STATEMENT",
                 "info": {
-                    "type": "STATEMENT_ASSIGN",
+                    "type": "ASSIGN",
                     "value": "low, same, high = [], [], []",
                 },
                 "indent": 4,
@@ -96,7 +96,7 @@ class TestDrawFlowChart(TestCase):
             {
                 "type": "STATEMENT",
                 "info": {
-                    "type": "STATEMENT_ASSIGN",
+                    "type": "ASSIGN",
                     "value": "pivot = array[randint(0, len(array) - 1)]",
                 },
                 "indent": 4,
