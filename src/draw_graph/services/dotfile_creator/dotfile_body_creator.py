@@ -20,8 +20,6 @@ class DotfileBodyCreator:
             transformed_node = self.node_transformers_handler.transform(node)
             if transformed_node:
                 content = transformed_node.get("content", "")
-                print(f"Transformed Node: {transformed_node}")
-                print(f"Content: {content}")
                 result += content
         return result
 

@@ -104,7 +104,6 @@ class TestDrawFlowChart(TestCase):
         ]
         dot_file_creator = DotfileCreator(lines)
         content = dot_file_creator.generate()
-        print(content)
         write_file(path, content)
 
     def __write_dotfile(self, origin_file_name: str):
@@ -113,7 +112,6 @@ class TestDrawFlowChart(TestCase):
         lines = read_file(full_path)
         dot_file_creator = DotfileCreator(lines)
         content = dot_file_creator.generate()
-        print(content)
         write_file(dot_full_path, content)
         # convert dot to svg file
         svg_full_path = dot_full_path.replace(".dot", ".svg")

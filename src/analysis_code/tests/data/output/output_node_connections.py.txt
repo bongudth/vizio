@@ -71,7 +71,7 @@
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'out_def_method = node.indent <= def_indent'}, 'indent': 12}
 {'type': 'CONDITIONS', 'info': {'conditions': ['out_def_method'], 'type': 'IF'}, 'indent': 12}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'def_indent = -1'}, 'indent': 16}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'text += "}"'}, 'indent': 16}
+{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'text += "}\\n"'}, 'indent': 16}
 {'type': 'CONDITIONS', 'info': {'conditions': ['NodeType.is_definition(node)'], 'type': 'ELIF'}, 'indent': 12}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'def_indent = node.indent'}, 'indent': 16}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'handler = DefConnector(node)'}, 'indent': 16}

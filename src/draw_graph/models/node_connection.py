@@ -24,9 +24,6 @@ class NodeConnection:
         return self._start and self._end
 
     def to_dot(self) -> str:
-        print(f"NodeConnection: {self._start} -> {self._end}")
-        print(self.__is_empty_dot())
-
         if self.__is_empty_dot():
             return ""
         fields = [

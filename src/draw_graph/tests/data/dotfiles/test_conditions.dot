@@ -1,32 +1,28 @@
 digraph my_graph {
 bgcolor="white"
-4387931792 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
-4387933136 [shape=rect] [label="pivot = array[randint(0, len(array) - 1)]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4387933200 [shape=rect] [label="Loop item in array"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
-4387933264 [shape=diamond] [label="item < pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4387933328 [shape=parallelogram] [label="low.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4387933392 [shape=diamond] [label="item == pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4387933520 [shape=parallelogram] [label="same.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4387933584 [shape=diamond] [label="item > pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4387933648 [shape=parallelogram] [label="high.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4387933712 [shape=ellipse] [label="quicksort(low) + same + quicksort(high)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4387933456 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4387931792 -> 4387933136 [label = True] [source = "@parent_to_child : {} ===> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4)"] [color=green];
-4387933136 -> 4387933200  [source = "@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4) ===> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"] ;
-
-4387933200 -> 4387933712 [label = out] [source = "@loop_to_next : ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4) ===> ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4)"] [color=red];
-4387933200 -> 4387933264  [source = "@if_to_prev_node : ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4) ===> ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8)"] ;
-
-4387933264 -> 4387933392 [label = elif] [source = "@if_or_if_to_elif : ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8) ===> ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8)"] [color=red];
-
-4387933392 -> 4387933584 [label = elif] [source = "@if_or_if_to_elif : ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8) ===> ACNode(_info={'conditions': ['item > pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8)"] [color=red];
-
-4387933328 -> 4387933200  [source = "@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'low.append(item)'}, _type='STATEMENT', _indent=12) ===> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"] ;
-4387933264 -> 4387933328 [label = True] [source = "@parent_to_child : ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8) ===> ACNode(_info={'type': 'METHOD', 'value': 'low.append(item)'}, _type='STATEMENT', _indent=12)"] [color=green];
-4387933520 -> 4387933200  [source = "@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'same.append(item)'}, _type='STATEMENT', _indent=12) ===> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"] ;
-4387933392 -> 4387933520 [label = True] [source = "@parent_to_child : ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8) ===> ACNode(_info={'type': 'METHOD', 'value': 'same.append(item)'}, _type='STATEMENT', _indent=12)"] [color=green];
-4387933648 -> 4387933200  [source = "@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'high.append(item)'}, _type='STATEMENT', _indent=12) ===> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"] ;
-4387933584 -> 4387933648 [label = True] [source = "@parent_to_child : ACNode(_info={'conditions': ['item > pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8) ===> ACNode(_info={'type': 'METHOD', 'value': 'high.append(item)'}, _type='STATEMENT', _indent=12)"] [color=green];
-4387933712 -> 4387933456  [source = "@prev_to_end : ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4) ===> {}"] ;
+4377609936 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+4377611280 [shape=rect] [label="pivot = array[randint(0, len(array) - 1)]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4377611344 [shape=rect] [label="Loop item in array"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+4377611408 [shape=diamond] [label="item < pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4377611472 [shape=parallelogram] [label="low.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4377611536 [shape=diamond] [label="item == pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4377611664 [shape=parallelogram] [label="same.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4377611728 [shape=diamond] [label="item > pivot"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4377611792 [shape=parallelogram] [label="high.append(item)"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4377611856 [shape=ellipse] [label="quicksort(low) + same + quicksort(high)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4377611600 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+4377609936 -> 4377611280 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4)"]
+4377611280 -> 4377611344   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"]
+4377611344 -> 4377611856 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4) -> ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4)"]
+4377611344 -> 4377611408   [source="@if_to_prev_node : ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4) -> ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8)"]
+4377611408 -> 4377611536 [color=red] [label=elif] [source="@if_or_if_to_elif : ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8) -> ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8)"]
+4377611536 -> 4377611728 [color=red] [label=elif] [source="@if_or_if_to_elif : ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8) -> ACNode(_info={'conditions': ['item > pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8)"]
+4377611472 -> 4377611344   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'low.append(item)'}, _type='STATEMENT', _indent=12) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"]
+4377611408 -> 4377611472 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': ['item < pivot'], 'type': 'IF'}, _type='CONDITIONS', _indent=8) -> ACNode(_info={'type': 'METHOD', 'value': 'low.append(item)'}, _type='STATEMENT', _indent=12)"]
+4377611664 -> 4377611344   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'same.append(item)'}, _type='STATEMENT', _indent=12) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"]
+4377611536 -> 4377611664 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': ['item == pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8) -> ACNode(_info={'type': 'METHOD', 'value': 'same.append(item)'}, _type='STATEMENT', _indent=12)"]
+4377611792 -> 4377611344   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'METHOD', 'value': 'high.append(item)'}, _type='STATEMENT', _indent=12) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4)"]
+4377611728 -> 4377611792 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': ['item > pivot'], 'type': 'ELIF'}, _type='CONDITIONS', _indent=8) -> ACNode(_info={'type': 'METHOD', 'value': 'high.append(item)'}, _type='STATEMENT', _indent=12)"]
+4377611856 -> 4377611600   [source="@prev_to_end : ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4) -> {}"]
 
 }

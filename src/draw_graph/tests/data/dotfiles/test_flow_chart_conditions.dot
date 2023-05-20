@@ -1,20 +1,17 @@
 digraph my_graph {
 bgcolor="white"
-4388091984 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
-4388085008 [shape=diamond] [label="len(array) < 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4388085584 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4388085264 [shape=rect] [label="low, same, high = [], [], []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4388092880 [shape=rect] [label="pivot = array[randint(0, len(array) - 1)]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4388085904 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4388091984 -> 4388085008  [source = "@if_to_prev_node : {} ===> ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4)"] ;
-
-4388085008 -> 4388085264  [source = "@if_to_next_sibling : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []'}, _type='STATEMENT', _indent=4)"] [color=red];
-{rank = same; 4388085008; 4388085584;}
-
-4388085584 -> 4388085904  [source = "@return_to_end : ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8) ===> {}"] ;
-
-4388085008 -> 4388085584 [label = True] [source = "@return_2 : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) ===> ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8)"] ;
-4388085264 -> 4388092880  [source = "@prev_to_current_same_indent : ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []'}, _type='STATEMENT', _indent=4) ===> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4)"] ;
-4388092880 -> 4388085904  [source = "@prev_to_end : ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4) ===> {}"] ;
+4377763344 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+4377763728 [shape=diamond] [label="len(array) < 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+4377763408 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+4377771024 [shape=rect] [label="low, same, high = [], [], []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4377765136 [shape=rect] [label="pivot = array[randint(0, len(array) - 1)]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+4377764816 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+4377763344 -> 4377763728   [source="@if_to_prev_node : {} -> ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4)"]
+4377763728 -> 4377771024 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) -> ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []'}, _type='STATEMENT', _indent=4)"]
+{rank=same; 4377763728; 4377763408;}
+4377763408 -> 4377764816   [source="@return_to_end : ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8) -> {}"]
+4377763728 -> 4377763408  [label=True] [source="@return_2 : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) -> ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8)"]
+4377771024 -> 4377765136   [source="@prev_to_current_same_indent : ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []'}, _type='STATEMENT', _indent=4) -> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4)"]
+4377765136 -> 4377764816   [source="@prev_to_end : ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4) -> {}"]
 
 }

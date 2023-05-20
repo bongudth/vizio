@@ -1,4 +1,5 @@
 import traceback
+from typing import Generator
 
 from src.analysis_code.constants.types import ASTNodeType
 from src.analysis_code.services.converters.comment_rules_converter import (
@@ -28,34 +29,27 @@ from src.analysis_code.services.converters.statement_method_rules_converter impo
 from src.logger.app_log import AppLog
 from src.utils.file_handler import read_file
 
-converters = [
-    ImportRulesConverter,
-    DefinitionRulesConverter,
-    ConditionRulesConverter,
-    LoopRulesConverter,
-    ReturnRulesConverter,
-    CommentRulesConverter,
-    StatementAssignRulesConverter,
-    StatementMethodRulesConverter,
-]
-
 
 class CoderReader:
+    converters = [
+        ImportRulesConverter,
+        DefinitionRulesConverter,
+        ConditionRulesConverter,
+        LoopRulesConverter,
+        ReturnRulesConverter,
+        CommentRulesConverter,
+        StatementAssignRulesConverter,
+        StatementMethodRulesConverter,
+    ]
+
     def parse_file(self, file_path):
-        return self.parse_lines(read_file(file_path))
+        return list(self.parse_lines(read_file(file_path)))
 
     def parse_string(self, source_code):
-        return self.parse_lines(source_code.split("\n"))
+        return list(self.parse_lines(source_code.split("\n")))
 
-    def parse_lines(self, lines):
-        results = []
-        for line in lines:
-            if not line.strip():
-                continue
-
-            if parsed_line := self.parse_line(line):
-                results.append(parsed_line)
-        return results
+    def parse_lines(self, lines) -> Generator[dict, None, None]:
+        return (self.parse_line(line) for line in lines if line.strip())
 
     @classmethod
     def parse_line(cls, line: str):
@@ -65,7 +59,7 @@ class CoderReader:
             "indent": len(line) - len(line.lstrip(" ")),
         }
         try:
-            for converter in converters:
+            for converter in cls.converters:
                 if not converter.can_handle(line):
                     continue
 
