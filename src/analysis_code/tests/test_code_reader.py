@@ -17,11 +17,13 @@ class TestCoderReader(TestCase):
                 "type": ASTNodeType.DEF.name,
                 "info": {"name": "test", "args": []},
                 "indent": 0,
+                "line_no": 1,
             },
             {
                 "type": ASTNodeType.STATEMENT.name,
                 "info": {"type": "METHOD", "value": "print('hello')"},
                 "indent": 4,
+                "line_no": 2,
             },
         ]
         coder_reader = CoderReader()
@@ -41,11 +43,13 @@ class TestCoderReader(TestCase):
                 "type": ASTNodeType.DEF.name,
                 "info": {"name": "test", "args": []},
                 "indent": 0,
+                "line_no": 1,
             },
             {
                 "type": ASTNodeType.STATEMENT.name,
                 "info": {"type": "METHOD", "value": "print('hello')"},
                 "indent": 4,
+                "line_no": 2,
             },
         ]
         coder_reader = CoderReader()

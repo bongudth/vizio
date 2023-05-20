@@ -3,7 +3,7 @@ from abc import ABC
 
 class BaseRulesConverter(ABC):
     KEYWORDS = []
-    DEBUG = True
+    DEBUG = False
     AST_NODE_TYPE = None
 
     @classmethod

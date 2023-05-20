@@ -36,11 +36,15 @@ class NodeTransformerHandler:
         return _TRANSFORMER_MAP.get(node.type, DefaultNode)
 
     def transform(self, node: DGNode) -> Dict[str, Any]:
-        if node.type in _IGNORE_TRANSFORMS:
+        print("transforming node", node)
+
+        if not node or node.type in _IGNORE_TRANSFORMS:
             return {}
-        transformer = self.get_transformer(node)
-        content = f"{transformer().transform(node)}\n"
+
+        transformer_class = self.get_transformer(node)
+        transformer = transformer_class()
+        content = f"{transformer.transform(node)}\n"
         return {
-            "node_id": id(node),
+            "node_id": transformer.node_id,
             "content": content,
         }

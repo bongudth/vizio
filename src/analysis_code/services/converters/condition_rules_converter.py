@@ -28,16 +28,24 @@ class ConditionRulesConverter(BaseRulesConverter):
     def handle_conditions_if(cls, sentence):
         if sentence[-1] == ":":
             striped_sentence = sentence.strip()
-            conditions = [striped_sentence[:-1].replace("if", "").strip()]
-            return {"conditions": conditions, "type": ConditionType.IF.name}
+            conditions = striped_sentence[:-1].replace("if", "").strip()
+            return {
+                "conditions": conditions,
+                "value": conditions,
+                "type": ConditionType.IF.name,
+            }
         return None
 
     @classmethod
     def handle_conditions_elif(cls, sentence):
         if sentence[-1] == ":":
             striped_sentence = sentence.strip()
-            conditions = [striped_sentence.replace("elif", "")[:-1].strip()]
-            return {"conditions": conditions, "type": ConditionType.ELIF.name}
+            conditions = striped_sentence.replace("elif", "")[:-1].strip()
+            return {
+                "conditions": conditions,
+                "value": conditions,
+                "type": ConditionType.ELIF.name,
+            }
         return None
 
     @classmethod

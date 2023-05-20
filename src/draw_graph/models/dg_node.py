@@ -11,7 +11,7 @@ IGNORE_INFO_TYPES = [ConditionType.ELSE.name]
 
 class DGNode:
     def __init__(self, data: Union[ACNode, None] = None):
-        self.id = id(self)
+        self.id = f"L{data.line_no}" if data else id(self)
         self.data = data or {}
         self.diagram_type = None
         self._prev_sibling = None
@@ -45,10 +45,14 @@ class DGNode:
         return getattr(self.data, "indent", 0)
 
     @property
+    def line_no(self) -> int:
+        return self.data.line_no if self.data else 0
+
+    @property
     def is_hidden(self) -> bool:
         return self.type in IGNORE_TYPES or self.info_type in IGNORE_INFO_TYPES
 
-    def from_string(self, string: str):
+    def from_string(self, string: str) -> "DGNode":
         self.data = literal_eval(string)
         return self
 

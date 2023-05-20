@@ -15,7 +15,7 @@ class ConditionNode(NodeTransformerBase):
     @property
     def label(self):
         conditions = self.node.info.get("conditions")
-        return ", ".join(conditions) if conditions else str(self.node.info)
+        return str(conditions) or str(self.node.info)
 
     @property
     def shape(self):

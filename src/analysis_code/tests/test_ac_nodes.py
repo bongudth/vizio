@@ -12,6 +12,7 @@ class TestCaseACNodes(TestCase):
                 "value": "pivot = array[randint(0, len(array) - 1)]",
             },
             "indent": 4,
+            "line_no": 0,
         }
         node = ACNode().from_dict(data)
         assert node.to_dict() == data

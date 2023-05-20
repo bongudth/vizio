@@ -31,7 +31,7 @@ class NodeConnection:
             self.build_label(self._label),
             self.build_source(self._source),
         ]
-        return f"{id(self._start)} -> {id(self._end)} {' '.join(fields)}"
+        return f"{self._start.id} -> {self._end.id} {' '.join(fields)}"
 
     def build_color(self) -> str:
         return f"[color={self._color}]" if self._color else ""

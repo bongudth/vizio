@@ -1,17 +1,17 @@
 digraph my_graph {
 bgcolor="white"
-4377763344 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
-4377763728 [shape=diamond] [label="len(array) < 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
-4377763408 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
-4377771024 [shape=rect] [label="low, same, high = [], [], []"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4377765136 [shape=rect] [label="pivot = array[randint(0, len(array) - 1)]"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
-4377764816 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4377763344 -> 4377763728   [source="@if_to_prev_node : {} -> ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4)"]
-4377763728 -> 4377771024 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) -> ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []'}, _type='STATEMENT', _indent=4)"]
-{rank=same; 4377763728; 4377763408;}
-4377763408 -> 4377764816   [source="@return_to_end : ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8) -> {}"]
-4377763728 -> 4377763408  [label=True] [source="@return_2 : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4) -> ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8)"]
-4377771024 -> 4377765136   [source="@prev_to_current_same_indent : ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []'}, _type='STATEMENT', _indent=4) -> ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4)"]
-4377765136 -> 4377764816   [source="@prev_to_end : ACNode(_info={'type': 'ASSIGN', 'value': 'pivot = array[randint(0, len(array) - 1)]'}, _type='STATEMENT', _indent=4) -> {}"]
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L0 [shape=diamond] [label="['len(array) < 2']"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L0 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L0 [shape=rect] [label="low, same, high = [], [], []
+pivot = array[randint(0, len(array) - 1)]
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L0 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+4378234640 -> L0   [source="@if_to_prev_node : {} -> ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=0)"]
+L0 -> L0 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=0) -> ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []\npivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=0)"]
+{rank=same; L0; L0;}
+L0 -> 4378243088   [source="@return_to_end : ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8, _line_no=0) -> {}"]
+L0 -> L0  [label=True] [source="@return_2 : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=0) -> ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8, _line_no=0)"]
+L0 -> 4378243088   [source="@prev_to_end : ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []\npivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=0) -> {}"]
 
 }

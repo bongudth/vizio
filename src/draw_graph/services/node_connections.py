@@ -48,7 +48,11 @@ class NodeConnectionsHandler:
         result = ""
         node_connections = []
         def_indent = -1
-        for i, node in enumerate(self.nodes):
+        len(self.nodes)
+        node = None
+        i = 0
+        while node != self.nodes[-1]:
+            node = self.nodes[i]
             text = ""
             connections = None
             response = None
@@ -93,6 +97,7 @@ class NodeConnectionsHandler:
             result += self._extract_text_from_connections(connections, response)
             if connections:
                 node_connections.extend(connections)
+            i += 1
         if def_indent != -1:
             result += "}\n"
         return dict(text=result, node_connections=node_connections)

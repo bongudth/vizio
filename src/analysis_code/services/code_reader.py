@@ -49,14 +49,19 @@ class CoderReader:
         return list(self.parse_lines(source_code.split("\n")))
 
     def parse_lines(self, lines) -> Generator[dict, None, None]:
-        return (self.parse_line(line) for line in lines if line.strip())
+        return (
+            self.parse_line(line, line_no + 1)
+            for line_no, line in enumerate(lines)
+            if line.strip()
+        )
 
     @classmethod
-    def parse_line(cls, line: str):
+    def parse_line(cls, line: str, line_no: int) -> dict:
         response = {
             "type": ASTNodeType.UNKNOWN.name,
             "info": {},
             "indent": len(line) - len(line.lstrip(" ")),
+            "line_no": line_no,
         }
         try:
             for converter in cls.converters:
