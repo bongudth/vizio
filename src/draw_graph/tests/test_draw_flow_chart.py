@@ -1,6 +1,7 @@
 import os
 from unittest import TestCase
 
+from constants import SRC_DIR
 from src.draw_graph.services.dotfile_creator import DotfileCreator
 from src.utils.file_handler import read_file, write_file
 
@@ -8,7 +9,7 @@ from src.utils.file_handler import read_file, write_file
 class TestDrawFlowChart(TestCase):
     current_dir = os.path.abspath(os.path.dirname(__file__))
     test_dir = os.path.abspath(os.path.dirname(current_dir))
-    test_data_dir = os.path.join(test_dir, "tests/data")
+    test_data_dir = os.path.join(SRC_DIR, "analysis_code/tests/data/output")
     dotfiles_path = "data/dotfiles"
     dotfiles_dir = os.path.join(current_dir, dotfiles_path)
 
