@@ -18,8 +18,7 @@ class TestDrawFlowChart(TestCase):
             },
         ]
         dot_file_creator = DotfileCreator(lines)
-        content = dot_file_creator.generate()
-        print(content)
+        dot_file_creator.generate()
 
     def test_draw_comments(self):
         lines = [

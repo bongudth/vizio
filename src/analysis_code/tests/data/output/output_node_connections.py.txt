@@ -80,31 +80,17 @@
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'handler = LoopConnection(node)'}, 'indent': 16, 'line_no': 95}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'connections, _ = handler.handle()'}, 'indent': 16, 'line_no': 96}
 {'type': 'CONDITIONS', 'info': {'conditions': 'NodeType.is_end(node)', 'value': 'NodeType.is_end(node)', 'type': 'ELIF'}, 'indent': 12, 'line_no': 98}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'connections = ['}, 'indent': 16, 'line_no': 99}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'NodeConnection(node.prev_node, node, source="@prev_to_end")'}, 'indent': 20, 'line_no': 100}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 16, 'line_no': 101}
+{'type': 'STATEMENT', 'info': {'type': 'BLOCK', 'value': '                connections = [\n\n                    NodeConnection(node.prev_node, node, source="@prev_to_end")\n\n                ]\n'}, 'indent': 16, 'line_no': 99}
 {'type': 'CONDITIONS', 'info': {'conditions': 'NodeType.is_condition(node)', 'value': 'NodeType.is_condition(node)', 'type': 'ELIF'}, 'indent': 12, 'line_no': 103}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'handler = ConditionConnector(node)'}, 'indent': 16, 'line_no': 104}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'connections, _ = handler.handle()'}, 'indent': 16, 'line_no': 105}
 {'type': 'CONDITIONS', 'info': {'conditions': 'node.prev_node and node.prev_node.indent == node.indent', 'value': 'node.prev_node and node.prev_node.indent == node.indent', 'type': 'ELIF'}, 'indent': 12, 'line_no': 107}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'connections = ['}, 'indent': 16, 'line_no': 108}
-{'type': 'STATEMENT', 'info': {'type': 'METHOD', 'value': 'NodeConnection('}, 'indent': 20, 'line_no': 109}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'node.prev_node, node, source="@prev_to_current_same_indent"'}, 'indent': 24, 'line_no': 110}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 20, 'line_no': 111}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 16, 'line_no': 112}
+{'type': 'STATEMENT', 'info': {'type': 'BLOCK', 'value': '                connections = [\n\n                    NodeConnection(\n\n                        node.prev_node, node, source="@prev_to_current_same_indent"\n\n                    )\n\n                ]\n'}, 'indent': 16, 'line_no': 108}
 {'type': 'CONDITIONS', 'info': {'conditions': 'NodeType.is_return(node)', 'value': 'NodeType.is_return(node)', 'type': 'ELIF'}, 'indent': 12, 'line_no': 114}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])'}, 'indent': 16, 'line_no': 115}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'connections = response.get("connections", [])'}, 'indent': 16, 'line_no': 116}
 {'type': 'CONDITIONS', 'info': {'conditions': 'node.parent and cls.nodes[i - 1] == node.parent', 'value': 'node.parent and cls.nodes[i - 1] == node.parent', 'type': 'ELIF'}, 'indent': 12, 'line_no': 118}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'connections = ['}, 'indent': 16, 'line_no': 119}
-{'type': 'STATEMENT', 'info': {'type': 'METHOD', 'value': 'NodeConnection('}, 'indent': 20, 'line_no': 120}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 24, 'line_no': 121}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 24, 'line_no': 122}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'label="True",'}, 'indent': 24, 'line_no': 123}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'source="@parent_to_child",'}, 'indent': 24, 'line_no': 124}
-{'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'color="green",'}, 'indent': 24, 'line_no': 125}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 20, 'line_no': 126}
-{'type': 'UNKNOWN', 'info': {}, 'indent': 16, 'line_no': 127}
+{'type': 'STATEMENT', 'info': {'type': 'BLOCK', 'value': '                connections = [\n\n                    NodeConnection(\n\n                        node.parent,\n\n                        node,\n\n                        label="True",\n\n                        source="@parent_to_child",\n\n                        color="green",\n\n                    )\n\n                ]\n'}, 'indent': 16, 'line_no': 119}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'result += text or ""'}, 'indent': 12, 'line_no': 129}
 {'type': 'STATEMENT', 'info': {'type': 'ASSIGN', 'value': 'result += cls.extract_text_from_connections(connections, response)'}, 'indent': 12, 'line_no': 130}
 {'type': 'CONDITIONS', 'info': {'conditions': 'connections', 'value': 'connections', 'type': 'IF'}, 'indent': 12, 'line_no': 131}

@@ -37,8 +37,6 @@ class NodeTransformerHandler:
         return _TRANSFORMER_MAP.get(node.type, DefaultNode)
 
     def transform(self, node: DGNode) -> Dict[str, Any]:
-        print("transforming node", node)
-
         if not node or node.type in _IGNORE_TRANSFORMS:
             return {}
 

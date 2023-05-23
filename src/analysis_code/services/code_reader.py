@@ -1,5 +1,5 @@
 import traceback
-from typing import Generator
+from typing import List
 
 from src.analysis_code.constants.types import ASTNodeType
 from src.analysis_code.services.converters.comment_rules_converter import (
@@ -48,12 +48,52 @@ class CoderReader:
     def parse_string(self, source_code):
         return list(self.parse_lines(source_code.split("\n")))
 
-    def parse_lines(self, lines) -> Generator[dict, None, None]:
-        return (
-            self.parse_line(line, line_no + 1)
-            for line_no, line in enumerate(lines)
-            if line.strip()
-        )
+    def parse_lines(self, lines):
+        line_no = 1
+        result = []
+        while line_no <= len(lines):
+            # Block array assignment
+            line = lines[line_no - 1]
+            parsed_result, line_no = self.handle_block_lines(lines, line, line_no)
+            if parsed_result:
+                result.extend(parsed_result)
+            elif line.strip():
+                result.append(self.parse_line(line, line_no))
+            line_no += 1
+
+        return result
+
+    def handle_block_lines(self, lines: List[str], line: str, line_no: int):
+        result = []
+        pair_characters = [("(", ")"), ("[", "]"), ("{", "}")]
+        indent = len(line) - len(line.lstrip(" "))
+        last_char = line.rstrip()[-1] if line.rstrip() else ""
+        print("last_char", last_char)
+        for pair_character in pair_characters:
+            if line.rstrip() and last_char == pair_character[0]:
+                block_lines = []
+                start_line_no = line_no
+                while line.rstrip() and line_no <= len(lines):
+                    line = lines[line_no - 1]
+                    block_lines.append(line)
+                    if line.rstrip()[-1] == pair_character[1]:
+                        break
+
+                    line_no += 1
+
+                if block_lines:
+                    result.append(
+                        {
+                            "type": ASTNodeType.STATEMENT.name,
+                            "info": {
+                                "type": "BLOCK",
+                                "value": "\n".join(block_lines),
+                            },
+                            "indent": indent,
+                            "line_no": start_line_no,
+                        }
+                    )
+        return result, line_no
 
     @classmethod
     def parse_line(cls, line: str, line_no: int) -> dict:

@@ -1,3 +1,6 @@
+src/draw_graph/tests/data/dotfiles/
+src/analysis_code/tests/data/output/
+
 # Idea
 .idea/
 

@@ -30,7 +30,11 @@ class DGGraph:
                     nodes, node, node_index
                 )
 
-            if node.type in {NodeType.COMMENT.name, NodeType.UNKNOWN.name}:
+            if node.type in {
+                NodeType.COMMENT.name,
+                NodeType.UNKNOWN.name,
+                NodeType.IGNORE.name,
+            }:
                 node_index += 1
                 continue
 
@@ -46,7 +50,6 @@ class DGGraph:
         label = ""
         accepted_types = {NodeType.STATEMENT.name, NodeType.COMMENT.name}
         current_idx = idx
-        print("MERGE CONSECUTIVE STATEMENT NODES", node)
         while current_idx < len(nodes):
             p_node: DGNode = nodes[current_idx]
             if p_node.type == "COMMENT":
