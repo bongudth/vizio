@@ -40,7 +40,9 @@ class DGGraph:
 
             full_nodes.append(append_node)
             node_index += 1
-        full_nodes.append(DGNode().to_diagram_type(NodeType.END))
+        end_node = DGNode().to_diagram_type(NodeType.END)
+        end_node.set_id(999999)
+        full_nodes.append(end_node)
 
         return full_nodes
 

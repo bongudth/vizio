@@ -20,6 +20,9 @@ class DGNode:
         self._next_node = None
         self.parent = None
 
+    def set_id(self, id: int):
+        self.id = f"L{id}"
+
     def set_parent(self, parent=None):
         self.parent = parent
 

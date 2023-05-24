@@ -30,8 +30,8 @@ class NodeTransformerBase:
         return params
 
     def _get_render_params(self) -> Dict[str, Any]:
-        self.node_id = self.node.line_no if self.node else id(self.node)
-        render_params = {"id": f"L{self.node_id}"}
+        self.node_id = self.node.id
+        render_params = {"id": f"{self.node_id}"}
         if self.shape:
             render_params["shape"] = f"[shape={self.shape}]"
         if self.color:

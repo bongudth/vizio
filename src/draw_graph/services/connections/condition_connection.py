@@ -42,7 +42,15 @@ class ConditionConnector(BaseConnectionHandler):
 
     @classmethod
     def _connect_if_nodes(cls, node: "DGNode") -> List[NodeConnection]:
-        connections = [NodeConnection(node.prev_node, node, source="@if_to_prev_node")]
+        if (
+            not DGNode.is_empty(node.prev_sibling)
+            and node.prev_sibling.type == NodeType.LOOP
+        ):
+            connections = []
+        else:
+            connections = [
+                NodeConnection(node.prev_node, node, source="@if_to_prev_node")
+            ]
         connections += cls._connect_if_elif_nodes(node)
         connections += cls._connect_out_scope_node(node)
         return connections
