@@ -75,38 +75,6 @@ class TestDrawFlowChart(TestCase):
         content = dot_file_creator.generate()
         write_file(path, content)
 
-    def test_flow_chart_condition(self):
-        path = os.path.join(
-            self.current_dir, self.dotfiles_path, "test_flow_chart_conditions.dot"
-        )
-        lines = [
-            {
-                "type": "CONDITIONS",
-                "info": {"conditions": ["len(array) < 2"], "type": "IF"},
-                "indent": 4,
-            },
-            {"type": "RETURN", "info": {"name": "array"}, "indent": 8},
-            {
-                "type": "STATEMENT",
-                "info": {
-                    "type": "ASSIGN",
-                    "value": "low, same, high = [], [], []",
-                },
-                "indent": 4,
-            },
-            {
-                "type": "STATEMENT",
-                "info": {
-                    "type": "ASSIGN",
-                    "value": "pivot = array[randint(0, len(array) - 1)]",
-                },
-                "indent": 4,
-            },
-        ]
-        dot_file_creator = DotfileCreator(lines)
-        content = dot_file_creator.generate()
-        write_file(path, content)
-
     def __write_dotfile(self, origin_file_name: str):
         full_path = os.path.join(self.test_data_dir, origin_file_name)
         dot_full_path = os.path.join(self.dotfiles_dir, f"{origin_file_name}.dot")

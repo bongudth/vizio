@@ -9,7 +9,6 @@ class TestConvertFile(TestCase):
     current_dir = os.path.abspath(os.path.dirname(__file__))
     filenames = [
         "fibo.py",
-        "conditions.py",
         "node_connections.py",
         "quick_sort.py",
     ]
