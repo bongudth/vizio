@@ -1,13 +1,13 @@
 digraph my_graph {
 bgcolor="white"
-4355294544 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L0 [shape=diamond] [label="['len(array) < 2']"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L0 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 L0 [shape=rect] [label="low, same, high = [], [], []
 pivot = array[randint(0, len(array) - 1)]
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4355294544 -> L0   [source="@if_to_prev_node : {} -> ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=0)"]
+L0 -> L0   [source="@if_to_prev_node : {} -> ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=0)"]
 L0 -> L0 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': ['len(array) < 2'], 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=0) -> ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []\npivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=0)"]
 {rank=same; L0; L0;}
 L0 -> L999999   [source="@return_to_end : ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8, _line_no=0) -> {}"]

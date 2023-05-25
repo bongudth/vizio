@@ -1,7 +1,7 @@
 digraph my_graph {
 bgcolor="white"
-4355307984 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L7 [shape=diamond] [label="len(array) < 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L8 [shape=ellipse] [label="array"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 L10 [shape=rect] [label="low, same, high = [], [], []
@@ -21,7 +21,7 @@ L29 [shape=ellipse] [label="quicksort(low) + same + quicksort(high)"] [type="RET
 L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
 subgraph cluster_quicksort {
 label = "quicksort";
-
+}L0 -> L7   [source="@if_to_prev_node : {} -> ACNode(_info={'conditions': 'len(array) < 2', 'value': 'len(array) < 2', 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=7)"]
 L7 -> L10 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': 'len(array) < 2', 'value': 'len(array) < 2', 'type': 'IF'}, _type='CONDITIONS', _indent=4, _line_no=7) -> ACNode(_info={'type': 'ASSIGN', 'value': 'low, same, high = [], [], []\npivot = array[randint(0, len(array) - 1)]\n'}, _type='STATEMENT', _indent=4, _line_no=10)"]
 {rank=same; L7; L8;}
 L8 -> L999999   [source="@return_to_end : ACNode(_info={'name': 'array'}, _type='RETURN', _indent=8, _line_no=8) -> {}"]
@@ -37,5 +37,6 @@ L23 -> L15   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIG
 L22 -> L23 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'item == pivot', 'value': 'item == pivot', 'type': 'ELIF'}, _type='CONDITIONS', _indent=8, _line_no=22) -> ACNode(_info={'type': 'ASSIGN', 'value': 'same.append(item)\n'}, _type='STATEMENT', _indent=12, _line_no=23)"]
 L25 -> L15   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'high.append(item)\n'}, _type='STATEMENT', _indent=12, _line_no=25) -> ACNode(_info={'item': 'item', 'list': 'array'}, _type='LOOP', _indent=4, _line_no=15)"]
 L24 -> L25 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'conditions': 'item > pivot', 'value': 'item > pivot', 'type': 'ELIF'}, _type='CONDITIONS', _indent=8, _line_no=24) -> ACNode(_info={'type': 'ASSIGN', 'value': 'high.append(item)\n'}, _type='STATEMENT', _indent=12, _line_no=25)"]
-}
+L29 -> L999999   [source="@prev_to_end : ACNode(_info={'name': 'quicksort(low) + same + quicksort(high)'}, _type='RETURN', _indent=4, _line_no=29) -> {}"]
+
 }

@@ -1,15 +1,16 @@
 digraph my_graph {
 bgcolor="white"
-4355309328 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L18 [shape=rect] [label="nodes: List[DGNode] = []
 connections: List[NodeConnection] = []
 tree = None
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L23 [shape=rect] [label="filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))
 self.__class__.nodes = filtered_nodes
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L33 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
 L34 [shape=diamond] [label="i > 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L35 [shape=rect] [label="cls.nodes[i].prev_node = cls.nodes[i - 1]
@@ -28,6 +29,7 @@ L46 [shape=rect] [label="Loop i in range(len(cls.nodes))"] [type="LOOP"] [style=
 L47 [shape=rect] [label="cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L60 [shape=rect] [label="parent_node = node.prev_node
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L61 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
@@ -38,6 +40,7 @@ L64 [shape=rect] [label="parent_node = parent_node.prev_node
 L65 [shape=diamond] [label="not parent_node"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
 L67 [shape=ellipse] [label="parent_node"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L77 [shape=rect] [label="result = ''
 node_connections = []
 def_indent = -1
@@ -120,6 +123,7 @@ L134 [shape=rect] [label="result += '}'
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L135 [shape=ellipse] [label="dict(text=result, node_connections=node_connections)"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 
+L0 [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
 L139 [shape=rect] [label="text = response['text'] + '\n' if response else ''
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L140 [shape=diamond] [label="not connections"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
@@ -128,11 +132,12 @@ L142 [shape=rect] [label="text += '\n'.join([connection.to_dot() for connection 
 "] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
 L143 [shape=ellipse] [label="text"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
 L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
-4355309328 -> L18 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'nodes: List[DGNode] = []\nconnections: List[NodeConnection] = []\ntree = None\n'}, _type='STATEMENT', _indent=4, _line_no=18)"]
 subgraph cluster___init__ {
 label = "__init__";
-
-}
+}L0 -> L23 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))\nself.__class__.nodes = filtered_nodes\n'}, _type='STATEMENT', _indent=8, _line_no=23)"]
+subgraph cluster_parse_relationship_tree {
+label = "parse_relationship_tree";
+}L0 -> L33   [source="@prev_to_loop : {} -> ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33)"]
 L33 -> L39 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33) -> ACNode(_info={'item': 'node', 'list': 'cls.nodes'}, _type='LOOP', _indent=8, _line_no=39)"]
 L33 -> L34   [source="@if_to_prev_node : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33) -> ACNode(_info={'conditions': 'i > 0', 'value': 'i > 0', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=34)"]
 L35 -> L33   [source="@last_child_to_next_sibling : ACNode(_info={'type': 'ASSIGN', 'value': 'cls.nodes[i].prev_node = cls.nodes[i - 1]\n'}, _type='STATEMENT', _indent=16, _line_no=35) -> ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=33)"]
@@ -151,7 +156,7 @@ L44 -> L46   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': '
 L46 -> L47 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'item': 'i', 'list': 'range(len(cls.nodes))'}, _type='LOOP', _indent=8, _line_no=46) -> ACNode(_info={'type': 'ASSIGN', 'value': 'cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])\n'}, _type='STATEMENT', _indent=12, _line_no=47)"]
 subgraph cluster__get_parent_node {
 label = "_get_parent_node";
-
+}L0 -> L60 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'parent_node = node.prev_node\n'}, _type='STATEMENT', _indent=8, _line_no=60)"]
 L60 -> L61   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value': 'parent_node = node.prev_node\n'}, _type='STATEMENT', _indent=8, _line_no=60) -> ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=61)"]
 L61 -> L63 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=61) -> ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63)"]
 {rank=same; L61; L62;}
@@ -164,7 +169,9 @@ L64 -> L65   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value'
 L65 -> L63   [source="@last_child_to_next_sibling : ACNode(_info={'conditions': 'not parent_node', 'value': 'not parent_node', 'type': 'IF'}, _type='CONDITIONS', _indent=12, _line_no=65) -> ACNode(_info={'item': 'node.indent', 'list': 'parent_node.indent'}, _type='LOOP', _indent=8, _line_no=63)"]
 {rank=same; L65; L67;}
 L67 -> L999999   [source="@return_to_end : ACNode(_info={'name': 'parent_node'}, _type='RETURN', _indent=8, _line_no=67) -> {}"]
-}
+subgraph cluster_render {
+label = "render";
+}L0 -> L77 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'result = ''\nnode_connections = []\ndef_indent = -1\n'}, _type='STATEMENT', _indent=8, _line_no=77)"]
 L77 -> L80   [source="@prev_to_loop : ACNode(_info={'type': 'ASSIGN', 'value': 'result = ''\nnode_connections = []\ndef_indent = -1\n'}, _type='STATEMENT', _indent=8, _line_no=77) -> ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80)"]
 L80 -> L133 [color=red] [label=out] [source="@loop_to_next : ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80) -> ACNode(_info={'conditions': 'def_indent != -1', 'value': 'def_indent != -1', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=133)"]
 L80 -> L81 [color=green] [label=True] [source="@parent_to_child : ACNode(_info={'item': 'i,', 'list': 'in enumerate(cls.nodes)'}, _type='LOOP', _indent=8, _line_no=80) -> ACNode(_info={'type': 'ASSIGN', 'value': 'text = ''\nconnections = None\nresponse = None\nout_def_method = node.indent <= def_indent\n'}, _type='STATEMENT', _indent=12, _line_no=81)"]
@@ -202,12 +209,13 @@ L133 -> L134 [color=green] [label=True] [source="@parent_to_child : ACNode(_info
 L135 -> L999999   [source="@return_to_end : ACNode(_info={'name': 'dict(text=result, node_connections=node_connections)'}, _type='RETURN', _indent=8, _line_no=135) -> {}"]
 subgraph cluster_extract_text_from_connections {
 label = "extract_text_from_connections";
-
+}L0 -> L139 [color=green] [label=True] [source="@parent_to_child : {} -> ACNode(_info={'type': 'ASSIGN', 'value': 'text = response['text'] + '\\n' if response else ''\n'}, _type='STATEMENT', _indent=8, _line_no=139)"]
 L139 -> L140   [source="@if_to_prev_node : ACNode(_info={'type': 'ASSIGN', 'value': 'text = response['text'] + '\\n' if response else ''\n'}, _type='STATEMENT', _indent=8, _line_no=139) -> ACNode(_info={'conditions': 'not connections', 'value': 'not connections', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=140)"]
 L140 -> L142 [color=red]  [source="@if_to_next_sibling : ACNode(_info={'conditions': 'not connections', 'value': 'not connections', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=140) -> ACNode(_info={'type': 'ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])\n'}, _type='STATEMENT', _indent=8, _line_no=142)"]
 {rank=same; L140; L141;}
 L141 -> L999999   [source="@return_to_end : ACNode(_info={'name': ''''}, _type='RETURN', _indent=12, _line_no=141) -> {}"]
 L140 -> L141  [label=True] [source="@return_2 : ACNode(_info={'conditions': 'not connections', 'value': 'not connections', 'type': 'IF'}, _type='CONDITIONS', _indent=8, _line_no=140) -> ACNode(_info={'name': ''''}, _type='RETURN', _indent=12, _line_no=141)"]
 L142 -> L143   [source="@prev_to_current_same_indent : ACNode(_info={'type': 'ASSIGN', 'value': 'text += '\\n'.join([connection.to_dot() for connection in connections])\n'}, _type='STATEMENT', _indent=8, _line_no=142) -> ACNode(_info={'name': 'text'}, _type='RETURN', _indent=8, _line_no=143)"]
-}
+L143 -> L999999   [source="@prev_to_end : ACNode(_info={'name': 'text'}, _type='RETURN', _indent=8, _line_no=143) -> {}"]
+
 }

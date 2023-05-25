@@ -19,12 +19,12 @@ class DGGraph:
             self._node_connections.parse_relationship_tree()
 
     def __create_dg_nodes(self, nodes: List[ACNode]) -> List[DGNode]:
-        full_nodes = [DGNode().to_diagram_type(NodeType.START)]
-        # full_nodes.extend([DGNode(node) for node in nodes])
+        full_nodes = []
         node_index = 0
         while nodes and node_index < len(nodes):
             node = nodes[node_index]
             append_node = DGNode(node)
+
             if node.type == NodeType.STATEMENT.name:
                 append_node, node_index = self.__merge_consecutive_statement_nodes(
                     nodes, node, node_index
@@ -39,6 +39,12 @@ class DGGraph:
                 continue
 
             full_nodes.append(append_node)
+
+            if node.type == NodeType.DEF.name:
+                start_node = DGNode().to_diagram_type(NodeType.START)
+                start_node.set_id(0)
+                full_nodes.append(start_node)
+
             node_index += 1
         end_node = DGNode().to_diagram_type(NodeType.END)
         end_node.set_id(999999)
