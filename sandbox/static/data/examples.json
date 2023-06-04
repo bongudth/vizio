@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Quick sort",
+    "file": "quick_sort.py"
+  },
+  {
+    "id": 2,
+    "name": "Insertion sort",
+    "file": "insertion_sort.py"
+  },
+  {
+    "id": 3,
+    "name": "Selection sort",
+    "file": "selection_sort.py"
+  },
+  {
+    "id": 4,
+    "name": "Bubble sort",
+    "file": "bubble_sort.py"
+  },
+  {
+    "id": 5,
+    "name": "Counting sort",
+    "file": "counting_sort.py"
+  },
+  {
+    "id": 6,
+    "name": "Bucket sort",
+    "file": "bucket_sort.py"
+  },
+  {
+    "id": 7,
+    "name": "Shell sort",
+    "file": "shell_sort.py"
+  }
+]
