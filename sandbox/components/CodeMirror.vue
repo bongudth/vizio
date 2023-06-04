@@ -2,6 +2,7 @@
   <codemirror
     :model-value="code"
     placeholder="Code goes here..."
+    :style="{ height: '100%' }"
     :autofocus="true"
     :extensions="extensions"
     @change="formValue = $event"
