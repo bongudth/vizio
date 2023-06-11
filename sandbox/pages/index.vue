@@ -4,7 +4,7 @@
       <CodeExample />
       <CodeMirror :code="code" />
     </div>
-    <button class="button" @click="onSubmit">Generate</button>
+    <button class="button" @click="generateDot">Generate</button>
     <div class="container">
       <FlowChart :dot="dot" />
     </div>
@@ -47,19 +47,14 @@ export default {
       const filePath = `/data/examples/${this.example.file}`
       readFile(filePath).then((code) => {
         this.code = code
+        this.generateDot()
       })
     },
 
-    onSubmit() {
+    generateDot() {
       this.$axios
         .$post('/generate_viz_devs', { source_code: this.code })
-        .then((res) => {
-          console.log(res)
-          this.dot = res
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+        .then((res) => (this.dot = res.results))
     },
   },
 }
