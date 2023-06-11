@@ -4,8 +4,9 @@
       <CodeExample />
       <CodeMirror :code="code" />
     </div>
+    <button class="button" @click="onSubmit">Generate</button>
     <div class="container">
-      <FlowChart />
+      <FlowChart :dot="dot" />
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
   data() {
     return {
       code: '',
+      dot: '',
     }
   },
 
@@ -47,6 +49,18 @@ export default {
         this.code = code
       })
     },
+
+    onSubmit() {
+      this.$axios
+        .$post('/generate_viz_devs', { source_code: this.code })
+        .then((res) => {
+          console.log(res)
+          this.dot = res
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
 }
 </script>
@@ -61,6 +75,7 @@ body {
 }
 
 .wrapper {
+  position: relative;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -73,5 +88,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
