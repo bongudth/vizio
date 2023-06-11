@@ -3,14 +3,16 @@ import os
 from logging.handlers import RotatingFileHandler
 
 root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-log_path = os.path.join(root, "logs", "my_log.log")
+log_dir = os.path.join(root, "logs")
+log_path = os.path.join(log_dir, "my_log.log")
 formatter = logging.Formatter("[%(levelname)s] %(asctime)s - %(message)s")
 
 try:
+    os.makedirs(log_dir, exist_ok=True)
     file_handler = RotatingFileHandler(log_path, maxBytes=100000)
-except FileNotFoundError:
-    os.makedirs(os.path.dirname(log_path))
-    file_handler = RotatingFileHandler(log_path, maxBytes=100000)
+except OSError:
+    # AWS Lambda doesn't allow creating directories, so use /tmp instead
+    file_handler = RotatingFileHandler("/tmp/my_log.log", maxBytes=100000)
 
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(formatter)
