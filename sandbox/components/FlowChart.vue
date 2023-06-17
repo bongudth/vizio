@@ -46,6 +46,10 @@ export default {
 </script>
 
 <style>
+#flowchart {
+  border: 1px solid #1ca6e9;
+}
+
 #flowchart,
 svg {
   width: 100%;

@@ -35,6 +35,7 @@ export default {
 <style>
 .group-list {
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
 }
 </style>

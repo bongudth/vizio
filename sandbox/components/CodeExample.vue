@@ -1,7 +1,10 @@
 <template>
   <div class="example-list">
     <div v-for="(example, index) in examples" :key="index" class="example-item">
-      <button class="example-button" @click="setActive(index)">
+      <button
+        :class="['example-button', { active: index === active }]"
+        @click="setActive(index)"
+      >
         {{ example.id }}
       </button>
     </div>
@@ -17,6 +20,10 @@ export default {
   computed: {
     examples() {
       return this.$store.state.examples.list
+    },
+
+    active() {
+      return this.$store.state.examples.active
     },
   },
 

@@ -48,6 +48,16 @@ export default {
 
 <style>
 .cm-editor {
+  background-color: white;
+  border: 1px solid #1ca6e9;
   height: 100%;
+}
+
+.ͼ1.cm-focused {
+  outline: none;
+}
+
+.ͼ2 .cm-gutters {
+  background-color: #e6f4ff;
 }
 </style>
