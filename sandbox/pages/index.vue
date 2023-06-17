@@ -6,6 +6,7 @@
     </div>
     <button class="button" @click="generateDot">Generate</button>
     <div class="container">
+      <DownloadGroup :dot="dot" />
       <FlowChart :dot="dot" />
     </div>
   </div>
