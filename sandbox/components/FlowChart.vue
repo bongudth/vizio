@@ -20,6 +20,7 @@ export default {
         if (dotString === '') return
 
         this.generateSvg(dotString)
+        this.generatePanZoom()
       },
     },
   },
@@ -29,6 +30,16 @@ export default {
       // eslint-disable-next-line no-undef
       const svg = Viz(dotString, { format: 'svg' })
       document.getElementById('flowchart').innerHTML = svg
+    },
+
+    generatePanZoom() {
+      // eslint-disable-next-line no-undef
+      svgPanZoom('#flowchart svg', {
+        zoomEnabled: true,
+        controlIconsEnabled: true,
+        fit: true,
+        center: true,
+      })
     },
   },
 }

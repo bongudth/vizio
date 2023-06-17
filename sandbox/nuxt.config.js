@@ -14,6 +14,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/viz.js/1.3.0/viz.js', type: 'text/javascript', defer: true },
+      { src: 'https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js', type: 'text/javascript', defer: true },
     ],
   },
 
