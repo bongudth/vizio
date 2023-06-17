@@ -48,6 +48,8 @@ export default {
 <style>
 #flowchart {
   border: 1px solid #1ca6e9;
+  max-height: 100%;
+  overflow-y: scroll;
 }
 
 #flowchart,
