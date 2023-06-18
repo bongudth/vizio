@@ -1,6 +1,6 @@
 <template>
   <codemirror
-    :model-value="code"
+    :model-value="formValue"
     placeholder="Code goes here..."
     :style="{ height: '100%' }"
     :autofocus="true"

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <CodeExample />
-      <CodeMirror :code="code" />
+      <CodeMirror :code.sync="code" />
     </div>
     <div class="brand">vizio</div>
     <button class="button-generate" :disabled="isLoading" @click="generateDot">
