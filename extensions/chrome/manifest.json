@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "vizio",
+  "version": "1.0",
+  "description": "The system automatically generates a flowchart to visualize the code block",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "logo.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/main.js"
+      ]
+    }
+  ]
+}

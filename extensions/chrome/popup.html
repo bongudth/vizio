@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vizio</title>
+</head>
+
+<body>
+  <h1>vizio</h1>
+  <p>The system automatically generates a flowchart to visualize the code block</p>
+  <button onclick="goToVizio()">
+    Go to vizio
+  </button>
+
+  <script>
+    function goToVizio() {
+      console.log("abc")
+      chrome.tabs.create({
+        url: 'https://vizio.vercel.app/'
+      });
+    }
+  </script>
+</body>
+
+</html>
+
+<style>
+  body {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  h1 {
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 24px;
+    color: #1877f2;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    margin-top: -20px;
+  }
+
+  button {
+    background-color: white;
+    color: #1877f2;
+    border: 1px solid #1877f2;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #bae0ff;
+  }
+</style>

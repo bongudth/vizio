@@ -1,0 +1,19 @@
+{
+  "name": "chrome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cpy-cli": "^4.2.0",
+    "vite": "^4.3.9"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "build-extension": "cpy ./dist logo.png popup.html manifest.json ./shared"
+  },
+  "dependencies": {
+    "@viz-js/viz": "^3.0.1"
+  }
+}
