@@ -76,7 +76,7 @@ async function generateFlowchart(code) {
     });
 }
 
-async function createImage(dotContent) {
+function createImage(dotContent) {
   const viz = Viz.instance();
   viz.then(function (viz) {
     const svg = viz.renderSVGElement(dotContent);
