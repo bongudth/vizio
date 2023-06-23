@@ -6,18 +6,18 @@
   },
   {
     "id": 2,
-    "name": "Insertion sort",
-    "file": "insertion_sort.py"
+    "name": "Intersection",
+    "file": "intersection.py"
   },
   {
     "id": 3,
-    "name": "Selection sort",
-    "file": "selection_sort.py"
+    "name": "Lower upper decomposition",
+    "file": "lower_upper_decomposition.py"
   },
   {
     "id": 4,
-    "name": "Bubble sort",
-    "file": "bubble_sort.py"
+    "name": "Secant method",
+    "file": "secant_method.py"
   },
   {
     "id": 5,
