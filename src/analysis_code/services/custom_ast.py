@@ -1,7 +1,7 @@
 import ast
 from typing import List
 
-from analysis_code.models.ac_node import ACNode
+from src.analysis_code.models.ac_node import ACNode
 
 
 class CustomAstService:

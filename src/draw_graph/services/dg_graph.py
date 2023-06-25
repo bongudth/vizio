@@ -1,12 +1,12 @@
 from typing import Any, Dict, List, Optional, Tuple
 
-from logger.app_log import AppLog
 from src.analysis_code.constants.types import StatementType
 from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.services.graph_reporter import GraphReporter
 from src.draw_graph.services.node_connections import NodeConnectionsHandler
+from src.logger.app_log import AppLog
 
 
 class DGGraph:

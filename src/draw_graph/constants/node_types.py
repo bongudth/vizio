@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-from analysis_code.constants.types import ConditionType
+from src.analysis_code.constants.types import ConditionType
 
 
 # reference to the rule type src.analysis_code.constants.rule_type

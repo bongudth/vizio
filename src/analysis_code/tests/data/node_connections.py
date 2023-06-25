@@ -1,6 +1,5 @@
 from typing import Any, Dict, List, Union
 
-from logger.app_log import AppLog
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.models.node_connection import NodeConnection

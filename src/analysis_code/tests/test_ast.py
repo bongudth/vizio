@@ -3,7 +3,7 @@ import json
 import os
 from unittest import TestCase
 
-from analysis_code.services.visitors import PythonVisitor
+from src.analysis_code.services.visitors import PythonVisitor
 from utils.file_handler import write_file
 
 
