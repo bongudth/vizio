@@ -12,7 +12,7 @@ class DotfileBodyCreator:
         self.dg_graph = DGGraph(lines)
 
     def create(self) -> str:
-        return f'bgcolor="{self.background_color}"\n{self._build_nodes()}{self._build_node_connections()}'
+        return f'bgcolor="{self.background_color}"\nnode [fontname="courier"]\n{self._build_nodes()}{self._build_node_connections()}'
 
     def _build_nodes(self) -> str:
         result = ""

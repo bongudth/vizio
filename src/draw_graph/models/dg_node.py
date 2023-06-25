@@ -26,6 +26,12 @@ class DGNode:
     def set_parent(self, parent=None):
         self.parent = parent
 
+    def set_next_sibling(self, node: "DGNode"):
+        self.next_sibling = node
+
+    def set_prev_sibling(self, node: "DGNode"):
+        self.prev_sibling = node
+
     def to_diagram_type(self, node_type: NodeType):
         self.diagram_type = node_type
         return self
@@ -53,7 +59,13 @@ class DGNode:
 
     @property
     def is_hidden(self) -> bool:
-        return self.type in IGNORE_TYPES or self.info_type in IGNORE_INFO_TYPES
+        return any(
+            [
+                self.type in IGNORE_TYPES,
+                self.info_type in IGNORE_INFO_TYPES,
+                self.is_hidden_node,
+            ]
+        )
 
     def from_string(self, string: str) -> "DGNode":
         self.data = literal_eval(string)
@@ -108,8 +120,13 @@ class DGNode:
     def get_next_sibling(cls, node: "DGNode") -> Optional["DGNode"]:
         indent = node.indent
         while node.next_node:
-            if node.next_node.indent <= indent:
+            if (
+                not NodeType.is_start(node.next_node)
+                and node.next_node.indent == indent
+            ):
                 return node.next_node
+            if node.next_node.indent < indent:
+                return None
             node = node.next_node
 
     @property
@@ -126,3 +143,18 @@ class DGNode:
     @classmethod
     def is_empty(cls, node) -> bool:
         return not node or not node.data
+
+    @property
+    def is_hidden_node(self) -> bool:
+        if self.type == NodeType.RETURN:
+            return not self.info
+        return False
+
+    def get_last_child(self):
+        first_node = self.next_node
+        p_node = first_node
+        while p_node.next_sibling:
+            if not p_node.next_sibling:
+                return p_node
+            p_node = p_node.next_sibling
+        return p_node

@@ -14,6 +14,8 @@ class ASTNodeType(Enum):
     LOOP = auto()  # Loop statement node
     RETURN = auto()  # Return statement node
     COMMENT = auto()  # Comment node
+    EXPRESSION = auto()  # Expression node
+    RAISE = auto()  # Raise statement node
 
 
 class ConditionType(Enum):
@@ -33,3 +35,14 @@ class StatementType(Enum):
 
     ASSIGN = auto()
     METHOD = auto()
+    RAISE = auto()
+
+
+class LoopType(Enum):
+    """
+    Enumeration representing the different types of loops in an abstract syntax tree.
+    """
+
+    FOR = auto()
+    WHILE = auto()
+    UNKNOWN = auto()

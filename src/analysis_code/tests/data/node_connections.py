@@ -1,62 +1,33 @@
-"""
-Module for building node connections
-It takes a list of nodes and returns a string of dot code.
-"""
 from typing import Any, Dict, List, Union
 
+from logger.app_log import AppLog
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.models.node_connection import NodeConnection
-from src.draw_graph.services.connections.condition_connection import ConditionConnector
-from src.draw_graph.services.connections.def_connection import DefConnector
-from src.draw_graph.services.connections.loop_connection import LoopConnection
-from src.draw_graph.services.connections.return_connection import ReturnConnection
+from src.draw_graph.services.connections.condition_connector import ConditionConnector
+from src.draw_graph.services.connections.def_connector import DefConnector
+from src.draw_graph.services.connections.loop_connector import LoopConnector
+from src.draw_graph.services.connections.return_connector import ReturnConnector
 
 
-# It takes a list of nodes, and returns a string of dot code
-class NodeConnections:
-    nodes: List[DGNode] = []
-    connections: List[NodeConnection] = []
-    tree = None
-
+class NodeConnectionsHandler:
     def __init__(self, nodes: List[DGNode]):
+        self.nodes = []
+        self.connections = []
+        self.tree = None
         filtered_nodes = list(filter(lambda node: node.type != NodeType.COMMENT, nodes))
-        self.__class__.nodes = filtered_nodes
+        self.nodes = filtered_nodes
 
-    @classmethod
-    def parse_relationship_tree(cls):
-        """
-        For each node, set the previous node, next node, parent node, and anode
+    def parse_relationship_tree(self):
+        for i, node in enumerate(self.nodes):
+            node.prev_node = self.nodes[i - 1] if i > 0 else None
+            node.next_node = self.nodes[i + 1] if i + 1 < len(self.nodes) else None
 
-        :param cls: the class that the method is being called from
-        """
-        for i in range(len(cls.nodes)):
-            if i > 0:
-                cls.nodes[i].prev_node = cls.nodes[i - 1]
-            if i + 1 < len(cls.nodes):
-                cls.nodes[i].next_node = cls.nodes[i + 1]
+        [node.set_parent(self._get_parent_node(node)) for node in self.nodes]
+        [node.set_next_sibling(DGNode.get_next_sibling(node)) for node in self.nodes]
+        [node.set_prev_sibling(DGNode.get_prev_sibling(node)) for node in self.nodes]
 
-        for node in cls.nodes:
-            parent_node = cls._get_parent_node(node)
-            node.set_parent(parent_node)
-
-        for i in range(len(cls.nodes)):
-            cls.nodes[i].next_sibling = DGNode.get_next_sibling(cls.nodes[i])
-
-        for i in range(len(cls.nodes)):
-            cls.nodes[i].prev_sibling = DGNode.get_prev_sibling(cls.nodes[i])
-
-    @classmethod
-    def _get_parent_node(cls, node: DGNode) -> Union[DGNode, None]:
-        """
-        > Get the parent node of a node by going back to the previous node and checking if the
-        indentation is less than the current node's indentation
-
-        :param cls: The class that the method is being called on
-        :param node: The node to get the parent of
-        :type node: Node
-        :return: The parent node of the node passed in.
-        """
+    def _get_parent_node(self, node: DGNode) -> Union[DGNode, None]:
         parent_node = node.prev_node
         if not parent_node:
             return None
@@ -66,78 +37,65 @@ class NodeConnections:
                 break
         return parent_node
 
-    @classmethod
-    def render(cls) -> Dict[str, Any]:
-        """
-        It takes a list of nodes and returns a string of dot code
-
-        :param cls: The class that the method is being called on
-        :return: The result of the render method.
-        """
+    def render(self) -> Dict[str, Any]:
         result = ""
         node_connections = []
-        def_indent = -1
-        for i, node in enumerate(cls.nodes):
+        self.nodes[0]
+        end_node = self.nodes[-1]
+        node = None
+        i = 0
+        out_def_node = None
+        while node != self.nodes[-1]:
+            node = self.nodes[i]
             text = ""
-            connections = None
-            response = None
-            out_def_method = node.indent <= def_indent
-            if out_def_method:
-                def_indent = -1
+            connections = []
+            if node == out_def_node:
                 text += "}\n"
+                out_def_node = None
 
-            elif NodeType.is_definition(node):
-                def_indent = node.indent
+            if NodeType.is_definition(node):
                 handler = DefConnector(node)
-                _, text = handler.handle()
-
+                _connections, _text = handler.handle()
+                out_def_node = handler.get_out_def_node(end_node=end_node)
+                text += f"\n{_text}"
+                connections.extend(_connections)
             elif NodeType.is_loop(node):
-                handler = LoopConnection(node)
-                connections, _ = handler.handle()
-
-            elif NodeType.is_end(node):
-                connections = [
-                    NodeConnection(node.prev_node, node, source="@prev_to_end")
-                ]
-
+                handler = LoopConnector(node)
+                _connections, _ = handler.handle()
+                connections.extend(_connections)
+                handler.get_last_child()
             elif NodeType.is_condition(node):
                 handler = ConditionConnector(node)
                 connections, _ = handler.handle()
-
-            elif node.prev_node and node.prev_node.indent == node.indent:
-                connections = [
-                    NodeConnection(
-                        node.prev_node, node, source="@prev_to_current_same_indent"
-                    )
-                ]
-
             elif NodeType.is_return(node):
-                response = ReturnConnection.handle(node=node, end_node=cls.nodes[-1])
-                connections = response.get("connections", [])
-
-            elif node.parent and cls.nodes[i - 1] == node.parent:
-                connections = [
-                    NodeConnection(
-                        node.parent,
-                        node,
-                        label="True",
-                        source="@parent_to_child",
-                        color="green",
-                    )
+                handler = ReturnConnector(node)
+                connections, text = handler.handle(end_node=end_node)
+            elif (
+                node.next_node
+                and node.next_node.prev_sibling
+                and NodeType.is_loop(node.next_node.prev_sibling)
+            ):
+                connections = []
+            elif node.next_node and not any(
+                [
+                    NodeType.is_condition_elif(node.next_node),
+                    NodeType.is_end(node.next_node),
                 ]
-
+            ):
+                connections = [
+                    NodeConnection(node, node.next_node, source="@current_to_next")
+                ]
             result += text or ""
-            result += cls.extract_text_from_connections(connections, response)
+            result += self._extract_text_from_connections(connections)
+
             if connections:
                 node_connections.extend(connections)
-        if def_indent != -1:
-            result += "}"
+            i += 1
+
+        if out_def_node:
+            result += "}\n"
+
         return dict(text=result, node_connections=node_connections)
 
-    @classmethod
-    def extract_text_from_connections(cls, connections, response=None):
-        text = response["text"] + "\n" if response else ""
-        if not connections:
-            return ""
-        text += "\n".join([connection.to_dot() for connection in connections])
-        return text
+    def _extract_text_from_connections(self, connections: List[NodeConnection]):
+        return "\n".join([connection.to_dot() for connection in connections]) + "\n"

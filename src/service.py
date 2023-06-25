@@ -7,9 +7,22 @@ def generate_dot(source_code: str):
         raise ValueError("source_code is required!")
 
     code_reader = CoderReader()
-    results = code_reader.parse_string(source_code)
+    results = code_reader.parse_string(lines=source_code)
 
     dot_file_creator = DotfileCreator(results)
+    content = dot_file_creator.generate()
+
+    return content
+
+
+def generate_dot_v2(source_code: str):
+    if not source_code:
+        raise ValueError("source_code is required!")
+
+    code_reader = CoderReader()
+    results = code_reader.parse_string_from_ast(source_code)
+
+    dot_file_creator = DotfileCreator(lines=results)
     content = dot_file_creator.generate()
 
     return content

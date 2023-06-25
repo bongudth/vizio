@@ -1,3 +1,4 @@
+import ast
 import traceback
 from typing import List
 
@@ -26,6 +27,7 @@ from src.analysis_code.services.converters.statement_assign_rules_converter impo
 from src.analysis_code.services.converters.statement_method_rules_converter import (
     StatementMethodRulesConverter,
 )
+from src.analysis_code.services.visitors import PythonVisitor
 from src.logger.app_log import AppLog
 from src.utils.file_handler import read_file
 
@@ -48,6 +50,12 @@ class CoderReader:
     def parse_string(self, source_code):
         return list(self.parse_lines(source_code.split("\n")))
 
+    def parse_string_from_ast(self, source_code: str) -> List[dict]:
+        visitor = PythonVisitor()
+        visitor.visit(ast.parse(source_code))
+        json_data = [node.to_dict() for node in visitor.output]
+        return json_data
+
     def parse_lines(self, lines):
         line_no = 1
         result = []
@@ -68,7 +76,6 @@ class CoderReader:
         pair_characters = [("(", ")"), ("[", "]"), ("{", "}")]
         indent = len(line) - len(line.lstrip(" "))
         last_char = line.rstrip()[-1] if line.rstrip() else ""
-        print("last_char", last_char)
         for pair_character in pair_characters:
             if line.rstrip() and last_char == pair_character[0]:
                 block_lines = []

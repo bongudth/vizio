@@ -11,15 +11,15 @@ class NodeTransformerBase:
     Transform a dg_node to dotfile format
     """
 
-    def __init__(self):
-        self.node: Union[ACNode, None] = None
+    def __init__(self, node: "DGNode" = None):
+        self.node: Union[ACNode, None] = node
         self.content = ""
 
     def transform(self, node: "DGNode") -> str:
         self.node = node
-        params = self.get_params()
-        if params.get("is_hidden"):
+        if self.node.is_hidden:
             return ""
+        params = self.get_params()
         rendered_params: dict = params.get("render")
         return " ".join(str(s) for s in rendered_params.values() if s)
 

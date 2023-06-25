@@ -9,6 +9,7 @@ from src.draw_graph.services.node_transformers.default_node import DefaultNode
 from src.draw_graph.services.node_transformers.definition_node import DefinitionNode
 from src.draw_graph.services.node_transformers.end_node import EndNode
 from src.draw_graph.services.node_transformers.loop_node import LoopNode
+from src.draw_graph.services.node_transformers.raise_node import RaiseNode
 from src.draw_graph.services.node_transformers.return_node import ReturnNode
 from src.draw_graph.services.node_transformers.start_node import StartNode
 from src.draw_graph.services.node_transformers.statement_node import StatementNode
@@ -22,6 +23,7 @@ _TRANSFORMER_MAP = {
     NodeType.LOOP: LoopNode,
     NodeType.END: EndNode,
     NodeType.COMMENT: CommentNode,
+    NodeType.RAISE: RaiseNode,
 }
 
 _IGNORE_TRANSFORMS = {
@@ -44,6 +46,5 @@ class NodeTransformerHandler:
         transformer = transformer_class()
         content = f"{transformer.transform(node)}\n"
         return {
-            "node_id": transformer.node_id,
             "content": content,
         }

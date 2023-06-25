@@ -177,3 +177,9 @@ cython_debug/
 **/*.tfstate.backup
 *.tfplan
 .terraform.lock.hcl
+
+
+extensions/chrome/node_modules/
+sandbox/node_modules/
+sandbox/public/node_modules/
+.nuxt/

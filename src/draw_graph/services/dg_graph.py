@@ -1,5 +1,6 @@
 from typing import Any, Dict, List, Optional, Tuple
 
+from logger.app_log import AppLog
 from src.analysis_code.constants.types import StatementType
 from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
@@ -11,12 +12,13 @@ from src.draw_graph.services.node_connections import NodeConnectionsHandler
 class DGGraph:
     def __init__(self, lines: Optional[str] = None):
         self._lines = lines
+        self._node_connections: List[NodeConnectionsHandler] = []
         if self._lines:
             self._graph_reporter = GraphReporter()
             self._nodes = self.__parse_nodes()
             self._dg_nodes = self.__create_dg_nodes(self._nodes)
-            self._node_connections = NodeConnectionsHandler(self._dg_nodes)
-            self._node_connections.parse_relationship_tree()
+            self._node_connections_handler = NodeConnectionsHandler(self._dg_nodes)
+            self._node_connections_handler.parse_relationship_tree()
 
     def __create_dg_nodes(self, nodes: List[ACNode]) -> List[DGNode]:
         full_nodes = []
@@ -42,14 +44,14 @@ class DGGraph:
 
             if node.type == NodeType.DEF.name:
                 start_node = DGNode().to_diagram_type(NodeType.START)
-                start_node.set_id(0)
+                start_node.set_id(f"Start_{node.info.get('name')}")
                 full_nodes.append(start_node)
 
             node_index += 1
         end_node = DGNode().to_diagram_type(NodeType.END)
         end_node.set_id(999999)
         full_nodes.append(end_node)
-
+        AppLog.debug(f"full_nodes: {full_nodes}")
         return full_nodes
 
     def __merge_consecutive_statement_nodes(
@@ -90,13 +92,12 @@ class DGGraph:
                 formatted_line = line.rstrip()
                 node = ACNode().from_string(formatted_line)
             else:
-                print("line", line)
                 node = ACNode().from_dict(line)
             nodes.append(node)
         return nodes
 
     def build_node_connections(self) -> Dict[str, Any]:
-        result = self.node_connections.render()
+        result = self.node_connections_handler.render()
         self._node_connections = result.get("node_connections")
         return result
 
@@ -105,8 +106,8 @@ class DGGraph:
         return self._dg_nodes
 
     @property
-    def node_connections(self) -> NodeConnectionsHandler:
-        return self._node_connections
+    def node_connections_handler(self) -> NodeConnectionsHandler:
+        return self._node_connections_handler
 
     @property
     def report(self):

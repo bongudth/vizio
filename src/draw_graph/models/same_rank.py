@@ -10,5 +10,7 @@ class SameRank:
     def to_dot(self) -> str:
         # sourcery skip: remove-unnecessary-cast
         node_ids = [str(node.id) for node in self._nodes if not node.is_hidden]
+        if len(node_ids) < 2:
+            return ""
         text = "; ".join(list(node_ids))
         return f"{{rank=same; {text};}}"

@@ -2,11 +2,12 @@ import os
 from unittest import TestCase
 
 from constants import SRC_DIR
+
 from src.draw_graph.services.dotfile_creator import DotfileCreator
-from src.utils.file_handler import read_file, write_file
+from src.utils.file_handler import write_file
 
 
-class TestDrawFlowChart(TestCase):
+class TestDrawFlowChartWithAST(TestCase):
     current_dir = os.path.abspath(os.path.dirname(__file__))
     test_dir = os.path.abspath(os.path.dirname(current_dir))
     test_data_dir = os.path.join(SRC_DIR, "analysis_code/tests/data/output")
@@ -14,73 +15,45 @@ class TestDrawFlowChart(TestCase):
     dotfiles_dir = os.path.join(current_dir, dotfiles_path)
 
     def test_draw_fibo(self):
-        self.__write_dotfile("output_fibo.py.txt")
+        self.__write_dotfile(origin_file_name="fibo.py.json")
+
+    def test_draw_if_else(self):
+        self.__write_dotfile(origin_file_name="if_else.py.json")
+
+    def test_draw_insertion_sort(self):
+        self.__write_dotfile(origin_file_name="insertion_sort.py.json")
+
+    def test_draw_node_connections(self):
+        self.__write_dotfile(origin_file_name="node_connections.py.json")
+
+    def test_draw_bucket_sort(self):
+        self.__write_dotfile(origin_file_name="bucket_sort.py.json")
+
+    def test_draw_counting_sort(self):
+        self.__write_dotfile(origin_file_name="counting_sort.py.json")
+
+    def test_draw_intersection(self):
+        self.__write_dotfile(origin_file_name="intersection.py.json")
+
+    def test_draw_lower_upper_decomposition(self):
+        self.__write_dotfile(origin_file_name="lower_upper_decomposition.py.json")
 
     def test_draw_quick_sort(self):
-        self.__write_dotfile("output_quick_sort.py.txt")
+        self.__write_dotfile(origin_file_name="quick_sort.py.json")
 
-    # output_node_connections__render.py.txt
-    def test_draw_node_connections(self):
-        self.__write_dotfile("output_node_connections.py.txt")
+    def test_draw_secant_method(self):
+        self.__write_dotfile(origin_file_name="secant_method.py.json")
 
-    def test_draw_conditions(self):
-        path = os.path.join(self.current_dir, self.dotfiles_path, "test_conditions.dot")
-        lines = [
-            {
-                "type": "STATEMENT",
-                "info": {
-                    "type": "ASSIGN",
-                    "value": "pivot = array[randint(0, len(array) - 1)]",
-                },
-                "indent": 4,
-            },
-            {"type": "LOOP", "info": {"item": "item", "list": "array"}, "indent": 4},
-            {
-                "type": "CONDITIONS",
-                "info": {"conditions": ["item < pivot"], "type": "IF"},
-                "indent": 8,
-            },
-            {
-                "type": "STATEMENT",
-                "info": {"type": "METHOD", "value": "low.append(item)"},
-                "indent": 12,
-            },
-            {
-                "type": "CONDITIONS",
-                "info": {"conditions": ["item == pivot"], "type": "ELIF"},
-                "indent": 8,
-            },
-            {
-                "type": "STATEMENT",
-                "info": {"type": "METHOD", "value": "same.append(item)"},
-                "indent": 12,
-            },
-            {
-                "type": "CONDITIONS",
-                "info": {"conditions": ["item > pivot"], "type": "ELIF"},
-                "indent": 8,
-            },
-            {
-                "type": "STATEMENT",
-                "info": {"type": "METHOD", "value": "high.append(item)"},
-                "indent": 12,
-            },
-            {
-                "type": "RETURN",
-                "info": {"name": "quicksort(low) + same + quicksort(high)"},
-                "indent": 4,
-            },
-        ]
-        dot_file_creator = DotfileCreator(lines)
-        content = dot_file_creator.generate()
-        write_file(path, content)
+    def test_draw_shell_sort(self):
+        self.__write_dotfile(origin_file_name="shell_sort.py.json")
 
     def __write_dotfile(self, origin_file_name: str):
-        full_path = os.path.join(self.test_data_dir, origin_file_name)
+        ast_path = os.path.join(self.test_data_dir, origin_file_name)
         dot_full_path = os.path.join(self.dotfiles_dir, f"{origin_file_name}.dot")
-        lines = read_file(full_path)
-        dot_file_creator = DotfileCreator(lines)
+
+        dot_file_creator = DotfileCreator(file_path=ast_path)
         content = dot_file_creator.generate()
+        # write dot file
         write_file(dot_full_path, content)
         # convert dot to svg file
         svg_full_path = dot_full_path.replace(".dot", ".svg")
