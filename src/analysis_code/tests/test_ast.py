@@ -25,6 +25,7 @@ class TestPythonAst(TestCase):
             "intersection.py",
             "lower_upper_decomposition.py",
             "quick_sort.py",
+            "find_max.py",
             "secant_method.py",
             "shell_sort.py",
         ]

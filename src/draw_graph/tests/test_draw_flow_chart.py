@@ -41,6 +41,9 @@ class TestDrawFlowChartWithAST(TestCase):
     def test_draw_quick_sort(self):
         self.__write_dotfile(origin_file_name="quick_sort.py.json")
 
+    def test_draw_find_max(self):
+        self.__write_dotfile(origin_file_name="find_max.py.json")
+
     def test_draw_secant_method(self):
         self.__write_dotfile(origin_file_name="secant_method.py.json")
 
