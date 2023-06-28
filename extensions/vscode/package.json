@@ -2,9 +2,10 @@
   "name": "vizio",
   "displayName": "vizio",
   "description": "The system automatically generates a flowchart to visualize the code block",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "publisher": "vizio",
   "icon": "logo.png",
+  "repository": "https://github.com/bongudth/vizio",
   "engines": {
     "vscode": "^1.79.0"
   },
