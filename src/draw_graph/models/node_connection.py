@@ -8,13 +8,20 @@ if TYPE_CHECKING:
 
 class SimpleNodeConnection:
     def __init__(
-        self, start: str, end: str, label: str = "", source: str = "", color: str = ""
+        self,
+        start: str,
+        end: str,
+        label: str = "",
+        source: str = "",
+        color: str = "",
+        fontcolor: str = "",
     ):
         self._start = start
         self._end = end
         self._label = label
         self._source = source
         self._color = color
+        self._fontcolor = fontcolor
 
     @property
     def is_valid(self) -> bool:
@@ -26,6 +33,7 @@ class SimpleNodeConnection:
 
         fields = [
             self.build_color(),
+            self.build_fontcolor(),
             self.build_label(self._label),
             self.build_source(self._source),
         ]
@@ -33,6 +41,9 @@ class SimpleNodeConnection:
 
     def build_color(self) -> str:
         return f"[color={self._color}]" if self._color else ""
+
+    def build_fontcolor(self) -> str:
+        return f"[fontcolor={self._fontcolor}]" if self._fontcolor else ""
 
     def build_label(self, label: str) -> str:
         return f"[label={self._label}]" if label else ""
@@ -53,6 +64,7 @@ class NodeConnection(SimpleNodeConnection):
         label: str = "",
         source: str = "",
         color: str = "",
+        fontcolor: str = "",
     ):
         self._start_node = start_node
         self._end_node = end_node
@@ -62,6 +74,7 @@ class NodeConnection(SimpleNodeConnection):
             label=label,
             source=source,
             color=color,
+            fontcolor=fontcolor,
         )
 
     def to_dot(self) -> str:

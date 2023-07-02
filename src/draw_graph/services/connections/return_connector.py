@@ -27,6 +27,7 @@ class ReturnConnector(BaseConnectionHandler):
                         color="green",
                         label="true",
                         source="@if_node_to_return",
+                        fontcolor="green",
                     )
                 ]
         else:

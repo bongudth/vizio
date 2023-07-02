@@ -39,6 +39,7 @@ class LoopConnector(BaseConnectionHandler):
                 label="out",
                 source="@loop_to_next_sibling",
                 color="red",
+                fontcolor="red",
             )
             self._connections.append(connection)
         return connection
@@ -56,6 +57,7 @@ class LoopConnector(BaseConnectionHandler):
                 label="out",
                 source="@loop_to_parent_loop",
                 color="red",
+                fontcolor="red",
             )
             self._connections.append(connection)
         return connection
@@ -73,6 +75,7 @@ class LoopConnector(BaseConnectionHandler):
                 source="@last_if_to_parent",
                 color="red",
                 label="false",
+                fontcolor="red",
             )
 
         return NodeConnection(
@@ -94,4 +97,5 @@ class LoopConnector(BaseConnectionHandler):
                 source="@end_loop_to_end",
                 color="red",
                 label="out",
+                fontcolor="red",
             )
