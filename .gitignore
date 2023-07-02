@@ -1,5 +1,5 @@
-src/draw_graph/tests/data/dotfiles/
 src/analysis_code/tests/data/output/
+src/draw_graph/tests/data/output/
 
 # Idea
 .idea/
