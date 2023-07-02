@@ -66,6 +66,15 @@ class LoopConnector(BaseConnectionHandler):
         if NodeType.is_loop(last_node):
             return None
 
+        if NodeType.is_condition_if(last_node):
+            return NodeConnection(
+                last_node,
+                last_node.parent,
+                source="@last_if_to_parent",
+                color="red",
+                label="false",
+            )
+
         return NodeConnection(
             last_node,
             self.node,
