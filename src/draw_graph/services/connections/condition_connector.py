@@ -172,6 +172,7 @@ class ConditionConnector(BaseConnectionHandler):
             in [
                 ConditionType.IF.name,
                 ConditionType.ELIF.name,
+                ConditionType.ELSE.name,
             ]
             and not NodeType.is_return(last_child)
             and not NodeType.is_raise(last_child)
