@@ -152,7 +152,7 @@ class ConditionConnector(BaseConnectionHandler):
                 NodeConnection(
                     node,
                     out_scope_node,
-                    label="False",
+                    label="false",
                     source="@if_to_next_sibling",
                     color="red",
                 )
@@ -176,6 +176,8 @@ class ConditionConnector(BaseConnectionHandler):
             ]
             and not NodeType.is_return(last_child)
             and not NodeType.is_raise(last_child)
+            and last_child != out_scope_node
+            and not NodeType.is_return(last_child.get_last_child())
         ):
             if out_scope_node:
                 connections.append(
@@ -193,6 +195,20 @@ class ConditionConnector(BaseConnectionHandler):
                         source="@if_last_child_to_end_node",
                     )
                 )
+        if (
+            p_node.info_type in [ConditionType.IF.name]
+            and last_child.info_type in [ConditionType.IF.name]
+            and NodeType.is_return(last_child.get_last_child())
+        ):
+            connections.append(
+                NodeConnection(
+                    last_child,
+                    out_scope_node,
+                    source="@if_last_child_to_next_sibling",
+                    label="false",
+                    color="red",
+                )
+            )
         return connections
 
     @classmethod
