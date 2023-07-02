@@ -69,7 +69,7 @@ class ConditionConnector(BaseConnectionHandler):
                 NodeConnection(
                     node.prev_sibling,
                     node,
-                    label="elif",
+                    label="false",
                     source="@if_to_prev_sibling",
                     color="red",
                 )
@@ -99,7 +99,7 @@ class ConditionConnector(BaseConnectionHandler):
                 NodeConnection(
                     node,
                     node.next_node,
-                    label="True",
+                    label="true",
                     color="green",
                     source="@if_to_next_node",
                 )
@@ -118,7 +118,7 @@ class ConditionConnector(BaseConnectionHandler):
                 NodeConnection(
                     p_node,
                     p_node.next_sibling,
-                    label="elif",
+                    label="false",
                     color="red",
                     source="@if_or_if_to_elif",
                 )
@@ -132,7 +132,7 @@ class ConditionConnector(BaseConnectionHandler):
             NodeConnection(
                 node.prev_sibling,
                 node.next_node,
-                label="else",
+                label="false",
                 color="red",
                 source="@elif_to_else",
             )

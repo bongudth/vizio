@@ -25,13 +25,13 @@ class ReturnConnector(BaseConnectionHandler):
                         node.prev_node,
                         end_node,
                         color="green",
-                        label="True",
+                        label="true",
                         source="@if_node_to_return",
                     )
                 ]
         else:
             if node.prev_node == node.parent:
-                label = "True" if node.prev_node.type == NodeType.CONDITIONS else ""
+                label = "true" if node.prev_node.type == NodeType.CONDITIONS else ""
                 # connections += [
                 #     NodeConnection(
                 #         node.prev_node,
