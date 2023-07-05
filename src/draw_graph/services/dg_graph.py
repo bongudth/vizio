@@ -59,6 +59,7 @@ class DGGraph:
     ) -> Tuple[DGNode, int]:
         label = ""
         accepted_types = {NodeType.STATEMENT.name, NodeType.COMMENT.name}
+        unaccepted_info_types = {StatementType.BREAK.name, StatementType.CONTINUE.name}
         current_idx = idx
         while current_idx < len(nodes):
             p_node: DGNode = nodes[current_idx]
@@ -70,6 +71,9 @@ class DGGraph:
                 current_idx -= 1
                 break
 
+            if p_node.info_type in unaccepted_info_types:
+                break
+
             current_idx += 1
             if p_node.info.get("value"):
                 label += p_node.info.get("value") + "\n"
@@ -77,7 +81,7 @@ class DGGraph:
         ac_node = ACNode().from_dict(
             {
                 "type": NodeType.STATEMENT.name,
-                "info": {"type": StatementType.ASSIGN.name, "value": label},
+                "info": {"type": node.info_type, "value": label},
                 "indent": node.indent,
                 "line_no": node.line_no,
             }

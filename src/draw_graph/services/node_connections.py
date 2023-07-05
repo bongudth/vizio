@@ -65,6 +65,28 @@ class NodeConnectionsHandler:
             elif NodeType.is_condition(node):
                 handler = ConditionConnector(node)
                 connections, _ = handler.handle(end_node=end_node)
+            elif NodeType.is_statement_continue(node):
+                nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
+                if nearest_parent_loop:
+                    connections = [
+                        NodeConnection(
+                            node.prev_node,
+                            nearest_parent_loop,
+                            source="@continue_to_loop",
+                            label=node.info_type.lower(),
+                        )
+                    ]
+            elif NodeType.is_statement_break(node):
+                nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
+                if nearest_parent_loop:
+                    connections = [
+                        NodeConnection(
+                            node.prev_node,
+                            nearest_parent_loop.next_sibling,
+                            source="@break_to_next_sibling_of_loop",
+                            label=node.info_type.lower(),
+                        )
+                    ]
             elif NodeType.is_return(node):
                 handler = ReturnConnector(node)
                 connections, text = handler.handle(end_node=end_node)

@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-from src.analysis_code.constants.types import ConditionType
+from src.analysis_code.constants.types import ConditionType, StatementType
 
 
 # reference to the rule type src.analysis_code.constants.rule_type
@@ -68,6 +68,20 @@ class NodeType(Enum):
         return (
             node.type == NodeType.CONDITIONS
             and node.info_type == ConditionType.ELIF.name
+        )
+
+    @classmethod
+    def is_statement_continue(cls, node):
+        return (
+            node.type == NodeType.STATEMENT
+            and node.info_type == StatementType.CONTINUE.name
+        )
+
+    @classmethod
+    def is_statement_break(cls, node):
+        return (
+            node.type == NodeType.STATEMENT
+            and node.info_type == StatementType.BREAK.name
         )
 
     @classmethod

@@ -1,12 +1,16 @@
 from ast import literal_eval
 from typing import Any, Dict, Optional, Union
 
-from src.analysis_code.constants.types import ConditionType
+from src.analysis_code.constants.types import ConditionType, StatementType
 from src.analysis_code.models.ac_node import ACNode
 from src.draw_graph.constants.node_types import NodeType
 
 IGNORE_TYPES = [NodeType.DEF, NodeType.COMMENT]
-IGNORE_INFO_TYPES = [ConditionType.ELSE.name]
+IGNORE_INFO_TYPES = [
+    ConditionType.ELSE.name,
+    StatementType.BREAK.name,
+    StatementType.CONTINUE.name,
+]
 
 
 class DGNode:

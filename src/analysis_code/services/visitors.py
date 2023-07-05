@@ -1,5 +1,5 @@
 import ast
-from _ast import AST, AugAssign, Call, Expr, For, FunctionDef, Return
+from _ast import AST, AugAssign, Call, Continue, Expr, For, FunctionDef, Return
 from typing import Any, Dict, List
 
 from src.analysis_code.constants.types import (
@@ -42,7 +42,9 @@ class PythonVisitor(ast.NodeVisitor):
         value = ast.unparse(node)
         info_data = {
             "value": value,
-            "info": StatementType.ASSIGN.name,
+            "info": {
+                "type": StatementType.ASSIGN.name,
+            },
         }
         return self.custom_visit(node, type, info=info_data)
 
@@ -51,7 +53,9 @@ class PythonVisitor(ast.NodeVisitor):
         value = ast.unparse(node)
         info_data = {
             "value": value,
-            "info": StatementType.ASSIGN.name,
+            "info": {
+                "type": StatementType.ASSIGN.name,
+            },
         }
         return self.custom_visit(node, type, info=info_data)
 
@@ -72,7 +76,7 @@ class PythonVisitor(ast.NodeVisitor):
         value = ast.unparse(node)
         info_data = {
             "value": value,
-            "info": StatementType.METHOD.name,
+            "type": StatementType.METHOD.name,
         }
         return self.custom_visit(node, type, info=info_data)
 
@@ -81,7 +85,7 @@ class PythonVisitor(ast.NodeVisitor):
         value = ast.unparse(node)
         info_data = {
             "value": value,
-            "info": StatementType.METHOD.name,
+            "type": StatementType.METHOD.name,
         }
         return self.custom_visit(node, type, info=info_data)
 
@@ -122,7 +126,21 @@ class PythonVisitor(ast.NodeVisitor):
         value = ast.unparse(node)
         info_data = {
             "value": value,
-            "info": StatementType.ASSIGN.name,
+            "type": StatementType.ASSIGN.name,
+        }
+        return self.custom_visit(node, type, info=info_data)
+
+    def visit_Continue(self, node: Continue) -> Any:
+        type = ASTNodeType.STATEMENT
+        info_data = {
+            "type": StatementType.CONTINUE.name,
+        }
+        return self.custom_visit(node, type, info=info_data)
+
+    def visit_Break(self, node: Continue) -> Any:
+        type = ASTNodeType.STATEMENT
+        info_data = {
+            "type": StatementType.BREAK.name,
         }
         return self.custom_visit(node, type, info=info_data)
 

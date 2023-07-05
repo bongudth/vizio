@@ -36,6 +36,8 @@ class StatementType(Enum):
     ASSIGN = auto()
     METHOD = auto()
     RAISE = auto()
+    CONTINUE = auto()
+    BREAK = auto()
 
 
 class LoopType(Enum):

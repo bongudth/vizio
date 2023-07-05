@@ -99,3 +99,12 @@ class LoopConnector(BaseConnectionHandler):
                 label="out",
                 fontcolor="red",
             )
+
+    @classmethod
+    def get_nearest_parent_loop_node(cls, node: DGNode) -> DGNode:
+        if not node:
+            return None
+        parent_node = node.parent
+        while parent_node and not NodeType.is_loop(parent_node):
+            parent_node = parent_node.parent
+        return parent_node
