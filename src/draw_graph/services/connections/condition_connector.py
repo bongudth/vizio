@@ -17,8 +17,7 @@ class ConditionConnector(BaseConnectionHandler):
         self._connections = self.merge_if_elif_to_next_statement(
             self._connections, self.node, end_node=end_node
         )
-        self._text = self.handle_rank_same_condition_nodes(self.node)
-
+        self._text = self._handle_same_rank()
         return self._connections, self._text
 
     @classmethod
@@ -217,28 +216,12 @@ class ConditionConnector(BaseConnectionHandler):
             )
         return connections
 
-    @classmethod
-    def handle_rank_same_condition_nodes(cls, node) -> str:
-        return (
-            cls.get_rank_same_nodes(node)
-            if (
-                node.info.get("type") == ConditionType.IF.name
-                and node.next_sibling
-                and node.next_sibling.type == NodeType.CONDITIONS.name
-            )
-            else ""
-        )
-
-    @classmethod
-    def get_rank_same_nodes(cls, if_node) -> str:
-        node = if_node
-        same_rank_nodes = []
-        while node.type == NodeType.CONDITIONS:
-            same_rank_nodes.append(node)
-            if node.next_node.type == NodeType.RETURN:
-                return ""
-            node = node.next_sibling
-        return SameRank(same_rank_nodes).to_dot()
+    def _handle_same_rank(self):
+        if NodeType.is_return(self.node.next_node):
+            return SameRank(
+                [self.node, self.node.next_node], source="@condition_and_return"
+            ).to_dot()
+        return ""
 
     @classmethod
     def _get_else_node(cls, node: DGNode):

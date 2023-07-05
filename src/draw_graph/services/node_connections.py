@@ -60,11 +60,11 @@ class NodeConnectionsHandler:
                 connections.extend(_connections)
             elif NodeType.is_loop(node):
                 handler = LoopConnector(node)
-                _connections, _ = handler.handle(end_node=end_node)
+                _connections, text = handler.handle(end_node=end_node)
                 connections.extend(_connections)
             elif NodeType.is_condition(node):
                 handler = ConditionConnector(node)
-                connections, _ = handler.handle(end_node=end_node)
+                connections, text = handler.handle(end_node=end_node)
             elif NodeType.is_statement_continue(node):
                 nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
                 if nearest_parent_loop:

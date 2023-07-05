@@ -3,7 +3,6 @@ from typing import Any, Dict, List
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.models.node_connection import NodeConnection
-from src.draw_graph.models.same_rank import SameRank
 from src.draw_graph.services.connections.base_connector_handler import (
     BaseConnectionHandler,
 )
@@ -15,7 +14,6 @@ class ReturnConnector(BaseConnectionHandler):
         end_node = kwargs.get("end_node")
         text = ""
         connections: List[NodeConnection] = []
-        text = f"{SameRank([node.prev_node, node]).to_dot()}"
         connections = [NodeConnection(node, end_node, source="@return_to_end")]
 
         if not node.info:

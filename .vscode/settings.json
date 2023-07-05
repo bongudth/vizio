@@ -17,6 +17,6 @@
     ".",
     "./src"
   ],
-  "svg.preview.background": "white",
+  "svg.preview.background": "custom",
   "docwriter.style": "Google",
 }
