@@ -39,7 +39,6 @@ class NodeConnectionsHandler:
     def render(self) -> Dict[str, Any]:
         result = ""
         node_connections = []
-        self.nodes[0]
         end_node = self.nodes[-1]
         node = None
         i = 0
@@ -67,7 +66,7 @@ class NodeConnectionsHandler:
                 connections, text = handler.handle(end_node=end_node)
             elif NodeType.is_statement_continue(node):
                 nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
-                if nearest_parent_loop:
+                if nearest_parent_loop and nearest_parent_loop.next_sibling:
                     connections = [
                         NodeConnection(
                             node.prev_node,
@@ -78,7 +77,7 @@ class NodeConnectionsHandler:
                     ]
             elif NodeType.is_statement_break(node):
                 nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
-                if nearest_parent_loop:
+                if nearest_parent_loop and nearest_parent_loop.next_sibling:
                     connections = [
                         NodeConnection(
                             node.prev_node,
