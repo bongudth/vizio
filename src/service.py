@@ -24,6 +24,7 @@ def generate_dot_v2(source_code: str, need_summary=False):
 
     code_reader = CoderReader()
     results = code_reader.parse_string_from_ast(source_code)
+    list_summary = {}
 
     if need_summary:
         try:
@@ -31,7 +32,6 @@ def generate_dot_v2(source_code: str, need_summary=False):
             list_summary = json.loads(response)
         except Exception as e:
             print(e)
-            list_summary = {}
     dot_file_creator = DotfileCreator(lines=results, list_summary=list_summary)
     content = dot_file_creator.generate()
     return content

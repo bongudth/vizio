@@ -48,7 +48,7 @@ class NodeTransformerHandler:
         transformer_class = self.get_transformer(node)
         transformer = transformer_class()
         if self.list_summary and node.id in self.list_summary:
-            transformer.set_tooltip(self.list_summary[node.id])
+            transformer.set_tooltip(self.list_summary.get(node.id, ""))
 
         content = f"{transformer.transform(node)}\n"
         return {
