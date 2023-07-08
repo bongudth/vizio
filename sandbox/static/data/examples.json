@@ -6,41 +6,46 @@
   },
   {
     "id": 2,
+    "name": "is_prime",
+    "file": "is_prime.py"
+  },
+  {
+    "id": 3,
     "name": "max_prime_factors",
     "file": "max_prime_factors.py"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "prime_factors",
     "file": "prime_factors.py"
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "product_prime_factors",
     "file": "product_prime_factors.py"
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "sieve_of_eratosthenes",
     "file": "sieve_of_eratosthenes.py"
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "stopping_station",
     "file": "stopping_station.py"
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "sum_of_factors",
     "file": "sum_of_factors.py"
   },
   {
-    "id": 8,
+    "id": 9,
     "name": "sum_of_odd_factors",
     "file": "sum_of_odd_factors.py"
   },
   {
-    "id": 9,
+    "id": 10,
     "name": "triangle",
     "file": "triangle.py"
   }
