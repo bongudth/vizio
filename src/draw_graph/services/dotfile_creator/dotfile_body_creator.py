@@ -5,8 +5,11 @@ from src.draw_graph.services.node_transform_handler import NodeTransformerHandle
 
 
 class DotfileBodyCreator:
-    def __init__(self, lines: List[str], background_color="white"):
-        self.node_transformers_handler = NodeTransformerHandler()
+    def __init__(self, lines: List[str], background_color="white", **kwargs):
+        self.list_summary = kwargs.get("list_summary")
+        self.node_transformers_handler = NodeTransformerHandler(
+            list_summary=self.list_summary
+        )
         self.lines = lines
         self.background_color = background_color
         self.dg_graph = DGGraph(lines)

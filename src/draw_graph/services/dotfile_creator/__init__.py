@@ -14,6 +14,7 @@ class DotfileCreator:
     def __init__(self, **kwargs):
         self._file_path = kwargs.get("file_path")
         self._lines = kwargs.get("lines")
+        self._list_summary = kwargs.get("list_summary")
         self._content = ""
 
         if self._file_path:
@@ -36,7 +37,7 @@ class DotfileCreator:
 
     def _create_dotfile(self):
         self._content = DotfileHeaderCreator("my_graph").wrap(
-            DotfileBodyCreator(self._lines).create()
+            DotfileBodyCreator(self._lines, list_summary=self._list_summary).create()
         )
         return self._content
 

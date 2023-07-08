@@ -34,6 +34,9 @@ _IGNORE_TRANSFORMS = {
 
 
 class NodeTransformerHandler:
+    def __init__(self, list_summary: Dict[str, str] = None):
+        self.list_summary = list_summary
+
     @classmethod
     def get_transformer(cls, node: DGNode) -> Type[NodeTransformerBase]:
         return _TRANSFORMER_MAP.get(node.type, DefaultNode)
@@ -44,6 +47,9 @@ class NodeTransformerHandler:
 
         transformer_class = self.get_transformer(node)
         transformer = transformer_class()
+        if self.list_summary and node.id in self.list_summary:
+            transformer.set_tooltip(self.list_summary[node.id])
+
         content = f"{transformer.transform(node)}\n"
         return {
             "content": content,

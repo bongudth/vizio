@@ -14,6 +14,7 @@ class NodeTransformerBase:
     def __init__(self, node: "DGNode" = None):
         self.node: Union[ACNode, None] = node
         self.content = ""
+        self.tooltip = ""
 
     def transform(self, node: "DGNode") -> str:
         self.node = node
@@ -39,6 +40,8 @@ class NodeTransformerBase:
         if self.label:
             render_params["label"] = f'[label="{self._format_label(self.label)}"]'
             render_params["type"] = f'[type="{self.node.type.name}"]'
+        if self.tooltip:
+            render_params["tooltip"] = f'[tooltip="{self.tooltip}"]'
         if self.fill_color:
             render_params[
                 "fill_color"
@@ -68,6 +71,9 @@ class NodeTransformerBase:
     @property
     def is_hidden(self) -> bool:
         return False
+
+    def set_tooltip(self, tooltip: str):
+        self.tooltip = tooltip
 
     def _format_label(self, label):
         return label.replace('"', "'")
