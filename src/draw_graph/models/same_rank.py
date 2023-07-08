@@ -14,4 +14,4 @@ class SameRank:
         if len(node_ids) < 2:
             return ""
         text = "; ".join(list(node_ids))
-        return f"{{rank=same; {text}}}; source='{self._source}'\n"
+        return f'{{rank=same; {text}}}; source="{self._source}"\n'
