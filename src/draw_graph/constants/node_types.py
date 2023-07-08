@@ -66,7 +66,7 @@ class NodeType(Enum):
     @classmethod
     def is_condition_elif(cls, node):
         return (
-            node.type == NodeType.CONDITIONS
+            node.type.name == NodeType.CONDITIONS.name
             and node.info_type == ConditionType.ELIF.name
         )
 

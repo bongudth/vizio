@@ -43,6 +43,22 @@ class ConditionConnector(BaseConnectionHandler):
         return connections
 
     @classmethod
+    def get_color(cls, node: "DGNode") -> str:
+        if NodeType.is_condition_if(node) or NodeType.is_condition_elif(node):
+            return "green"
+        if NodeType.is_condition_else(node):
+            return "red"
+        return ""
+
+    @classmethod
+    def get_label(cls, node: "DGNode") -> str:
+        if NodeType.is_condition_if(node) or NodeType.is_condition_elif(node):
+            return "true"
+        if NodeType.is_condition_else(node):
+            return "false"
+        return ""
+
+    @classmethod
     def _connect_if_nodes(cls, node: "DGNode") -> List[NodeConnection]:
         connections = []
         connections += cls._connect_if_prev_sibling_nodes(node)

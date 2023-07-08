@@ -5,6 +5,7 @@ from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.models.node_connection import NodeConnection
 from src.draw_graph.services.connections.break_connector import BreakConnector
 from src.draw_graph.services.connections.condition_connector import ConditionConnector
+from src.draw_graph.services.connections.continue_connector import ContinueConnector
 from src.draw_graph.services.connections.def_connector import DefConnector
 from src.draw_graph.services.connections.loop_connector import LoopConnector
 from src.draw_graph.services.connections.return_connector import ReturnConnector
@@ -66,16 +67,8 @@ class NodeConnectionsHandler:
                 handler = ConditionConnector(node)
                 connections, text = handler.handle(end_node=end_node)
             elif NodeType.is_statement_continue(node):
-                nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
-                if nearest_parent_loop and nearest_parent_loop.next_sibling:
-                    connections = [
-                        NodeConnection(
-                            node.prev_node,
-                            nearest_parent_loop,
-                            source="@continue_to_loop",
-                            label=node.info_type.lower(),
-                        )
-                    ]
+                handler = ContinueConnector(node)
+                connections, text = handler.handle()
             elif NodeType.is_statement_break(node):
                 handler = BreakConnector(node)
                 connections, text = handler.handle(end_node=end_node)
