@@ -66,6 +66,7 @@ export default {
 
         const res = await this.$axios.$post('/generate_viz_devs', {
           source_code: this.code,
+          need_summary: false,
         })
         this.dot = res.results
       } catch {

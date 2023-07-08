@@ -1,37 +1,47 @@
 [
   {
     "id": 1,
-    "name": "Quick sort",
-    "file": "quick_sort.py"
+    "name": "find_min_sum",
+    "file": "find_min_sum.py"
   },
   {
     "id": 2,
-    "name": "Intersection",
-    "file": "intersection.py"
+    "name": "max_prime_factors",
+    "file": "max_prime_factors.py"
   },
   {
     "id": 3,
-    "name": "Lower upper decomposition",
-    "file": "lower_upper_decomposition.py"
+    "name": "prime_factors",
+    "file": "prime_factors.py"
   },
   {
     "id": 4,
-    "name": "Secant method",
-    "file": "secant_method.py"
+    "name": "product_prime_factors",
+    "file": "product_prime_factors.py"
   },
   {
     "id": 5,
-    "name": "Counting sort",
-    "file": "counting_sort.py"
+    "name": "sieve_of_eratosthenes",
+    "file": "sieve_of_eratosthenes.py"
   },
   {
     "id": 6,
-    "name": "Bucket sort",
-    "file": "bucket_sort.py"
+    "name": "stopping_station",
+    "file": "stopping_station.py"
   },
   {
     "id": 7,
-    "name": "Shell sort",
-    "file": "shell_sort.py"
+    "name": "sum_of_factors",
+    "file": "sum_of_factors.py"
+  },
+  {
+    "id": 8,
+    "name": "sum_of_odd_factors",
+    "file": "sum_of_odd_factors.py"
+  },
+  {
+    "id": 9,
+    "name": "triangle",
+    "file": "triangle.py"
   }
 ]
