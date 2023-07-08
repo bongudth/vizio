@@ -46,7 +46,7 @@ class SimpleNodeConnection:
         return f"[fontcolor={self._fontcolor}]" if self._fontcolor else ""
 
     def build_label(self, label: str) -> str:
-        return f"[label={self._label}]" if label else ""
+        return f'[label="{self._label}"]' if label else ""
 
     def build_source(self, source: str) -> str:
         debug_data = f"{source}".replace('"', "'")

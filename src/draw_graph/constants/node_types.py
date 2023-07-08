@@ -87,5 +87,13 @@ class NodeType(Enum):
     @classmethod
     def is_condition_if(cls, node):
         return (
-            node.type == NodeType.CONDITIONS and node.info_type == ConditionType.IF.name
+            node.type.name == NodeType.CONDITIONS.name
+            and node.info_type == ConditionType.IF.name
+        )
+
+    @classmethod
+    def is_condition_else(cls, node):
+        return (
+            node.type.name == NodeType.CONDITIONS.name
+            and node.info_type == ConditionType.ELSE.name
         )

@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Union
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.models.node_connection import NodeConnection
+from src.draw_graph.services.connections.break_connector import BreakConnector
 from src.draw_graph.services.connections.condition_connector import ConditionConnector
 from src.draw_graph.services.connections.def_connector import DefConnector
 from src.draw_graph.services.connections.loop_connector import LoopConnector
@@ -76,16 +77,8 @@ class NodeConnectionsHandler:
                         )
                     ]
             elif NodeType.is_statement_break(node):
-                nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
-                if nearest_parent_loop and nearest_parent_loop.next_sibling:
-                    connections = [
-                        NodeConnection(
-                            node.prev_node,
-                            nearest_parent_loop.next_sibling,
-                            source="@break_to_next_sibling_of_loop",
-                            label=node.info_type.lower(),
-                        )
-                    ]
+                handler = BreakConnector(node)
+                connections, text = handler.handle(end_node=end_node)
             elif NodeType.is_return(node):
                 handler = ReturnConnector(node)
                 connections, text = handler.handle(end_node=end_node)
