@@ -1,7 +1,7 @@
 import json
 import logging
 
-from src.service import generate_dot, generate_dot_v2
+from src.service import generate_dot_v2
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ def lambda_handler(event, context):
         need_summary = body.get("need_summary", False)
         if need_summary:
             content = generate_dot_v2(source_code, need_summary)
-            return {"statusCode": 200, "body": {"results": content}}
+            return {"statusCode": 200, "body": json.dumps({"results": content})}
 
         logger.info("Source code: %s", source_code)
         content = generate_dot_v2(source_code)

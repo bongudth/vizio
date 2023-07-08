@@ -9,13 +9,11 @@ Convert variables to natural text. Dont use words 'Assign', 'Set' to describe.
 
 example_code = """
 
-Format of JSON output:
-```
+Example format of JSON output:
 {
     "L1": "Define a function quicksort with argument arr"
     ...
 }
-```
 with L1 is line_no of code.
 """
 
@@ -39,6 +37,10 @@ def you_summary_code(json_ast, **kwargs):
 
 def post_process_response(response):
     # remove before ``` and after ```
+    # if response.startswith("```python"):
+    #     response = response.split("```")[1]
+    # if response.endswith("```"):
+    #     response = response.split("```")[0]
     # response = response.split("```")[1]
     # response = response.split("```")[0]
     # # remove \n

@@ -1,6 +1,8 @@
 import json
 
-import requests
+import urllib3
+
+http = urllib3.PoolManager()
 
 
 class Completion:
@@ -37,10 +39,11 @@ class Completion:
                 },
             },
         }
+        print("any thing 2")
 
         url = "https://ai.usesless.com/api/chat-process"
-        request = requests.post(url, headers=Completion.headers, json=json_data)
-        content = request.content
+        request = http.request("POST", url, headers=Completion.headers, json=json_data)
+        content = request.data
         response = Completion.__response_to_json(content)
         print("response", response)
         return response
