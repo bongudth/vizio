@@ -26,8 +26,8 @@ def generate_dot_v2(source_code: str, need_summary=False):
     results = code_reader.parse_string_from_ast(source_code)
 
     if need_summary:
-        response = you_summary_code(results)
         try:
+            response = you_summary_code(results)
             list_summary = json.loads(response)
         except Exception as e:
             print(e)

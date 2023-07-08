@@ -39,7 +39,7 @@ class Completion:
                 },
             },
         }
-        print("any thing 2")
+        print("json_data", json_data)
 
         url = "https://ai.usesless.com/api/chat-process"
         request = http.request("POST", url, headers=Completion.headers, json=json_data)
@@ -51,6 +51,7 @@ class Completion:
     @classmethod
     def __response_to_json(cls, text) -> dict:
         text = str(text.decode("utf-8"))
+        print("text", text)
 
         split_text = text.rsplit("\n", 1)[1]
         to_json = json.loads(split_text)
