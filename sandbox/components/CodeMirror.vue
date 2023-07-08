@@ -2,7 +2,12 @@
   <codemirror
     :model-value="formValue"
     placeholder="Code goes here..."
-    :style="{ height: '100%' }"
+    :style="{
+      display: 'unset',
+      height: '100%',
+      maxHeight: '100%',
+      overflowY: 'auto',
+    }"
     :autofocus="true"
     :extensions="extensions"
     @change="formValue = $event"
@@ -51,6 +56,7 @@ export default {
   background-color: white;
   border: 1px solid #1ca6e9;
   height: 100%;
+  max-height: 100%;
 }
 
 .ͼ1.cm-focused {

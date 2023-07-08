@@ -1,6 +1,8 @@
 <template>
   <div class="group-list">
-    <button @click="downloadSvg">Download SVG</button>
+    <button :disabled="isLoading || isFailed || !dot" @click="downloadSvg">
+      Download SVG
+    </button>
   </div>
 </template>
 
@@ -9,6 +11,16 @@ export default {
   name: 'DownloadGroup',
 
   props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+
+    isFailed: {
+      type: Boolean,
+      default: false,
+    },
+
     dot: {
       type: String,
       default: '',
@@ -17,6 +29,8 @@ export default {
 
   methods: {
     downloadSvg() {
+      if (this.isLoading || this.isFailed || this.dot === '') return
+
       // eslint-disable-next-line no-undef
       const svg = Viz(this.dot, { format: 'svg' })
       const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' })

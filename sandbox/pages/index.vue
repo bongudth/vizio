@@ -1,17 +1,21 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <CodeExample />
+      <CodeExample :is-loading="isLoading" :is-summary.sync="isSummary" />
       <CodeMirror :code.sync="code" />
     </div>
     <div class="brand">vizio</div>
     <button class="button-generate" :disabled="isLoading" @click="generateDot">
-      <div v-if="isLoading">🌀🌀🌀</div>
+      <div v-if="isLoading" class="loading-group">
+        <div class="loading">🌀</div>
+        <div class="loading">🌀</div>
+        <div class="loading">🌀</div>
+      </div>
       <div v-else>Generate</div>
     </button>
     <div class="container">
-      <DownloadGroup :dot="dot" />
-      <FlowChart :dot="dot" />
+      <DownloadGroup :is-loading="isLoading" :is-failed="isFailed" :dot="dot" />
+      <FlowChart :is-loading="isLoading" :is-failed="isFailed" :dot="dot" />
     </div>
   </div>
 </template>
@@ -27,6 +31,7 @@ export default {
       code: '',
       dot: '',
       isLoading: false,
+      isSummary: false,
       isFailed: false,
     }
   },
@@ -47,10 +52,19 @@ export default {
       },
       immediate: true,
     },
+
+    isSummary: {
+      handler() {
+        this.generateDot()
+      },
+      immediate: true,
+    },
   },
 
   methods: {
     loadExample() {
+      if (this.isLoading) return
+
       const filePath = `/data/examples/${this.example.file}`
       readFile(filePath).then((code) => {
         this.code = code
@@ -59,14 +73,14 @@ export default {
     },
 
     async generateDot() {
-      if (this.isLoading) return
+      if (this.isLoading || !this.code) return
 
       try {
         this.isLoading = true
 
         const res = await this.$axios.$post('/generate_viz_devs', {
           source_code: this.code,
-          need_summary: false,
+          need_summary: this.isSummary,
         })
         this.dot = res.results
       } catch {
@@ -109,31 +123,38 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-family: fantasy;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: #3f87cc;
 }
 
 button {
+  min-width: 30px;
+  height: 30px;
   background-color: white;
   color: #1877f2;
   border: 1px solid #1877f2;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 4px 8px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  z-index: 999;
 }
 
 button.active {
   background-color: #e6f4ff;
 }
 
-button:hover {
+button:not(:disabled):hover {
   background-color: #bae0ff;
 }
 
-button:disabled {
-  background-color: #e6f4ff;
+button:disabled:not(.button-generate) {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .button-generate {
@@ -141,5 +162,24 @@ button:disabled {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.loading-group {
+  display: flex;
+  gap: 2px;
+}
+
+.loading-group .loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
