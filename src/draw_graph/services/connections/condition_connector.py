@@ -201,7 +201,7 @@ class ConditionConnector(BaseConnectionHandler):
                         source="@last_child_to_next_sibling",
                     )
                 )
-            elif not last_child.next_node:
+            elif not last_child.next_node or last_child.next_node == end_node:
                 connections.append(
                     NodeConnection(
                         last_child,
@@ -209,6 +209,17 @@ class ConditionConnector(BaseConnectionHandler):
                         source="@if_last_child_to_end_node",
                     )
                 )
+                if NodeType.is_condition_if(node) and not node.next_sibling:
+                    connections.append(
+                        NodeConnection(
+                            node,
+                            end_node,
+                            source="@if_not_else_to_end_node",
+                            label="false",
+                            color="red",
+                            fontcolor="red",
+                        )
+                    )
         if (
             node.info_type in [ConditionType.IF.name]
             and last_child.info_type in [ConditionType.IF.name]

@@ -1,0 +1,41 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_prime_factors [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L11 [shape=rect] [label="while n % 2 == 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L12 [shape=rect] [label="print(2)
+n = n // 2
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L17 [shape=rect] [label="for i in range(3, int(math.sqrt(n)) + 1, 2)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L19 [shape=rect] [label="while n % i == 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L20 [shape=rect] [label="print(i)
+n = n // i
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L25 [shape=diamond] [label="n > 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L26 [shape=rect] [label="print(n)
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_prime_factors {
+label = "def prime_factors(n)";
+
+LStart_prime_factors -> L11    [source="@current_to_next"]
+L11 -> L12    [source="@loop_to_next"]
+L11 -> L17 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L12 -> L11 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L17 -> L19    [source="@loop_to_next"]
+L17 -> L25 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L19 -> L20    [source="@loop_to_next"]
+L19 -> L17 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_parent_loop"]
+L20 -> L19 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L25 -> L26 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L26 -> L999999    [source="@if_last_child_to_end_node"]
+L25 -> L999999 [color=red] [fontcolor=red] [label="false"] [source="@if_not_else_to_end_node"]
+
+}
+
+
+}
