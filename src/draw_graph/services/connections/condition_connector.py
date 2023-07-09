@@ -185,15 +185,9 @@ class ConditionConnector(BaseConnectionHandler):
     ) -> List[NodeConnection]:
         out_scope_node = cls._get_out_condition_scope_node(node)
         last_child = node.get_last_child()
-        p_node = node
         end_node = kwargs.get("end_node")
         if (
-            p_node.info_type
-            in [
-                ConditionType.IF.name,
-                ConditionType.ELIF.name,
-                ConditionType.ELSE.name,
-            ]
+            NodeType.is_condition(node)
             and not NodeType.is_return(last_child)
             and not NodeType.is_raise(last_child)
             and last_child != out_scope_node
@@ -216,7 +210,7 @@ class ConditionConnector(BaseConnectionHandler):
                     )
                 )
         if (
-            p_node.info_type in [ConditionType.IF.name]
+            node.info_type in [ConditionType.IF.name]
             and last_child.info_type in [ConditionType.IF.name]
             and NodeType.is_return(last_child.get_last_child())
         ):
@@ -264,4 +258,4 @@ class ConditionConnector(BaseConnectionHandler):
         if temp_node and temp_node.indent == node.indent:
             return temp_node
 
-        return None if NodeType.is_start(node.parent) else node.parent
+        return None

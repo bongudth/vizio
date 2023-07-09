@@ -83,6 +83,8 @@ class LoopConnector(BaseConnectionHandler):
             self.node,
             source="@last_to_loop",
             color="blue",
+            label="loop",
+            fontcolor="blue",
         )
 
     def connect_end_loop_to_end(self, end_node) -> NodeConnection:
