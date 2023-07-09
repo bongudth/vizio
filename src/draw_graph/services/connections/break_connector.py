@@ -16,15 +16,18 @@ class BreakConnector(BaseConnectionHandler):
         if nearest_parent_loop:
             if not nearest_parent_loop.next_sibling:
                 label = "break"
-                color = ""
+                color = "red"
+                fontcolor = "red"
                 if NodeType.is_condition_if(prev_node) or NodeType.is_condition_elif(
                     prev_node
                 ):
-                    label += "/true"
+                    label = "true -> break"
                     color = "green"
+                    fontcolor = "green"
                 elif NodeType.is_condition_else(prev_node):
-                    label += "/false"
+                    label = "false -> break"
                     color = "red"
+                    fontcolor = "red"
 
                 self.connections = [
                     NodeConnection(
@@ -33,6 +36,7 @@ class BreakConnector(BaseConnectionHandler):
                         source="@break_to_end_node",
                         label=label,
                         color=color,
+                        fontcolor=fontcolor,
                     )
                 ]
             else:
@@ -42,6 +46,8 @@ class BreakConnector(BaseConnectionHandler):
                         nearest_parent_loop.next_sibling,
                         source="@break_to_next_sibling_of_loop",
                         label="break",
+                        color="red",
+                        fontcolor="red",
                     )
                 ]
         return self.connections, self.text

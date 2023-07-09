@@ -1,0 +1,63 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_cocktail_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L5 [shape=rect] [label="n = len(a)
+swapped = True
+start = 0
+end = n - 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L9 [shape=rect] [label="while swapped == True"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L13 [shape=rect] [label="swapped = False
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L17 [shape=rect] [label="for i in range(start, end)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L18 [shape=diamond] [label="a[i] > a[i + 1]"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L19 [shape=rect] [label="(a[i], a[i + 1]) = (a[i + 1], a[i])
+swapped = True
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L23 [shape=diamond] [label="swapped == False"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+
+L28 [shape=rect] [label="swapped = False
+end = end - 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L36 [shape=rect] [label="for i in range(end - 1, start - 1, -1)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L37 [shape=diamond] [label="a[i] > a[i + 1]"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L38 [shape=rect] [label="(a[i], a[i + 1]) = (a[i + 1], a[i])
+swapped = True
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L44 [shape=rect] [label="start = start + 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_cocktail_sort {
+label = "def cocktail_sort(a)";
+
+LStart_cocktail_sort -> L5    [source="@current_to_next"]
+L5 -> L9    [source="@current_to_next"]
+L9 -> L13    [source="@loop_to_next"]
+L44 -> L9 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L9 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@end_loop_to_end"]
+L13 -> L17    [source="@current_to_next"]
+L17 -> L18    [source="@loop_to_next"]
+L17 -> L23 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L18 -> L17 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+L19 -> L17 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L18 -> L19 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+
+L23 -> L28 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+
+L23 -> L999999 [color=green] [fontcolor=green] [label="true -> break"] [source="@break_to_end_node"]
+L28 -> L36    [source="@current_to_next"]
+L36 -> L37    [source="@loop_to_next"]
+L36 -> L44 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L37 -> L36 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+L38 -> L36 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L37 -> L38 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+
+}
+
+
+}

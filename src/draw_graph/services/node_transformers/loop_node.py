@@ -10,8 +10,8 @@ class LoopNode(NodeTransformerBase):
     @property
     def label(self) -> str:
         if self.node.info.get("type") == "FOR":
-            return f"Loop {self.node.info.get('item')} in {self.node.info.get('list')}"
-        return f"While {self.node.info.get('conditions')}"
+            return f"for {self.node.info.get('item')} in {self.node.info.get('list')}"
+        return f"while {self.node.info.get('conditions')}"
 
     @property
     def shape(self):

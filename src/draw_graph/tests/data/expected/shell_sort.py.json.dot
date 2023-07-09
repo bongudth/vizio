@@ -1,0 +1,45 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_shell_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L6 [shape=rect] [label="n = len(arr)
+gap = n / 2
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L13 [shape=rect] [label="while gap > 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L14 [shape=rect] [label="for i in range(gap, n)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L17 [shape=rect] [label="temp = arr[i]
+j = i
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L22 [shape=rect] [label="while j >= gap and arr[j - gap] > temp"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L23 [shape=rect] [label="arr[j] = arr[j - gap]
+j -= gap
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L27 [shape=rect] [label="arr[j] = temp
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L28 [shape=rect] [label="gap /= 2
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_shell_sort {
+label = "def shell_sort(arr)";
+
+LStart_shell_sort -> L6    [source="@current_to_next"]
+L6 -> L13    [source="@current_to_next"]
+L13 -> L14    [source="@loop_to_next"]
+L28 -> L13 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L13 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@end_loop_to_end"]
+L14 -> L17    [source="@loop_to_next"]
+L14 -> L28 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L27 -> L14 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L17 -> L22    [source="@current_to_next"]
+L22 -> L23    [source="@loop_to_next"]
+L22 -> L27 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L23 -> L22 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+
+
+}
+
+
+}

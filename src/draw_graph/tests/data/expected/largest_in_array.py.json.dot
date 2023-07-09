@@ -1,0 +1,30 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_largest_in_array [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L10 [shape=rect] [label="max = arr[0]
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L15 [shape=rect] [label="for i in range(1, n)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L16 [shape=diamond] [label="arr[i] > max"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L17 [shape=rect] [label="max = arr[i]
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L18 [shape=ellipse] [label="max"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_largest_in_array {
+label = "def largest_in_array(arr, n)";
+
+LStart_largest_in_array -> L10    [source="@current_to_next"]
+L10 -> L15    [source="@current_to_next"]
+L15 -> L16    [source="@loop_to_next"]
+L15 -> L18 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L16 -> L15 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+L17 -> L15 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L16 -> L17 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+L18 -> L999999    [source="@return_to_end"]
+}
+
+
+}

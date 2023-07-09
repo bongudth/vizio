@@ -1,0 +1,51 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_count_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L8 [shape=rect] [label="output = [0 for i in range(256)]
+count = [0 for i in range(256)]
+ans = ['' for _ in arr]
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L19 [shape=rect] [label="for i in arr"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L20 [shape=rect] [label="count[ord(i)] += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L24 [shape=rect] [label="for i in range(256)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L25 [shape=rect] [label="count[i] += count[i - 1]
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L28 [shape=rect] [label="for i in range(len(arr))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L29 [shape=rect] [label="output[count[ord(arr[i])] - 1] = arr[i]
+count[ord(arr[i])] -= 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L34 [shape=rect] [label="for i in range(len(arr))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L35 [shape=rect] [label="ans[i] = output[i]
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L36 [shape=ellipse] [label="ans"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_count_sort {
+label = "def count_sort(arr)";
+
+LStart_count_sort -> L8    [source="@current_to_next"]
+L8 -> L19    [source="@current_to_next"]
+L19 -> L20    [source="@loop_to_next"]
+L19 -> L24 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L20 -> L19 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L24 -> L25    [source="@loop_to_next"]
+L24 -> L28 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L25 -> L24 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L28 -> L29    [source="@loop_to_next"]
+L28 -> L34 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L29 -> L28 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L34 -> L35    [source="@loop_to_next"]
+L34 -> L36 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L35 -> L34 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L36 -> L999999    [source="@return_to_end"]
+}
+
+
+}

@@ -1,0 +1,41 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_factorial [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L4 [shape=diamond] [label="n < 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L5 [shape=ellipse] [label="0"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L6 [shape=diamond] [label="n == 0 or n == 1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L7 [shape=ellipse] [label="1"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+
+L9 [shape=rect] [label="fact = 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L10 [shape=rect] [label="while n > 1"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L11 [shape=rect] [label="fact *= n
+n -= 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L13 [shape=ellipse] [label="fact"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_factorial {
+label = "def factorial(n)";
+
+LStart_factorial -> L4    [source="@current_to_next"]
+{rank=same; L4; L5}; source="@condition_and_return"
+L4 -> L5 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L5 -> L999999    [source="@return_to_end"]
+{rank=same; L6; L7}; source="@condition_and_return"
+L4 -> L6 [color=red] [fontcolor=red] [label="false"] [source="@if_to_prev_sibling"]
+L6 -> L7 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L7 -> L999999    [source="@return_to_end"]
+L6 -> L9 [color=red] [fontcolor=red] [label="false"] [source="@elif_to_else"]
+L9 -> L10    [source="@current_to_next"]
+L10 -> L11    [source="@loop_to_next"]
+L10 -> L13 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L11 -> L10 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L13 -> L999999    [source="@return_to_end"]
+}
+
+
+}

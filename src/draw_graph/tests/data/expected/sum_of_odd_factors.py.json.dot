@@ -1,0 +1,55 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_sum_of_odd_factors [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L13 [shape=rect] [label="res = 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L17 [shape=rect] [label="while n % 2 == 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L18 [shape=rect] [label="n = n // 2
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L20 [shape=rect] [label="for i in range(3, int(math.sqrt(n) + 1))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L23 [shape=rect] [label="count = 0
+curr_sum = 1
+curr_term = 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L26 [shape=rect] [label="while n % i == 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L27 [shape=rect] [label="count += 1
+n = n // i
+curr_term *= i
+curr_sum += curr_term
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L33 [shape=rect] [label="res *= curr_sum
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L38 [shape=diamond] [label="n >= 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L39 [shape=rect] [label="res *= 1 + n
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L41 [shape=ellipse] [label="res"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_sum_of_odd_factors {
+label = "def sum_of_odd_factors(n)";
+
+LStart_sum_of_odd_factors -> L13    [source="@current_to_next"]
+L13 -> L17    [source="@current_to_next"]
+L17 -> L18    [source="@loop_to_next"]
+L17 -> L20 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L18 -> L17 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L20 -> L23    [source="@loop_to_next"]
+L20 -> L38 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L33 -> L20 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L23 -> L26    [source="@current_to_next"]
+L26 -> L27    [source="@loop_to_next"]
+L26 -> L33 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L27 -> L26 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+
+L38 -> L39 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L38 -> L41 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+L39 -> L41    [source="@current_to_next"]
+L41 -> L999999    [source="@return_to_end"]
+}
+
+
+}

@@ -1,0 +1,39 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_find_min_sum [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L8 [shape=rect] [label="sum = 0
+i = 2
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L13 [shape=rect] [label="while i * i <= num"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L14 [shape=rect] [label="while num % i == 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L15 [shape=rect] [label="sum += i
+num //= i
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L17 [shape=rect] [label="i += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L18 [shape=rect] [label="sum += num
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L22 [shape=ellipse] [label="sum"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_find_min_sum {
+label = "def find_min_sum(num)";
+
+LStart_find_min_sum -> L8    [source="@current_to_next"]
+L8 -> L13    [source="@current_to_next"]
+L13 -> L14    [source="@loop_to_next"]
+L13 -> L18 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L17 -> L13 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L14 -> L15    [source="@loop_to_next"]
+L14 -> L17 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L15 -> L14 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+
+L18 -> L22    [source="@current_to_next"]
+L22 -> L999999    [source="@return_to_end"]
+}
+
+
+}

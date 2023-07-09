@@ -1,0 +1,27 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_linear_search [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L15 [shape=rect] [label="for i in range(len(arr))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L16 [shape=diamond] [label="arr[i] == x"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L17 [shape=ellipse] [label="i"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L19 [shape=ellipse] [label="-1"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_linear_search {
+label = "def linear_search(arr, x)";
+
+LStart_linear_search -> L15    [source="@current_to_next"]
+L15 -> L16    [source="@loop_to_next"]
+L15 -> L19 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L16 -> L15 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+
+{rank=same; L16; L17}; source="@condition_and_return"
+L16 -> L17 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L17 -> L999999    [source="@return_to_end"]
+L19 -> L999999    [source="@return_to_end"]
+}
+
+
+}

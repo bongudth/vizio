@@ -16,7 +16,7 @@ class ContinueConnector(BaseConnectionHandler):
             label = "continue"
             color = ConditionConnector.get_color(prev_node)
             appended_label = ConditionConnector.get_label(prev_node)
-            label += f"/{appended_label}" if appended_label else ""
+            label = f"{appended_label} -> continue" if appended_label else ""
             self.connections = [
                 NodeConnection(
                     prev_node,

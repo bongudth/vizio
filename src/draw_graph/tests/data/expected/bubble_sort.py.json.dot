@@ -1,0 +1,40 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_bubble_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L5 [shape=rect] [label="n = len(arr)
+swapped = False
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L10 [shape=rect] [label="for i in range(n - 1)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L14 [shape=rect] [label="for j in range(0, n - i - 1)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L18 [shape=diamond] [label="arr[j] > arr[j + 1]"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L19 [shape=rect] [label="swapped = True
+(arr[j], arr[j + 1]) = (arr[j + 1], arr[j])
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L22 [shape=diamond] [label="not swapped"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_bubble_sort {
+label = "def bubble_sort(arr)";
+
+LStart_bubble_sort -> L5    [source="@current_to_next"]
+L5 -> L10    [source="@current_to_next"]
+L10 -> L14    [source="@loop_to_next"]
+L22 -> L10 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+
+L10 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@end_loop_to_end"]
+L14 -> L18    [source="@loop_to_next"]
+L14 -> L22 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L18 -> L14 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+L19 -> L14 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L18 -> L19 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+
+
+L22 -> L999999 [color=green] [fontcolor=green] [label="true"] [source="@if_node_to_return"]
+}
+
+
+}

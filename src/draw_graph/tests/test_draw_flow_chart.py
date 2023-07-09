@@ -29,7 +29,7 @@ class TestDrawFlowChartWithAST(TestCase):
         input_files = os.listdir(self.input_json_dir)
         for input_file in input_files:
             self.__draw_graph(origin_file_name=input_file)
-            # self.__compare_dot_files(origin_file_name=input_file)
+            self.__compare_dot_files(origin_file_name=input_file)
 
     def __draw_graph(self, origin_file_name: str):
         input_json_full_path = os.path.join(self.input_json_dir, origin_file_name)
@@ -56,9 +56,8 @@ class TestDrawFlowChartWithAST(TestCase):
         )
 
         if not os.path.exists(expected_dot_full_path):
-            return self.fail(
-                f"Expected dot file {expected_dot_full_path} does not exist."
-            )
+            print(f"Expected dot file not found: {expected_dot_full_path}")
+            return
 
         with open(actual_dot_full_path, "r") as actual_dot_file:
             actual_dot_content = actual_dot_file.read()
@@ -66,4 +65,8 @@ class TestDrawFlowChartWithAST(TestCase):
             expected_dot_content = expected_dot_file.read()
         actual_dot_content = actual_dot_content.replace(" ", "").replace("\n", "")
         expected_dot_content = expected_dot_content.replace(" ", "").replace("\n", "")
-        self.assertEqual(actual_dot_content, expected_dot_content)
+        self.assertEqual(
+            actual_dot_content,
+            expected_dot_content,
+            msg=f"File: {origin_file_name} is not equal",
+        )

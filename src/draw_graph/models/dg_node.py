@@ -154,6 +154,12 @@ class DGNode:
             return not self.info
         return False
 
+    def get_first_child(self):
+        first_node = self.next_node
+        if first_node and first_node.indent > self.indent:
+            return first_node
+        return None
+
     def get_last_child(self):
         first_node = self.next_node
         p_node = first_node
@@ -161,4 +167,16 @@ class DGNode:
             if not p_node.next_sibling:
                 return p_node
             p_node = p_node.next_sibling
+        return p_node
+
+    def has_child(self):
+        return self.next_node and self.next_node.indent > self.indent
+
+    def get_last_descendant(self):
+        if not self.has_child():
+            return None
+
+        p_node = self
+        while p_node.has_child():
+            p_node = p_node.get_last_child()
         return p_node

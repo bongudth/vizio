@@ -1,0 +1,40 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_insertion_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L6 [shape=diamond] [label="(n := len(arr)) <= 1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+
+L8 [shape=rect] [label="for i in range(1, n)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L9 [shape=rect] [label="key = arr[i]
+j = i - 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L15 [shape=rect] [label="while j >= 0 and key < arr[j]"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L16 [shape=rect] [label="arr[j + 1] = arr[j]
+j -= 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L18 [shape=rect] [label="arr[j + 1] = key
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_insertion_sort {
+label = "def insertion_sort(arr)";
+
+LStart_insertion_sort -> L6    [source="@current_to_next"]
+
+L6 -> L8 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+
+L6 -> L999999 [color=green] [fontcolor=green] [label="true"] [source="@if_node_to_return"]
+L8 -> L9    [source="@loop_to_next"]
+L18 -> L8 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L8 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@end_loop_to_end"]
+L9 -> L15    [source="@current_to_next"]
+L15 -> L16    [source="@loop_to_next"]
+L15 -> L18 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L16 -> L15 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+
+}
+
+
+}

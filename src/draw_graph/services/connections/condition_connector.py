@@ -201,7 +201,7 @@ class ConditionConnector(BaseConnectionHandler):
                         source="@last_child_to_next_sibling",
                     )
                 )
-            else:
+            elif not last_child.next_node:
                 connections.append(
                     NodeConnection(
                         last_child,

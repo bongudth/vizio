@@ -15,6 +15,7 @@ class LoopConnector(BaseConnectionHandler):
             self.connect_loop_to_next(),
             self.connect_loop_to_next_sibling(),
             self.connect_loop_to_parent_loop(),
+            self.connect_last_condition_to_loop(),
             self.connect_last_node_to_loop(),
             self.connect_end_loop_to_end(end_node),
         ]
@@ -62,7 +63,7 @@ class LoopConnector(BaseConnectionHandler):
             self._connections.append(connection)
         return connection
 
-    def connect_last_node_to_loop(self) -> NodeConnection:
+    def connect_last_condition_to_loop(self) -> NodeConnection:
         last_node = self.node.get_last_child()
 
         if NodeType.is_loop(last_node):
@@ -77,6 +78,9 @@ class LoopConnector(BaseConnectionHandler):
                 label="false",
                 fontcolor="red",
             )
+
+    def connect_last_node_to_loop(self) -> NodeConnection:
+        last_node = self.node.get_last_descendant()
 
         return NodeConnection(
             last_node,

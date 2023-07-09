@@ -1,0 +1,33 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_is_prime [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L4 [shape=diamond] [label="n <= 1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L5 [shape=ellipse] [label="False"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L8 [shape=rect] [label="for i in range(2, int(n ** 0.5) + 1)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L10 [shape=diamond] [label="n % i == 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L11 [shape=ellipse] [label="False"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L13 [shape=ellipse] [label="True"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_is_prime {
+label = "def is_prime(n)";
+
+LStart_is_prime -> L4    [source="@current_to_next"]
+{rank=same; L4; L5}; source="@condition_and_return"
+L4 -> L5 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L4 -> L8 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+L5 -> L999999    [source="@return_to_end"]
+L8 -> L10    [source="@loop_to_next"]
+L8 -> L13 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L10 -> L8 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+
+{rank=same; L10; L11}; source="@condition_and_return"
+L10 -> L11 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L11 -> L999999    [source="@return_to_end"]
+L13 -> L999999    [source="@return_to_end"]
+}
+
+
+}
