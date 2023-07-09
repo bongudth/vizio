@@ -1,6 +1,5 @@
 from typing import List, Optional
 
-from draw_graph.services.connections.loop_connector import LoopConnector
 from src.analysis_code.constants.types import ConditionType
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
@@ -9,6 +8,7 @@ from src.draw_graph.models.same_rank import SameRank
 from src.draw_graph.services.connections.base_connector_handler import (
     BaseConnectionHandler,
 )
+from src.draw_graph.services.connections.loop_connector import LoopConnector
 
 
 class ConditionConnector(BaseConnectionHandler):

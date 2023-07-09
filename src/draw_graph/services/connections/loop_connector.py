@@ -103,6 +103,7 @@ class LoopConnector(BaseConnectionHandler):
                 color="blue",
                 fontcolor="blue",
             )
+        return None
 
     def connect_last_node_to_loop(self) -> NodeConnection:
         p_node = self.node
@@ -136,6 +137,7 @@ class LoopConnector(BaseConnectionHandler):
                 label="out",
                 fontcolor="red",
             )
+        return None
 
     @classmethod
     def get_nearest_parent_loop_node(cls, node: DGNode) -> DGNode:
