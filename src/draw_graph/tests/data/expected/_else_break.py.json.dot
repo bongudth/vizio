@@ -1,0 +1,29 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_a [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L2 [shape=rect] [label="for i in range(10)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L3 [shape=diamond] [label="i != 5"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L4 [shape=rect] [label="print(i)
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+
+
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_a {
+label = "def a()";
+
+LStart_a -> L2    [source="@current_to_next"]
+L2 -> L3    [source="@loop_to_next"]
+L4 -> L2    [source="@prev_node_of_else_to_loop"]
+
+L2 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@end_loop_to_end"]
+L3 -> L4 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+
+L3 -> L999999 [color=red] [fontcolor=red] [label="false -> break"] [source="@break_to_end_node"]
+}
+
+
+}

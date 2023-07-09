@@ -63,8 +63,10 @@ class LoopConnector(BaseConnectionHandler):
             self._connections.append(connection)
         if (
             not self.node.next_sibling
-            and self.node.parent and NodeType.is_condition_else(self.node.parent)
-            and self.node.parent.parent and NodeType.is_loop(self.node.parent.parent)
+            and self.node.parent
+            and NodeType.is_condition_else(self.node.parent)
+            and self.node.parent.parent
+            and NodeType.is_loop(self.node.parent.parent)
         ):
             connection = NodeConnection(
                 self.node,
@@ -83,7 +85,7 @@ class LoopConnector(BaseConnectionHandler):
         if NodeType.is_loop(last_node):
             return None
 
-        if NodeType.is_condition_if(last_node):
+        if NodeType.is_condition_if(last_node) or NodeType.is_condition_elif(last_node):
             return NodeConnection(
                 last_node,
                 last_node.parent,
@@ -91,6 +93,15 @@ class LoopConnector(BaseConnectionHandler):
                 color="red",
                 label="false",
                 fontcolor="red",
+            )
+        if NodeType.is_condition_else(last_node):
+            return NodeConnection(
+                last_node.prev_node,
+                self.node,
+                source="@prev_node_of_else_to_loop",
+                label="loop",
+                color="blue",
+                fontcolor="blue",
             )
 
     def connect_last_node_to_loop(self) -> NodeConnection:

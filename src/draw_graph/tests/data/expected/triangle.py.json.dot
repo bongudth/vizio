@@ -1,0 +1,44 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_triangle [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L2 [shape=diamond] [label="input1 < 1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L3 [shape=ellipse] [label="'Zero'"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+
+L6 [shape=rect] [label="a = 1
+height = 0
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L8 [shape=rect] [label="while input1 > 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L9 [shape=diamond] [label="input1 - a >= 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L10 [shape=rect] [label="input1 = input1 - a
+a = a + 1
+height = height + 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+
+
+L15 [shape=ellipse] [label="height"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_triangle {
+label = "def triangle(input1)";
+
+LStart_triangle -> L2    [source="@current_to_next"]
+{rank=same; L2; L3}; source="@condition_and_return"
+L2 -> L3 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L3 -> L999999    [source="@return_to_end"]
+L2 -> L6 [color=red] [fontcolor=red] [label="false"] [source="@elif_to_else"]
+L6 -> L8    [source="@current_to_next"]
+L8 -> L9    [source="@loop_to_next"]
+L8 -> L15 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L10 -> L8 [color=blue] [fontcolor=blue] [label="loop"] [source="@prev_node_of_else_to_loop"]
+
+L9 -> L10 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+
+L9 -> L999999 [color=red] [fontcolor=red] [label="false -> break"] [source="@break_to_end_node"]
+L15 -> L999999    [source="@return_to_end"]
+}
+
+
+}

@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+from draw_graph.services.connections.loop_connector import LoopConnector
 from src.analysis_code.constants.types import ConditionType
 from src.draw_graph.constants.node_types import NodeType
 from src.draw_graph.models.dg_node import DGNode
@@ -201,7 +202,11 @@ class ConditionConnector(BaseConnectionHandler):
                         source="@last_child_to_next_sibling",
                     )
                 )
-            elif not last_child.next_node or last_child.next_node == end_node:
+
+            nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(node)
+            if not nearest_parent_loop and (
+                not last_child.next_node or last_child.next_node == end_node
+            ):
                 connections.append(
                     NodeConnection(
                         last_child,

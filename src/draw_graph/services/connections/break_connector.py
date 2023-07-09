@@ -1,6 +1,7 @@
 from typing import Any
 
 from src.draw_graph.constants.node_types import NodeType
+from src.draw_graph.models.dg_node import DGNode
 from src.draw_graph.models.node_connection import NodeConnection
 from src.draw_graph.services.connections.base_connector_handler import (
     BaseConnectionHandler,
@@ -12,9 +13,20 @@ class BreakConnector(BaseConnectionHandler):
     def handle_connections(self, **kwargs) -> tuple[Any, str]:
         end_node = kwargs.get("end_node")
         nearest_parent_loop = LoopConnector.get_nearest_parent_loop_node(self.node)
-        prev_node = self.node.prev_node
+        self.connections += self.handle_nearest_parent_loop(
+            end_node, nearest_parent_loop
+        )
+        return self.connections, self.text
+
+    def handle_nearest_parent_loop(
+        self, end_node: DGNode, nearest_parent_loop: DGNode
+    ) -> list[NodeConnection]:
+        connections = []
+        prev_node = self.node.parent
         if nearest_parent_loop:
-            if not nearest_parent_loop.next_sibling:
+            if not nearest_parent_loop.next_sibling or NodeType.is_return(
+                nearest_parent_loop.next_sibling
+            ):
                 label = "break"
                 color = "red"
                 fontcolor = "red"
@@ -24,23 +36,25 @@ class BreakConnector(BaseConnectionHandler):
                     label = "true -> break"
                     color = "green"
                     fontcolor = "green"
+                    src_node = prev_node
                 elif NodeType.is_condition_else(prev_node):
                     label = "false -> break"
                     color = "red"
                     fontcolor = "red"
+                    src_node = prev_node.prev_sibling
 
-                self.connections = [
+                connections.append(
                     NodeConnection(
-                        prev_node,
+                        src_node,
                         end_node,
                         source="@break_to_end_node",
                         label=label,
                         color=color,
                         fontcolor=fontcolor,
                     )
-                ]
+                )
             else:
-                self.connections = [
+                connections.append(
                     NodeConnection(
                         prev_node,
                         nearest_parent_loop.next_sibling,
@@ -49,5 +63,5 @@ class BreakConnector(BaseConnectionHandler):
                         color="red",
                         fontcolor="red",
                     )
-                ]
-        return self.connections, self.text
+                )
+        return connections
