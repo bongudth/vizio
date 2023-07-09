@@ -57,7 +57,8 @@ class TestDrawFlowChartWithAST(TestCase):
 
         if not os.path.exists(expected_dot_full_path):
             print(f"Expected dot file not found: {expected_dot_full_path}")
-            return
+            self.fail(f"Expected dot file not found: {expected_dot_full_path}")
+            # return
 
         with open(actual_dot_full_path, "r") as actual_dot_file:
             actual_dot_content = actual_dot_file.read()

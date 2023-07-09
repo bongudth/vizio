@@ -1,0 +1,17 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+L1 [shape=rect] [label="for i in range(10)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L2 [shape=rect] [label="for j in range(10)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L3 [shape=rect] [label="print(i, j)
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+L1 -> L2    [source="@loop_to_next"]
+L1 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L2 -> L3    [source="@loop_to_next"]
+L2 -> L1 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_parent_loop"]
+L3 -> L2 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+
+
+}

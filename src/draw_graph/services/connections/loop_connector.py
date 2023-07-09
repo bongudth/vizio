@@ -80,10 +80,16 @@ class LoopConnector(BaseConnectionHandler):
             )
 
     def connect_last_node_to_loop(self) -> NodeConnection:
-        last_node = self.node.get_last_descendant()
+        p_node = self.node
+        while p_node.has_child():
+            if p_node != self.node and NodeType.is_loop(p_node):
+                return None
+
+            p_node = p_node.get_last_child()
+        last_descendant = p_node
 
         return NodeConnection(
-            last_node,
+            last_descendant,
             self.node,
             source="@last_to_loop",
             color="blue",

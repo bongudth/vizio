@@ -1,0 +1,82 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_cycle_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L5 [shape=rect] [label="writes = 0
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L8 [shape=rect] [label="for cycle_start in range(0, len(array) - 1)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L9 [shape=rect] [label="item = array[cycle_start]
+pos = cycle_start
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L13 [shape=rect] [label="for i in range(cycle_start + 1, len(array))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L14 [shape=diamond] [label="array[i] < item"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L15 [shape=rect] [label="pos += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L18 [shape=diamond] [label="pos == cycle_start"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+
+L22 [shape=rect] [label="while item == array[pos]"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L23 [shape=rect] [label="pos += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L24 [shape=rect] [label="(array[pos], item) = (item, array[pos])
+writes += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L28 [shape=rect] [label="while pos != cycle_start"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L30 [shape=rect] [label="pos = cycle_start
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L31 [shape=rect] [label="for i in range(cycle_start + 1, len(array))"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L32 [shape=diamond] [label="array[i] < item"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L33 [shape=rect] [label="pos += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L36 [shape=rect] [label="while item == array[pos]"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L37 [shape=rect] [label="pos += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L38 [shape=rect] [label="(array[pos], item) = (item, array[pos])
+writes += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L41 [shape=ellipse] [label="writes"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_cycle_sort {
+label = "def cycle_sort(array)";
+
+LStart_cycle_sort -> L5    [source="@current_to_next"]
+L5 -> L8    [source="@current_to_next"]
+L8 -> L9    [source="@loop_to_next"]
+L8 -> L41 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L9 -> L13    [source="@current_to_next"]
+L13 -> L14    [source="@loop_to_next"]
+L13 -> L18 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L14 -> L13 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+L15 -> L13 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L14 -> L15 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+
+L18 -> L22 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+
+L18 -> L8 [color=green] [fontcolor=green] [label="true -> continue"] [source="@continue_to_loop"]
+L22 -> L23    [source="@loop_to_next"]
+L22 -> L24 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L23 -> L22 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L24 -> L28    [source="@current_to_next"]
+L28 -> L30    [source="@loop_to_next"]
+L28 -> L8 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_parent_loop"]
+L38 -> L28 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L30 -> L31    [source="@current_to_next"]
+L31 -> L32    [source="@loop_to_next"]
+L31 -> L36 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L32 -> L31 [color=red] [fontcolor=red] [label="false"] [source="@last_if_to_parent"]
+L33 -> L31 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L32 -> L33 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+
+L36 -> L37    [source="@loop_to_next"]
+L36 -> L38 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L37 -> L36 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+
+L41 -> L999999    [source="@return_to_end"]
+}
+
+
+}
