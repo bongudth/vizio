@@ -1,5 +1,5 @@
 import ast
-from _ast import AST, AugAssign, Call, Continue, Expr, For, FunctionDef, Return
+from _ast import AST, Assert, AugAssign, Call, Continue, Expr, For, FunctionDef, Return
 from typing import Any, Dict, List
 
 from src.analysis_code.constants.types import (
@@ -141,6 +141,15 @@ class PythonVisitor(ast.NodeVisitor):
         type = ASTNodeType.STATEMENT
         info_data = {
             "type": StatementType.BREAK.name,
+        }
+        return self.custom_visit(node, type, info=info_data)
+
+    def visit_Assert(self, node: Assert) -> Any:
+        type = ASTNodeType.STATEMENT
+        value = ast.unparse(node)
+        info_data = {
+            "value": value,
+            "type": StatementType.ASSERT.name,
         }
         return self.custom_visit(node, type, info=info_data)
 

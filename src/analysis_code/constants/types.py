@@ -38,6 +38,7 @@ class StatementType(Enum):
     RAISE = auto()
     CONTINUE = auto()
     BREAK = auto()
+    ASSERT = auto()
 
 
 class LoopType(Enum):

@@ -1,0 +1,44 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_pigeonhole_sort [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L9 [shape=rect] [label="my_min = min(a)
+my_max = max(a)
+size = my_max - my_min + 1
+holes = [0] * size
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L17 [shape=rect] [label="for x in a"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L18 [shape=rect] [label="assert type(x) is int, 'integers only please'
+holes[x - my_min] += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L22 [shape=rect] [label="i = 0
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L23 [shape=rect] [label="for count in range(size)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L24 [shape=rect] [label="while holes[count] > 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L25 [shape=rect] [label="holes[count] -= 1
+a[i] = count + my_min
+i += 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_pigeonhole_sort {
+label = "def pigeonhole_sort(a)";
+
+LStart_pigeonhole_sort -> L9    [source="@current_to_next"]
+L9 -> L17    [source="@current_to_next"]
+L17 -> L18    [source="@loop_to_next"]
+L17 -> L22 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L18 -> L17 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+L22 -> L23    [source="@current_to_next"]
+L23 -> L24    [source="@loop_to_next"]
+L23 -> L999999 [color=red] [fontcolor=red] [label="out"] [source="@end_loop_to_end"]
+L24 -> L25    [source="@loop_to_next"]
+L24 -> L23 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_parent_loop"]
+L25 -> L24 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+
+}
+
+
+}
