@@ -193,7 +193,7 @@ class ConditionConnector(BaseConnectionHandler):
             and last_child != out_scope_node
             and not NodeType.is_return(last_child.get_last_child())
         ):
-            if out_scope_node:
+            if out_scope_node and last_child.parent != node:
                 connections.append(
                     NodeConnection(
                         last_child,

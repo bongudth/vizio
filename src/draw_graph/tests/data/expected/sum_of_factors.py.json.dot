@@ -1,0 +1,62 @@
+digraph my_graph {
+bgcolor="white"
+node [fontname="courier"]
+
+LStart_sum_of_factors [shape=ellipse] [label="Start"] [type="START"] [style=filled fillcolor="#0B2447" fontcolor=white]
+L14 [shape=diamond] [label="n % 2 != 0"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L15 [shape=ellipse] [label="0"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L19 [shape=rect] [label="res = 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L20 [shape=rect] [label="for i in range(2, int(math.sqrt(n)) + 1)"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L23 [shape=rect] [label="count = 0
+curr_sum = 1
+curr_term = 1
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L26 [shape=rect] [label="while n % i == 0"] [type="LOOP"] [style=filled fillcolor="#6D67E4" fontcolor=white]
+L27 [shape=rect] [label="count = count + 1
+n = n // i
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L34 [shape=diamond] [label="i == 2 and count == 1"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L35 [shape=rect] [label="curr_sum = 0
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L37 [shape=rect] [label="curr_term = curr_term * i
+curr_sum = curr_sum + curr_term
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L40 [shape=rect] [label="res = res * curr_sum
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L45 [shape=diamond] [label="n >= 2"] [type="CONDITIONS"] [style=filled fillcolor="#ECB365" fontcolor=black]
+L46 [shape=rect] [label="res = res * (1 + n)
+"] [type="STATEMENT"] [style=filled fillcolor="#FFC6D3" fontcolor=black]
+L48 [shape=ellipse] [label="res"] [type="RETURN"] [style=filled fillcolor="#BAD7E9" fontcolor=black]
+L999999 [shape=ellipse] [label="End"] [type="END"] [style=filled fillcolor="#F45050" fontcolor=white]
+
+subgraph cluster_sum_of_factors {
+label = "def sum_of_factors(n)";
+
+LStart_sum_of_factors -> L14    [source="@current_to_next"]
+{rank=same; L14; L15}; source="@condition_and_return"
+L14 -> L15 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L14 -> L19 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+L15 -> L999999    [source="@return_to_end"]
+L19 -> L20    [source="@current_to_next"]
+L20 -> L23    [source="@loop_to_next"]
+L20 -> L45 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L40 -> L20 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L23 -> L26    [source="@current_to_next"]
+L26 -> L27    [source="@loop_to_next"]
+L26 -> L40 [color=red] [fontcolor=red] [label="out"] [source="@loop_to_next_sibling"]
+L37 -> L26 [color=blue] [fontcolor=blue] [label="loop"] [source="@last_to_loop"]
+L27 -> L34    [source="@current_to_next"]
+L34 -> L35 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L34 -> L37 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+L35 -> L37    [source="@current_to_next"]
+
+
+L45 -> L46 [color=green] [fontcolor=green] [label="true"] [source="@if_to_next_node"]
+L45 -> L48 [color=red] [fontcolor=red] [label="false"] [source="@if_to_next_sibling"]
+L46 -> L48    [source="@current_to_next"]
+L48 -> L999999    [source="@return_to_end"]
+}
+
+
+}
