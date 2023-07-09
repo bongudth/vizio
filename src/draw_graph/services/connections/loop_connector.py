@@ -61,6 +61,20 @@ class LoopConnector(BaseConnectionHandler):
                 fontcolor="red",
             )
             self._connections.append(connection)
+        if (
+            not self.node.next_sibling
+            and self.node.parent and NodeType.is_condition_else(self.node.parent)
+            and self.node.parent.parent and NodeType.is_loop(self.node.parent.parent)
+        ):
+            connection = NodeConnection(
+                self.node,
+                self.node.parent.parent,
+                label="out",
+                source="@loop_to_parent_else_loop",
+                color="red",
+                fontcolor="red",
+            )
+            self._connections.append(connection)
         return connection
 
     def connect_last_condition_to_loop(self) -> NodeConnection:
