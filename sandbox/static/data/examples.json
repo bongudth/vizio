@@ -1,52 +1,52 @@
 [
   {
     "id": 1,
-    "name": "find_min_sum",
-    "file": "find_min_sum.py"
-  },
-  {
-    "id": 2,
     "name": "is_prime",
     "file": "is_prime.py"
   },
   {
+    "id": 2,
+    "name": "linear_search",
+    "file": "linear_search.py"
+  },
+  {
     "id": 3,
+    "name": "largest_in_array",
+    "file": "largest_in_array.py"
+  },
+  {
+    "id": 4,
+    "name": "insertion_sort",
+    "file": "insertion_sort.py"
+  },
+  {
+    "id": 5,
+    "name": "count_sort",
+    "file": "count_sort.py"
+  },
+  {
+    "id": 6,
+    "name": "bubble_sort",
+    "file": "bubble_sort.py"
+  },
+  {
+    "id": 7,
     "name": "max_prime_factors",
     "file": "max_prime_factors.py"
   },
   {
-    "id": 4,
-    "name": "prime_factors",
-    "file": "prime_factors.py"
-  },
-  {
-    "id": 5,
-    "name": "product_prime_factors",
-    "file": "product_prime_factors.py"
-  },
-  {
-    "id": 6,
-    "name": "sieve_of_eratosthenes",
-    "file": "sieve_of_eratosthenes.py"
-  },
-  {
-    "id": 7,
-    "name": "stopping_station",
-    "file": "stopping_station.py"
-  },
-  {
     "id": 8,
-    "name": "sum_of_factors",
-    "file": "sum_of_factors.py"
-  },
-  {
-    "id": 9,
     "name": "sum_of_odd_factors",
     "file": "sum_of_odd_factors.py"
   },
   {
+    "id": 9,
+    "name": "cocktail_sort",
+    "file": "cocktail_sort.py"
+  },
+  {
     "id": 10,
-    "name": "triangle",
-    "file": "triangle.py"
+    "name": "cycle_sort",
+    "file": "cycle_sort.py"
   }
 ]
